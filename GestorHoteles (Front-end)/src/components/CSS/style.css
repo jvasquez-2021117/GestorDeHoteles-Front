@@ -1,0 +1,25 @@
+
+/* ---------- NAVBAR ----------  */
+.fb{
+    background-color: #9dc19d;
+}
+
+.ffb{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- PROFILE ----------  */
+.w1{
+    width: 200px;
+}
+.w2{
+    width: 140px;
+}
+.hb{
+    height: 140px;
+    background-color: rgb(233, 236, 239);
+}
+.cf{
+    color: rgb(166, 168, 170);
+    font: bold 8pt Arial;
+}
