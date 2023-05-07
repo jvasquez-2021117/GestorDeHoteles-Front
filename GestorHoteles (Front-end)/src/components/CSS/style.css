@@ -1,25 +1,74 @@
-
 /* ---------- NAVBAR ----------  */
-.fb{
+.fb {
     background-color: #9dc19d;
 }
 
-.ffb{
-    background-color: rgba(0, 0, 0, 0.2);
+/* ---------- FOOTER ---------- */
+.fb1 {
+    background-color: #9dc19d;
+}
+
+.tx {
+    color: black;
+
+}
+
+.ffb {
+    background-color: #71443f;
+    opacity: 0.5;
 }
 
 /* ---------- PROFILE ----------  */
-.w1{
+.w1 {
     width: 200px;
 }
-.w2{
+
+.w2 {
     width: 140px;
 }
-.hb{
+
+.hb {
     height: 140px;
     background-color: rgb(233, 236, 239);
 }
-.cf{
+
+.cf {
     color: rgb(166, 168, 170);
     font: bold 8pt Arial;
 }
+
+/* ---------- VIEW USERS ----------  */
+
+
+.intro {
+    height: 100%;
+}
+
+table td,
+table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+thead th {
+    color: #fff;
+}
+
+.card {
+    border-radius: .5rem;
+}
+
+.table-scroll {
+    border-radius: .5rem;
+}
+
+.table-scroll table thead th {
+    font-size: 1.25rem;
+}
+
+thead {
+    top: 0;
+    position: sticky;
+}
+
