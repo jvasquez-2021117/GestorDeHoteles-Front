@@ -32,11 +32,11 @@ const routes = createBrowserRouter([
         element: <RegisterPage></RegisterPage>
       },
       {
-        path: '/profile',
+        path: '/setting',
         element: <UserProfilePage></UserProfilePage>
       },
       {
-        path: '/setting',
+        path: '/record',
         element: <RecordPage />
       },
       {

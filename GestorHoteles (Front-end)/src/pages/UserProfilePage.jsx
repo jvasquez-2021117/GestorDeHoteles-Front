@@ -1,6 +1,7 @@
 import React from 'react'
 import '../components/CSS/style.css'
 import '../App.css'
+import { Link } from 'react-router-dom'
 
 export const UserProfilePage = () => {
     return (
@@ -8,7 +9,12 @@ export const UserProfilePage = () => {
             <div className="container t">
                 <div className="row flex-lg-nowrap">
                     <div className="col-12 col-lg-auto mb-3 w1">
-                        <h4>Historial</h4>
+                        <Link to={'/setting'} className='nav-link'>
+                            <h4>Settings</h4>
+                        </Link>
+                        <Link to={'/record'} className='nav-link'>
+                            <h4>Historial</h4>
+                        </Link>
                         <h5 className='text-muted fst-italic'>LogOut</h5>
                     </div>
                     <div className="col">
@@ -26,9 +32,9 @@ export const UserProfilePage = () => {
                                                         <span className="pt-sm-2 pb-1 mb-0 text-nowrap">Delete account</span>
                                                     </div>
                                                 </div>
-                                                    <div className="text-left">
-                                                        <span className="fw-light">Info personal</span>
-                                                    </div>
+                                                <div className="text-left">
+                                                    <span className="fw-light">Info personal</span>
+                                                </div>
                                             </div>
                                             <div className="tab-content pt-3">
                                                 <div className="tab-pane active">
@@ -61,7 +67,7 @@ export const UserProfilePage = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,13 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const RecordPage = () => {
     return (
         <>
-            hosting history
-            <div className="container">
+            <div className="container t">
                 <div className="row flex-lg-nowrap">
                     <div className="col-12 col-lg-auto mb-3 w1">
-                        <h4>Historial</h4>
+                        <Link to={'/setting'} className='nav-link'>
+                            <h4>Settings</h4>
+                        </Link>
+                        <Link to={'/record'} className='nav-link'>
+                            <h4>Historial</h4>
+                        </Link>
                         <h5 className='text-muted fst-italic'>LogOut</h5>
                     </div>
                     <div className="col">
