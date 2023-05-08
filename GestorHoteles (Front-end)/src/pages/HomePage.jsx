@@ -5,21 +5,23 @@ import { Sidebar } from '../components/Sidebar'
 export const HomePage = () => {
     return (
         <>
-            <div className="container t">
-                <div className="row flex-lg-nowrap">
-                    <div className="col-12 col-lg-auto mb-3 w1">
-                        <Sidebar></Sidebar>
+            <div class="container t">
+                <div class="row flex-lg-nowrap">
+                    <div class="col-12 col-lg-3 mb-3" >
+                        <div class="card">
+                            <Sidebar></Sidebar>
+                        </div>
                     </div>
-                    <div className="col">
-                        <div className="row">
-                            <div className="col mb-5">
-                                <OptionHome></OptionHome>
-                                <OptionHome></OptionHome>                                
+                    <div class="col">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <OptionHome />
+                                <OptionHome />
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

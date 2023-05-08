@@ -1,6 +1,7 @@
 import React from 'react'
 import '../components/CSS/style.css'
 import '../App.css'
+import { Link } from 'react-router-dom'
 
 export const UserProfilePage = () => {
     return (
@@ -8,6 +9,13 @@ export const UserProfilePage = () => {
             <div className="container t">
                 <div className="row flex-lg-nowrap">
                     <div className="col-12 col-lg-auto mb-3 w1">
+                        <Link to={'/setting'} className='nav-link'>
+                            <h4>Settings</h4>
+                        </Link>
+                        <Link to={'/record'} className='nav-link'>
+                            <h4>Historial</h4>
+                        </Link>
+                        <h5 className='text-muted fst-italic'>LogOut</h5>
                     </div>
                     <div className="col">
                         <div className="row">
@@ -16,118 +24,46 @@ export const UserProfilePage = () => {
                                     <div className="card-body">
                                         <div className="e-profile">
                                             <div className="row">
-                                                <div className="col-12 col-sm-auto mb-3">
-                                                    <div className="mx-auto w2" >
-                                                        <div className="d-flex justify-content-center align-items-center rounded hb" >
-                                                            <span className='cf'>140x140</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div className="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                                                     <div className="text-center text-sm-left mb-2 mb-sm-0">
-                                                        <h4 className="pt-sm-2 pb-1 mb-0 text-nowrap">John Smith</h4>
-                                                        {/* <p className="mb-0">@johnny.s</p>
-                                                            <div className="text-muted"><small>Last seen 2 hours ago</small></div> */}
-                                                        <div className="mt-2">
-                                                            <button className="btn btn-primary" type="button">
-                                                                <i className="fa fa-fw fa-camera"></i>
-                                                                <span>Change Photo</span>
-                                                            </button>
-                                                        </div>
+                                                        <h4 className="pt-sm-2 pb-1 mb-0 text-nowrap">Account settings</h4>
                                                     </div>
-                                                    <div className="text-center text-sm-right">
-                                                        <span className="badge badge-secondary">administrator</span>
+                                                    <div className="text-left">
+                                                        <span className="pt-sm-2 pb-1 mb-0 text-nowrap">Delete account</span>
                                                     </div>
                                                 </div>
+                                                <div className="text-left">
+                                                    <span className="fw-light">Info personal</span>
+                                                </div>
                                             </div>
-                                            {/* <ul className="nav nav-tabs">
-                                                    <li className="nav-item"><a href="" className="active nav-link">Settings</a></li>
-                                                </ul> */}
                                             <div className="tab-content pt-3">
                                                 <div className="tab-pane active">
                                                     <form className="form" noValidate="">
                                                         <div className="row">
                                                             <div className="col">
-                                                                <div className="row">
-                                                                    <div className="col">
-                                                                        <div className="form-group">
-                                                                            <label>Name</label>
-                                                                            <input className="form-control" type="text" name="name" placeholder="John Smith" defaultValue="John" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col">
-                                                                        <div className="form-group">
-                                                                            <label>Surname</label>
-                                                                            <input className="form-control" type="text" name="username" placeholder="johnny.s" defaultValue="Smith" />
-                                                                        </div>
+                                                                <div className="col">
+                                                                    <div className="form-group">
+                                                                        <label>Name</label>
+                                                                        <input className="form-control" type="text" name="name" placeholder="John Smith" defaultValue="John" />
                                                                     </div>
                                                                 </div>
-                                                                <div className="row">
-                                                                    <div className="col">
-                                                                        <div className="form-group">
-                                                                            <label>Email</label>
-                                                                            <input className="form-control" type="text" placeholder="user@example.com" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="row ">
-                                                                    <div className="col">
-                                                                        <div className="form-group">
-                                                                            <label>Phone</label>
-                                                                            <input className="form-control" type="text" name="name" placeholder="John Smith" defaultValue="+502 7832-1229" />
-                                                                        </div>
+                                                                <div className="col">
+                                                                    <div className="form-group">
+                                                                        <label>Surname</label>
+                                                                        <input className="form-control" type="text" name="username" placeholder="johnny.s" defaultValue="Smith" />
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div className="row">
-                                                            <div className="col-12 col-sm-6 mb-3">
-                                                                <div className="mb-2"><b>Change Password</b></div>
-                                                                <div className="row">
-                                                                    <div className="col">
-                                                                        <div className="form-group">
-                                                                            <label>Current Password</label>
-                                                                            <input className="form-control" type="password" placeholder="••••••" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {/* <div className="row">
-                                                                        <div className="col">
-                                                                            <div className="form-group">
-                                                                                <label>New Password</label>
-                                                                                <input className="form-control" type="password" placeholder="••••••" />
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="row">
-                                                                        <div className="col">
-                                                                            <div className="form-group">
-                                                                                <label>Confirm <span className="d-none d-xl-inline">Password</span></label>
-                                                                                <input className="form-control" type="password" placeholder="••••••" /></div>
-                                                                        </div>
-                                                                    </div> */}
-                                                            </div>
-                                                        </div>
+                                                        <br />
                                                         <div className="row">
                                                             <div className="col d-flex justify-content-end">
-                                                                <button className="btn btn-primary" type="submit">Save Changes</button>
+                                                                <button className="btn btn-primary" type="submit">Update personal information</button>
                                                             </div>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-12 col-md-3 mb-3">
-                                <div className="card mb-3">
-                                    <div className="card-body">
-                                        <div className="px-xl-3">
-                                            <button className="btn btn-block btn-secondary">
-                                                <i className="fa fa-sign-out"></i>
-                                                <span>Logout</span>
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
