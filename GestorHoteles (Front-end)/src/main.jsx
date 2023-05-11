@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import {createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
 import { NotFoundPage } from './pages/NotFoundPage'
+import { MainPage } from './pages/MainPage'
 import { HomePage } from './pages/HomePage'
 import { LoginPage } from './pages/LoginPage'
 import { RegisterPage } from './pages/RegisterPage'
@@ -10,6 +11,7 @@ import { UserProfilePage } from './pages/UserProfilePage'
 import { RecordPage } from './pages/RecordPage'
 import { ViewUsersPage } from './pages/ViewUsersPage'
 import { AddHotel } from './components/Add/AddHotel'
+
 
 
 const userLogged = localStorage.getItem('userLogged');
@@ -20,7 +22,12 @@ const routes = createBrowserRouter([
     errorElement: <NotFoundPage></NotFoundPage>,
     children: [
       {
+  
         path: '/',
+        element: <MainPage></MainPage>
+      },
+      {
+        path: '/home',
         element: <HomePage></HomePage>
       },
       {

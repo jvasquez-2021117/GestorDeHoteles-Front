@@ -1,22 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { TableUsers } from '../components/Tables/TableUsers'
-import axios from 'axios'
 
 export const ViewUsersPage = () => {
-    const [tableUsers, setTableUsers] = useState([{}])
-
-    const getTableUsers = async() =>{
-        try {
-            const { data } = await axios('http://localhost:3200/user/get')
-            setTableUsers(data.users)
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    useEffect(() => getTableUsers, [])
     return (
-        <>        
+        <>
             <br />
             <div className="container">
                 <div className="row d-flex justify-content-center ">
@@ -33,20 +20,7 @@ export const ViewUsersPage = () => {
                     </div>
                 </div>
             </div >
-            {
-                tableUsers.map(({_id, name, surname, email, role}, index) => {
-                    return(
-                        <div key={index}>
-                            <TableUsers
-                            name={name}
-                            surname={surname}
-                            email={email}
-                            role={role}
-                            ></TableUsers>
-                        </div>
-                    )
-                })
-            }            
+            <TableUsers />
             <br />
         </>
     )
