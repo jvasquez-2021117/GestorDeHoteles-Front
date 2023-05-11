@@ -5,7 +5,7 @@ export const OptionHome = () => {
     return (
         <>
         
-            {/* <div className="card mb-3">
+            <div className="card mb-3">
                 <div className="card-body ">
                     <div className="row g-10">
                         <div className="col-md-4">
@@ -18,7 +18,7 @@ export const OptionHome = () => {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </>
     )
 }

@@ -7,7 +7,7 @@ export const Hotels = ({name, description, address, qualification, rooms}) => {
                 <div className="card-body ">
                     <div className="row g-10">
                         <div className="col-md-4">
-                            <img src="https://media-cdn.tripadvisor.com/media/photo-s/1a/23/44/29/photo3jpg.jpg" className="img-fluid rounded-start" alt="..." />
+                            <img src="https://pix10.agoda.net/hotelImages/124/1246280/1246280_16061017110043391702.jpg?ca=6&ce=1&s=1024x768" className="img-fluid rounded-start" alt="..." />
                         </div>
                         <div className="col-md-8">
                             <h5 className="card-title">{name}</h5>
