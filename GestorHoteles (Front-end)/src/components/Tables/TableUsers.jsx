@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TableUsers = () => {
+export const TableUsers = ({name, surname, email, password, role}) => {
     return (
         <>
             <section className="intro">
@@ -19,25 +19,24 @@ export const TableUsers = () => {
                                                             <th scope="col">Surname</th>
                                                             <th scope="col">Email</th>
                                                             <th scope="col">Role</th>
-                                                            <th scope="col">Spots</th>
+                                                            {/* <th scope="col">Spots</th> */}
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td>Like a butterfly</td>
-                                                            <td>Boxing</td>
-                                                            <td>9:00 AM - 11:00 AM</td>
-                                                            <td>Aaron Chapman</td>
-                                                            <td>10</td>
+                                                            <td>{name}</td>
+                                                            <td>{surname}</td>
+                                                            <td>{email}</td>
+                                                            <td>{role}</td>
+                                                            
                                                         </tr>
-                                                        <tr>
+                                                        {/* <tr>
                                                             <td>Mind &amp; Body</td>
                                                             <td>Yoga</td>
                                                             <td>8:00 AM - 9:00 AM</td>
                                                             <td>Adam Stewart</td>
                                                             <td>15</td>
-                                                        </tr>
-                                                        
+                                                        </tr> */}                                                        
                                                     </tbody>
                                                 </table>
                                             </div>
