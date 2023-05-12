@@ -6,7 +6,7 @@ import logo from '.././assets/logoHeader.png'
 export const Navbar = () => {
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
+            <nav className="navbar navbar-expand-lg fbb sticky-top navbar-light p-3 shadow-sm">
                 <div className="container">
                     <a id='a' className="navbar-brand d-block d-lg-none" href="#">
                         <img src={logo} height="30px" />

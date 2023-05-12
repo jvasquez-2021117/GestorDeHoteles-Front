@@ -1,8 +1,10 @@
 import React from 'react'
 
 export const OptionHome = () => {
+    
     return (
         <>
+        
             <div className="card mb-3">
                 <div className="card-body ">
                     <div className="row g-10">
