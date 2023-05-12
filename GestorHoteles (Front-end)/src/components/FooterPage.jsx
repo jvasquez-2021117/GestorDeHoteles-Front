@@ -4,11 +4,12 @@ import React from 'react'
 export const FooterPage = () => {
     return (
         <>
+
             <footer className="text-center text-lg-start fb1 text-muted ">
-                <div className=" p- tx">
+                <div className="tx">
                     <section className="">
                         <form action="">
-                            <div className="row d-flex justify-content-center pt-4">
+                            <div className="row justify-content-center pt-4">
                                 <div className="col-auto">
                                     <p className="pt-2 ">
                                         <strong>Sign up for our newsletter</strong>
@@ -83,9 +84,9 @@ export const FooterPage = () => {
                                 </div>
                             </div>
                         </div>
-                    <div className="text-center text-light p-4 ffb">
-                        © 2023 Copyright: &ensp;
-                        <a className="text-reset fw-bold ">RestComfort S.A.</a>
+                    <div className="text-center p-4 ffb">
+                        © 2023 Copyright: 
+                        <a className="text-reset fw-bold">RestComfort</a>
                     </div>
                     </section>
                 </div>

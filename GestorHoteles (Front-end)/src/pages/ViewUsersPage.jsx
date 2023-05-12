@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TableUsers } from '../components/Tables/TableUsers'
+import axios from 'axios'
 
 export const ViewUsersPage = () => {
+    const [tableUsers, setTableUsers] = useState([{}])
+
+    const getTableUsers = async () => {
+        try {
+            const { data } = await axios('http://localhost:3200/user/get')
+            setTableUsers(data.users)
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    useEffect(() => getTableUsers, [])
     return (
         <>
             <br />
@@ -20,7 +33,64 @@ export const ViewUsersPage = () => {
                     </div>
                 </div>
             </div >
-            <TableUsers />
+            <section className="intro">
+                <div className="bg-image h-100" style={{ backgroundColor: '#f5f7fa' }}> {/* background: #f5f7fa; */}
+                    <div className="mask d-flex align-items-center h-100">
+                        <div className="container">
+                            <div className="row justify-content-center">
+                                <div className="col-12">
+                                    <div className="card">
+                                        <div className="card-body p-0">
+                                            <div className="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style={{ position: 'relative', height: '700px' }}>
+                                                <table className="table table-striped ">
+                                                    <thead style={{ backgroundColor: '#8c7c62' }}>
+                                                        <tr>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Surname</th>
+                                                            <th scope="col">Email</th>
+                                                            <th scope="col">Role</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {
+                                                            tableUsers.map(({ _id, name, surname, email, role }, index) => {
+                                                                return (
+                                                                    <tr key={index}>
+                                                                        <TableUsers
+                                                                            name={name}
+                                                                            surname={surname}
+                                                                            email={email}
+                                                                            role={role}
+                                                                        ></TableUsers>
+                                                                    </tr>
+                                                                )
+                                                            })
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {/*             {
+                tableUsers.map(({_id, name, surname, email, role}, index) => {
+                    return(
+                        <div key={index}>
+                            <TableUsers
+                            name={name}
+                            surname={surname}
+                            email={email}
+                            role={role}
+                            ></TableUsers>
+                        </div>
+                    )
+                })
+            }  */}
             <br />
         </>
     )
