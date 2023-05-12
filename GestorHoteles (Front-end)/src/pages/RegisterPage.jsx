@@ -1,8 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import axios from 'axios'
 
 export const RegisterPage = () => {
+    const navigate = useNavigate();
+    const [form, setForm] = useState({
+        name: '',
+        surname: '',
+        password: '',
+        email: '',
+    })
+
+    const registerHandleChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const register = async (e) => {
+        try {
+            const { data } = await axios.post('http://localhost:3200/user/register', form)
+            if (data.message) {
+                alert(data.message)
+                navigate('/login')
+            }
+        } catch (err) {
+            alert(err.response.data.message)
+            throw new Error('Error registering user')
+        }
+    }
+
     return (
         <>
             <div className='col-md-4 offset-md-4 t'>
@@ -30,38 +61,34 @@ export const RegisterPage = () => {
                             </div>
                             <p className="text-center">or:</p>
                             <div className="form-floating">
-                                <input type="text" id="registerName" className="form-control" placeholder='Name' />
-                                <label for="registerName">Name</label>
+                                <input type="text" id="registerName" className="form-control" onChange={registerHandleChange} name='name' placeholder='Name' />
+                                <label htmlFor="registerName">Name</label>
                             </div>
                             <br />
                             <div className="form-floating">
-                                <input type="text" id="registerUsername" className="form-control" placeholder='Surname' />
-                                <label className="form-label" for="registerUsername">Surname</label>
+                                <input type="text" id="registerUsername" className="form-control" onChange={registerHandleChange} name='surname' placeholder='Surname' />
+                                <label className="form-label" htmlFor="registerUsername">Surname</label>
                             </div>
                             <br />
                             <div className="form-floating">
-                                <input type="email" id="registerEmail" className="form-control" placeholder='Email' />
-                                <label className="form-label" for="registerEmail">Email</label>
+                                <input type="email" id="registerEmail" className="form-control" onChange={registerHandleChange} name='email' placeholder='Email' />
+                                <label className="form-label" htmlFor="registerEmail">Email</label>
                             </div>
                             <br />
                             <div className="form-floating">
-                                <input type="password" id="registerPassword" className="form-control" placeholder='Password' />
-                                <label className="form-label" for="registerPassword">Password</label>
+                                <input type="password" id="registerPassword" className="form-control" onChange={registerHandleChange} name='password' placeholder='Password' />
+                                <label className="form-label" htmlFor="registerPassword">Password</label>
                             </div>
                             <br />
-                            <div className="form-floating">
-                                <input type="password" id="registerRepeatPassword" className="form-control" placeholder='Repeat password' />
-                                <label className="form-label" for="registerRepeatPassword">Repeat password</label>
-                            </div>
                             <hr />
                             <div className="form-check d-flex justify-content-center mb-4">
-                                <input className="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                                <input className="form-check-input me-2" type="checkbox" value="" id="registerCheck"
                                     aria-describedby="registerCheckHelpText" />
-                                <label className="form-check-label" for="registerCheck">
+                                <label className="form-check-label" htmlFor="registerCheck">
                                     I have read and agree to the terms
                                 </label>
                             </div>
-                            <button type="submit" className="btn btn-primary btn-block">Sign in</button>
+                            <button onClick={() => register()} type="submit" className="btn btn-primary btn-block">Sign in</button>
                             <Link to={'/'}>
                                 <button type="submit" className="btn btn-danger btn-block ">Cancel</button>
                             </Link>
