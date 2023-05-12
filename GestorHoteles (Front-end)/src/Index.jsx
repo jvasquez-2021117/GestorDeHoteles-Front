@@ -18,8 +18,7 @@ export const Index = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [dataUser, setDataUser] = useState({
         name: '',
-        username: '',
-        role: ''
+        username: ''
     })
 
     const routes = createBrowserRouter([
@@ -61,7 +60,7 @@ export const Index = () => {
     ])
 
     return (
-        <AutContext.Provider value={{ loggedIn, setLoggedIn }}>
+        <AutContext.Provider value={{ loggedIn, setLoggedIn, dataUser, setDataUser }}>
             <RouterProvider router={routes} />
         </AutContext.Provider>
     )
