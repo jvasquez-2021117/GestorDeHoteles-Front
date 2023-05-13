@@ -3,6 +3,9 @@ import { ModalTypeRoom } from '../components/Modal/ModalTypeRoom';
 import { Link } from 'react-router-dom';
 import { ModalRoom } from '../components/Modal/ModalRoom';
 import { ModalHotel } from '../components/Modal/ModalHotel';
+import room from '../assets/room.jpg';
+import typeRoom from '../assets/typeRoom.jpg';
+import hotel from '../assets/hotel.jpg';
 
 export const AddHotelPage = () => {
     const [showModalTypeRoom, setShowModalTypeRoom] = useState(false);
@@ -10,12 +13,27 @@ export const AddHotelPage = () => {
     const [showModalHotel, setShowModalHotel] = useState(false);
 
     const handleOpenModal = () => {
-        setShowModalTypeRoom, setShowModalRoom, setShowModalHotel(true);
-        console.log(showModalTypeRoom, showModalRoom);
+        setShowModalTypeRoom(true);
+        console.log(showModalTypeRoom);
     };
-
     const handleCloseModal = () => {
-        setShowModalTypeRoom, setShowModalRoom, setShowModalHotel(false);
+        setShowModalTypeRoom(false);
+    }
+
+    const handleOpenModal2 = () => {
+        setShowModalRoom(true);
+        console.log(showModalRoom);
+    };
+    const handleCloseModal2 = () => {
+        setShowModalRoom(false);
+    }
+
+    const handleOpenModal3 = () => {
+        setShowModalHotel(true);
+        console.log(showModalHotel);
+    };
+    const handleCloseModal3 = () => {
+        setShowModalHotel(false);
     }
     return (
         <>
@@ -35,7 +53,7 @@ export const AddHotelPage = () => {
                                 </div>
                                 <div className="card-body">
                                     <ul className="list-unstyled mt-3 mb-4">
-                                        {/* <img src={cellarImg} alt="Cellars Image" className='card-img' style={{ width: "95%", height: "95%" }} /> */}
+                                        <img src={typeRoom} alt="Cellars Image" className='card-img' style={{ width: "95%", height: "95%" }} />
                                     </ul>                                
                                         <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal}>Add</button>                                    
                                 </div>
@@ -46,9 +64,9 @@ export const AddHotelPage = () => {
                                 </div>
                                 <div className="card-body">
                                     <ul className="list-unstyled mt-3 mb-4">
-                                        {/* <img src={accountImg} alt="Accounts Image" className="card-img" style={{ width: "95%", height: "95%" }} /> */}
+                                        <img src={room} alt="Accounts Image" className="card-img" style={{ width: "95%", height: "95%" }} />
                                     </ul>                                    
-                                        <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal}>Add</button>                                    
+                                        <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal2}>Add</button>                                    
                                 </div>
                             </div>
                         </div>
@@ -59,9 +77,9 @@ export const AddHotelPage = () => {
                                 </div>
                                 <div className="card-body">
                                     <ul className="list-unstyled mt-3 mb-4">
-                                        {/* <img src={clientImg} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} /> */}
+                                        <img src={hotel} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
                                     </ul>
-                                        <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal}>Add</button>
+                                        <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal3}>Add</button>
                                 </div>
                             </div>
                             {/* <div className="card mb-4 rounded-3 shadow-sm">
@@ -82,8 +100,8 @@ export const AddHotelPage = () => {
                 </main>
             </div>
             <ModalTypeRoom isOpen={showModalTypeRoom} onClose={handleCloseModal}></ModalTypeRoom>  
-            <ModalRoom isOpen={showModalRoom} onClose={handleCloseModal}></ModalRoom>
-            <ModalHotel isOpen={showModalHotel} onClose={handleCloseModal}></ModalHotel>
+            <ModalRoom isOpen={showModalRoom} onClose={handleCloseModal2}></ModalRoom>
+            <ModalHotel isOpen={showModalHotel} onClose={handleCloseModal3}></ModalHotel>
         </>
     )
 }

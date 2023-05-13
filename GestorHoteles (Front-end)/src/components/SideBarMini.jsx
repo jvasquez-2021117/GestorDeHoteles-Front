@@ -2,8 +2,8 @@ import React from 'react'
 import './CSS/style.css'
 
 export const SideBarMini = () => {
-  return (
-    <>
+    return (
+        <>
             <div className='card-body' id='cardB'>
                 <form>
                     <div className="row">
@@ -43,5 +43,5 @@ export const SideBarMini = () => {
                 </form>
             </div>
         </>
-  )
+    )
 }
