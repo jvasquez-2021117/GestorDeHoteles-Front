@@ -1,23 +1,53 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState, useContext } from 'react'
+import { AutContext } from '../Index'
 import { Link } from 'react-router-dom'
-import '../App.css'
+
+
 
 export const LoginPage = () => {
+    const { setLoggedIn, loggedIn, setDataUser } = useContext(AutContext);
+    const [form, setForm] = useState({
+        email: '',
+        password: ''
+    })
+
+    const handleChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const login = async (e) => {
+        try {
+            e.preventDefault()
+            const { data } = await axios.post('http://localhost:3200/user/login', form)
+            if (data.token) {
+                setLoggedIn(true)
+                localStorage.setItem('token', data.token)
+            }
+        } catch (err) {
+            console.log(err.response.data.message);
+            console.log(err)
+        }
+    }
+
     return (
         <>
             <div className="container t">
                 <div className="card col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-5" style={{ margin: 'auto auto' }}>
                     <div className="card-body">
-                        <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
+                        <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                            <li className="nav-item" role="presentation">
+                                <a className="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
                                     aria-controls="pills-login" aria-selected="true">Login</a>
                             </li>
                         </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                        <div className="tab-content">
+                            <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
                                 <form>
-                                    <div class="text-center mb-3">
+                                    <div className="text-center mb-3">
                                         <p>Sign in with:</p>
                                         <button type="button" className="btn btn-link btn-floating mx-1">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-facebook" viewBox="0 0 16 16">
@@ -30,106 +60,41 @@ export const LoginPage = () => {
                                             </svg>
                                         </button>
                                     </div>
-                                    <p class="text-center">or:</p>
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="loginName">Email or username</label>
-                                        <input type="email" id="loginName" class="form-control" />
+                                    <p className="text-center">or:</p>
+                                    <div className="form-outline mb-4">
+                                        <label className="form-label" htmlFor="loginName">Email or username</label>
+                                        <input onChange={handleChange} id="loginName" name="email" className='form-control' type="email" />
                                     </div>
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="loginPassword">Password</label>
-                                        <input type="password" id="loginPassword" class="form-control" />
+                                    <div className="form-outline mb-4">
+                                        <label className="form-label" htmlFor="loginPassword">Password</label>
+                                        <input onChange={handleChange} id="loginPassword" name="password" className='form-control' type="password" />
                                     </div>
-                                    <div class="row mb-4">
-                                        <div class="d-flex justify-content-center">
+                                    <div className="row mb-4">
+                                        <div className="col-md-6 d-flex justify-content-center">
                                             <a href="#!">Forgot password?</a>
                                         </div>
-                                    </div>                                
+                                    </div>
                                     <hr />
                                     <div className="row justify-content-center">
-                                        <div className="col-md-3">
-                                            <button type="submit" className="btn btn-primary btn-block mb-4" >Sign in </button>
+                                        <div className="col-md-3">                                            
+                                            <button onClick={(e) => login(e)} className="btn btn-primary btn-block mb-4">Sign in</button>
                                         </div>
                                         <div className="col-md-2">
-                                            <Link to={'/'}>
-                                                <button type="submit" className="btn btn-danger btn-block mb-4 ">Cancel</button>
+                                            <Link to={'/home'}>
+                                            <button type="submit" className="btn btn-danger btn-block mb-4 ">Cancel</button>
                                             </Link>
                                         </div>
-                                    </div>                                    
-                                    <div class="text-center">
-                                        <p>Not a member? <Link to={'/register'}>Register</Link></p>
+                                    </div>
+                                    <div className="text-center">
+                                        <p>Not a member? <a href="#!">Register</a></p>
                                     </div>
                                 </form>
                             </div>
-                            {/* <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                    <form>
-                        <div class="text-center mb-3">
-                            <p>Sign up with:</p>
-                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                <i class="fab fa-facebook-f"></i>
-                            </button>
-
-                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                <i class="fab fa-google"></i>
-                            </button>
-
-                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                <i class="fab fa-twitter"></i>
-                            </button>
-
-                            <button type="button" class="btn btn-link btn-floating mx-1">
-                                <i class="fab fa-github"></i>
-                            </button>
-                        </div>
-
-                        <p class="text-center">or:</p>
-
-
-                        <div class="form-outline mb-4">
-                            <input type="text" id="registerName" class="form-control" />
-                            <label class="form-label" for="registerName">Name</label>
-                        </div>
-                        
-                        <div class="form-outline mb-4">
-                            <input type="text" id="registerUsername" class="form-control" />
-                            <label class="form-label" for="registerUsername">Username</label>
-                        </div>
-
-
-                        <div class="form-outline mb-4">
-                            <input type="email" id="registerEmail" class="form-control" />
-                            <label class="form-label" for="registerEmail">Email</label>
-                        </div>
-
-
-                        <div class="form-outline mb-4">
-                            <input type="password" id="registerPassword" class="form-control" />
-                            <label class="form-label" for="registerPassword">Password</label>
-                        </div>
-
-
-                        <div class="form-outline mb-4">
-                            <input type="password" id="registerRepeatPassword" class="form-control" />
-                            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-                        </div>
-
-
-                        <div class="form-check d-flex justify-content-center mb-4">
-                            <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-                                aria-describedby="registerCheckHelpText" />
-                            <label class="form-check-label" for="registerCheck">
-                                I have read and agree to the terms
-                            </label>
-                        </div>
-
-
-                        <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-                    </form>
-                </div> */}
                         </div>
                     </div>
                 </div>
             </div>
-            <br />            
+            <br />
         </>
     )
 }

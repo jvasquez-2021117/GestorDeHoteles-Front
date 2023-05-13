@@ -8,18 +8,17 @@ export const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
                 <div className="container">
-                    <a id='a' className="navbar-brand d-block d-lg-none" href="#">
+                    <Link to={'/'} id='a' className="navbar-brand d-block d-lg-none">
                         <img src={logo} height="30px" />
-                    </a>
+                    </Link>
                     <li className="nav-item d-none d-lg-block">
-                        <a id='a' className="nav-link mx-2" href="#">
+                        <Link to={'/'} className="nav-link mx-2">
                             <img className="img-hover" src={logo} height="50px" />
-                        </a></li>
+                        </Link>
+                    </li>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-
-
                     <div className=" collapse navbar-collapse" id="navbarNavDropdown">
                         <div className="input-group rounded" style={{ width: '15vw', marginLeft: '4vw' }}>
                             <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -31,38 +30,48 @@ export const Navbar = () => {
                         </div>
                         <ul className="navbar-nav ms-auto ">
                             <li className="nav-item">
-                                <a id='aXD' className="nav-link mx-2 text-uppercase active" aria-current="page" href="#">Offers</a>
+                                <Link to={'/users'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Users
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a id='aXD' className="nav-link mx-2 text-uppercase" href="#">Products</a>
+                                <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Home
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a id='aXD' className="nav-link mx-2 text-uppercase" href="#">Catalog</a>
+                                <Link to={'/setting'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Setting
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a id='aXD' className="nav-link mx-2 text-uppercase" href="#">Services</a>
+                                <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Statistics
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a id='aXD' className="nav-link mx-2 text-uppercase" href="#">About</a>
+                                <Link to={'/addHotel'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Add Hotel
+                                </Link>
                             </li>
                         </ul>
                         <ul className="navbar-nav ms-auto ">
                             <li className="nav-item">
-                                <a id='aXD' className="nav-link mx-2 text-uppercase" href="#"><i className="fa-solid fa-cart-shopping me-1"></i> Cart</a>
+                                <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Reservation
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a id='aXD' className="nav-link mx-2 text-uppercase" href="#"><i className="fa-solid fa-circle-user me-1"></i>
+                                <Link to={'/setting'} id='aXD' className="nav-link mx-2 text-uppercase">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16">
                                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                                     </svg>
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-
-
         </>
     )
 }
