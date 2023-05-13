@@ -84,8 +84,8 @@ export const FooterPage = () => {
                                 </div>
                             </div>
                         </div>
-                    <div className="text-center p-4 ffb">
-                        © 2023 Copyright: 
+                    <div className="text-center text-light p-4 ffb">
+                        © 2023 Copyright: &ensp;
                         <a className="text-reset fw-bold">RestComfort</a>
                     </div>
                     </section>
