@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './CSS/style.css'
 import { Link } from 'react-router-dom'
 import logo from '.././assets/logoHeader.png'
+import { ModalReservation } from './Modal/ModalReservation'
 
 export const Navbar = () => {
+    const [showModalReservation, setShowModalReservation] = useState(false)
+    
+    const handleOpenModal4 = () => {
+        setShowModalReservation(true);
+        console.log(showModalReservation);
+    }
+    const handleCloseModal4 = () => {
+        setShowModalReservation(false);
+    }
+
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
@@ -56,11 +67,11 @@ export const Navbar = () => {
                             </li>
                         </ul>
                         <ul className="navbar-nav ms-auto ">
-                            <li className="nav-item">
-                                <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
+                            {/* <li className="nav-item">
+                                <Link onClick={handleOpenModal4} id='aXD' className="nav-link mx-2 text-uppercase">
                                     Reservation
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <Link to={'/setting'} id='aXD' className="nav-link mx-2 text-uppercase">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16">
@@ -72,6 +83,7 @@ export const Navbar = () => {
                     </div>
                 </div>
             </nav>
+            <ModalReservation isOpen={showModalReservation} onClose={handleCloseModal4}></ModalReservation>
         </>
     )
 }
