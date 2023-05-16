@@ -4,17 +4,6 @@ import axios from 'axios'
 
 export const ModalHotel = ({ isOpen, onClose }) => {
 
-    const [room, setRoom] = useState([{}])
-
-    const getRoom = async () => {
-        try {
-            const { data } = await axios('http://localhost:3200/room/get')
-            setRoom(data.rooms)
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
     const addHotel = async () => {
         try {
             let hotel = {
@@ -22,9 +11,8 @@ export const ModalHotel = ({ isOpen, onClose }) => {
                 description: document.getElementById('inputDescription').value,
                 address: document.getElementById('inputAddress').value,
                 qualification: document.getElementById('inputQualification').value,
-                /* rooms: document.getElementById('inputRoom').value */
             }
-            const { data } = await axios.post('http://localhost:3200/hotel/addHotelImg', hotel);
+            const { data } = await axios.post('http://localhost:3200/hotel/addHotel', hotel);
             alert(data.message)
         } catch (e) {
             console.log(e);
@@ -54,18 +42,6 @@ export const ModalHotel = ({ isOpen, onClose }) => {
                         <div className="mb-3">
                             <label htmlFor="inputAddress" className="form-label">Address</label>
                             <textarea className='form-control' name="" id="inputAddress" placeholder='Address'></textarea>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="inputRoom" className="form-label">Room</label>
-                            <select name="" id="inputRoom" className="form-control" required>
-                                {
-                                    room.map(({ _id, name }, i) => {
-                                        return (
-                                            <option key={i} value={_id}>{name}</option>
-                                        )
-                                    })
-                                }
-                            </select>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputQualification" className="form-label">Qualification</label>

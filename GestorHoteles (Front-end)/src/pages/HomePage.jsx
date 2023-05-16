@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Sidebar } from '../components/Sidebar/Sidebar'
 import { OptionHotels } from '../components/Options/OptionHotels'
-import { OptionHome } from '../components/OptionHome'
 import { ModalReservation } from '../components/Modal/ModalReservation'
 
 export const HomePage = () => {
@@ -16,7 +15,6 @@ export const HomePage = () => {
         setAddress(address);
         setQualification(qualification)
     };
-
 
     const handleOpenModal4 = () => {
         setShowModalReservation(true);
@@ -37,13 +35,8 @@ export const HomePage = () => {
                     <div className="col">
                         <div className="row">
                             <div className="col mb-3">
-                                <OptionHotels nameFilter={name} addressFilter={address} qualificationFilter={qualification} />
-                                {/* <OptionHome />
-                                <OptionHome /> */}
                                 <button onClick={handleOpenModal4} type="button" className="w-100 btn btn-lg btn-outline-success">Reservation</button>
-                                <br />
-                                <br />
-                                <OptionHotels />
+                                <OptionHotels nameFilter={name} addressFilter={address} qualificationFilter={qualification} />
                             </div>
                         </div>
                     </div>

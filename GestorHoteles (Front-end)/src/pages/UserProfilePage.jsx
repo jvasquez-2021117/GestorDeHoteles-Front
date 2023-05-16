@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../components/CSS/style.css'
 import '../App.css'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../Index'
 
 export const UserProfilePage = () => {
+
+    const { dataUser } = useContext(AuthContext);
+    
     return (
         <>
             <div className="container t">
@@ -44,13 +49,13 @@ export const UserProfilePage = () => {
                                                                 <div className="col">
                                                                     <div className="form-group">
                                                                         <label>Name</label>
-                                                                        <input className="form-control" type="text" name="name" placeholder="John Smith" defaultValue="John" />
+                                                                        <input className="form-control" type="text" name="name" defaultValue={dataUser.name}/>
                                                                     </div>
                                                                 </div>
                                                                 <div className="col">
                                                                     <div className="form-group">
                                                                         <label>Surname</label>
-                                                                        <input className="form-control" type="text" name="username" placeholder="johnny.s" defaultValue="Smith" />
+                                                                        <input className="form-control" type="text" name="username"  defaultValue={dataUser.surname} />
                                                                     </div>
                                                                 </div>
                                                             </div>
