@@ -9,8 +9,8 @@ import { RegisterPage } from './pages/RegisterPage'
 import { UserProfilePage } from './pages/UserProfilePage'
 import { RecordPage } from './pages/RecordPage'
 import { ViewUsersPage } from './pages/ViewUsersPage'
-import { AddHotel } from './components/Add/AddHotel'
 import { MainPage } from './pages/MainPage'
+import { AddHotelPage } from './pages/AddHotelPage'
 
 export const AutContext = createContext();
 
@@ -59,7 +59,7 @@ export const Index = () => {
                 },
                 {
                     path: '/addHotel',
-                    element: <AddHotel></AddHotel>
+                    element: <AddHotelPage></AddHotelPage>
                 }
             ]
         }

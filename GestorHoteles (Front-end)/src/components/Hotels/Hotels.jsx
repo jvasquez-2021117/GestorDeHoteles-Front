@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Hotels = ({name, description, address, qualification, rooms}) => {
+export const Hotels = ({ name, description, address, qualification, rooms }) => {
     return (
         <>
-        <div className="card mb-3">
+            <div className="card mb-3">
                 <div className="card-body ">
                     <div className="row g-10">
                         <div className="col-md-4">
