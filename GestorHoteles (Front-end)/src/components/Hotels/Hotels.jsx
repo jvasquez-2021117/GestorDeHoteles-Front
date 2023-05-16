@@ -1,7 +1,8 @@
 import React from 'react'
 import { DropRoom } from '../Dropdown/DropRoom'
+import { DropEvent } from '../Dropdown/DropEvent'
 
-export const Hotels = ({ name, description, address, qualification }) => {
+export const Hotels = ({_id, name, description, address, qualification }) => {
     return (
         <>
             <div className="card mb-3">
@@ -21,8 +22,16 @@ export const Hotels = ({ name, description, address, qualification }) => {
                             </div>
                         </div>
                     </div>
+                    <br />
                     <center>
-                        <DropRoom />
+                        <div className="row">
+                            <div className="col">
+                                <DropRoom id={_id}/>
+                            </div>
+                            <div className="col">
+                                <DropEvent id={_id}/>
+                            </div>
+                        </div>
                     </center>
                 </div>
             </div>
