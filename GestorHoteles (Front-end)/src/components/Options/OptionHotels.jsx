@@ -29,10 +29,11 @@ export const OptionHotels = ({ nameFilter, addressFilter, qualificationFilter })
     return (
         <>
             {
-                filteredHotels.map(({ _id, name, description, address, qualification, rooms }, index) => {
+                filteredHotels.map(({ _id, name, description, address, qualification}, index) => {
                     return (
                         <div key={index}>
                             <Hotels
+                                _id={_id}
                                 name={name}
                                 description={description}
                                 address={address}
