@@ -1,12 +1,10 @@
 import axios from 'axios'
 import React, { useState, useContext } from 'react'
-import { AutContext } from '../Index'
+import { AuthContext } from '../Index'
 import { Link } from 'react-router-dom'
 
-
-
 export const LoginPage = () => {
-    const { setLoggedIn, loggedIn, setDataUser } = useContext(AutContext);
+    const { setLoggedIn, loggedIn, setDataUser } = useContext(AuthContext);
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -21,11 +19,14 @@ export const LoginPage = () => {
 
     const login = async (e) => {
         try {
-            e.preventDefault()
             const { data } = await axios.post('http://localhost:3200/user/login', form)
             if (data.token) {
                 setLoggedIn(true)
                 localStorage.setItem('token', data.token)
+                setDataUser({
+                    name: data.userLogged.name,
+                    surname: data.userLogged.surname
+                })
             }
         } catch (err) {
             console.log(err.response.data.message);
@@ -76,12 +77,14 @@ export const LoginPage = () => {
                                     </div>
                                     <hr />
                                     <div className="row justify-content-center">
-                                        <div className="col-md-3">                                            
-                                            <button onClick={(e) => login(e)} className="btn btn-primary btn-block mb-4">Sign in</button>
+                                        <div className="col-md-3">
+                                            <Link to={'/setting'}>
+                                                <button onClick={(e) => login(e)} className="btn btn-primary btn-block mb-4">Sign in</button>
+                                            </Link>
                                         </div>
                                         <div className="col-md-2">
                                             <Link to={'/home'}>
-                                            <button type="submit" className="btn btn-danger btn-block mb-4 ">Cancel</button>
+                                                <button type="submit" className="btn btn-danger btn-block mb-4 ">Cancel</button>
                                             </Link>
                                         </div>
                                     </div>
@@ -92,8 +95,8 @@ export const LoginPage = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
             <br />
         </>
     )

@@ -4,7 +4,7 @@ import logo from '../assets/logo.png';
 import AboutU from '../assets/Au2.png'
 import '../components/CSS/style.css'
 import { Map } from '../components/Map/Map';
-import { SideBarMini } from '../components/SideBarMini';
+import { SideBarMini } from '../components/Sidebar/SideBarMini';
 import backgrAubot from '../assets/fondx.jpg'
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';

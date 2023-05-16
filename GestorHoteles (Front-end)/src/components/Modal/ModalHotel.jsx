@@ -11,9 +11,8 @@ export const ModalHotel = ({ isOpen, onClose }) => {
                 description: document.getElementById('inputDescription').value,
                 address: document.getElementById('inputAddress').value,
                 qualification: document.getElementById('inputQualification').value,
-                /* rooms: document.getElementById('inputRoom').value */
             }
-            const { data } = await axios.post('http://localhost:3200/hotel/addHotel', hotel)
+            const { data } = await axios.post('http://localhost:3200/hotel/addHotel', hotel);
             alert(data.message)
         } catch (e) {
             console.log(e);
@@ -23,6 +22,7 @@ export const ModalHotel = ({ isOpen, onClose }) => {
     if (!isOpen) {
         return null
     }
+
     return (
         <>
             <Modal show={isOpen}>
@@ -45,7 +45,13 @@ export const ModalHotel = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputQualification" className="form-label">Qualification</label>
-                            <input type="text" className="form-control" id='inputQualification' placeholder='Qualification' />
+                            <select className="form-control" id="inputQualification">
+                                <option>1 estrella</option>
+                                <option>2 estrellas</option>
+                                <option>3 estrellas</option>
+                                <option>4 estrellas</option>
+                                <option>5 estrellas</option>
+                            </select>
                         </div>
                         <div className="mb-3">
                             <div className="col-md- pe-5">
