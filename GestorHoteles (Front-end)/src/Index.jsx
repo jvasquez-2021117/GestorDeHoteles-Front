@@ -19,8 +19,10 @@ export const Index = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
     const [dataUser, setDataUser] = useState({
+        id: '',
         name: '',
-        surname: ''
+        surname: '',
+        role: ''
     })
 
     useEffect(() => {
