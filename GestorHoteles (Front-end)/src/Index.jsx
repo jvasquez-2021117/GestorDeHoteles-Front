@@ -13,16 +13,20 @@ import { MainPage } from './pages/MainPage'
 import { AddHotelPage } from './pages/AddHotelPage'
 import { ViewReservation } from "./pages/ViewReservation";
 
-export const AutContext = createContext();
+export const AuthContext = createContext();
 
 export const Index = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
     const [dataUser, setDataUser] = useState({
         name: '',
-        username: '',
-        role: ''
+        surname: ''
     })
+
+    useEffect(() => {
+        let token = localStorage.getItem('token')
+        if (token) setLoggedIn(true)
+    }, [])
 
     const routes = createBrowserRouter([
         {
@@ -71,8 +75,8 @@ export const Index = () => {
     ])
 
     return (
-        <AutContext.Provider value={{ loggedIn, setLoggedIn }}>
+        <AuthContext.Provider value={{ loggedIn, setLoggedIn, dataUser, setDataUser }} >
             <RouterProvider router={routes} />
-        </AutContext.Provider>
+        </AuthContext.Provider >
     )
 }

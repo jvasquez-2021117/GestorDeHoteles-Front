@@ -9,7 +9,7 @@ export const ModalRoom = ({ isOpen, onClose }) => {
     const getTypeRoom = async () => {
         try {
             const { data } = await axios('http://localhost:3200/roomType/get')
-            setTypeRoom(data.roomTypes)
+            setTypeRoom(data.roomTypes);
         } catch (e) {
             console.log(e);
         }
