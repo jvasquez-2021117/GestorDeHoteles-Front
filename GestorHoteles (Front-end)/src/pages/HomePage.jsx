@@ -3,7 +3,6 @@ import { Sidebar } from '../components/Sidebar/Sidebar'
 import { OptionHotels } from '../components/Options/OptionHotels'
 import { OptionHome } from '../components/OptionHome'
 import { ModalReservation } from '../components/Modal/ModalReservation'
-import { useState } from 'react'
 
 export const HomePage = () => {
 
