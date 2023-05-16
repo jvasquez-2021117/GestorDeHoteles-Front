@@ -1,29 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import room from '../../assets/room.jpg'
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { GetRooms } from '../../Rooms/GetRooms';
 
-export const DropRoom = () => {
+export const DropRoom = ({id}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [rooms, setRoom] = useState([{}])
 
     const getRooms = async () => {
         try {
-            const { data } = await axios('http://localhost:3200/room/get')
+            const { data } = await axios(`http://localhost:3200/room/searchRoomByHotel/${id}`)
             setRoom(data.rooms)
+            setIsOpen(!isOpen);
         } catch (e) {
             console.log(e);
         }
     }
 
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
-
-    useEffect(() => getRooms, [])
     return (
         <div>
-            <button onClick={toggleDropdown} className='btn btn-success'>Rooms</button>
+            <button onClick={getRooms} className='btn btn-success'>Rooms</button>
             {isOpen && (
                 <div className="contenedor">
                     <br />                    
