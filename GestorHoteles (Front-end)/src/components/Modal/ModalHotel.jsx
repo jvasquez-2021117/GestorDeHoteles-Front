@@ -4,6 +4,17 @@ import axios from 'axios'
 
 export const ModalHotel = ({ isOpen, onClose }) => {
 
+    const [room, setRoom] = useState([{}])
+
+    const getRoom = async () => {
+        try {
+            const { data } = await axios('http://localhost:3200/room/get')
+            setRoom(data.rooms)
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const addHotel = async () => {
         try {
             let hotel = {
@@ -13,7 +24,7 @@ export const ModalHotel = ({ isOpen, onClose }) => {
                 qualification: document.getElementById('inputQualification').value,
                 /* rooms: document.getElementById('inputRoom').value */
             }
-            const { data } = await axios.post('http://localhost:3200/hotel/addHotel', hotel)
+            const { data } = await axios.post('http://localhost:3200/hotel/addHotelImg', hotel);
             alert(data.message)
         } catch (e) {
             console.log(e);
@@ -23,6 +34,7 @@ export const ModalHotel = ({ isOpen, onClose }) => {
     if (!isOpen) {
         return null
     }
+
     return (
         <>
             <Modal show={isOpen}>
@@ -44,8 +56,26 @@ export const ModalHotel = ({ isOpen, onClose }) => {
                             <textarea className='form-control' name="" id="inputAddress" placeholder='Address'></textarea>
                         </div>
                         <div className="mb-3">
+                            <label htmlFor="inputRoom" className="form-label">Room</label>
+                            <select name="" id="inputRoom" className="form-control" required>
+                                {
+                                    room.map(({ _id, name }, i) => {
+                                        return (
+                                            <option key={i} value={_id}>{name}</option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div>
+                        <div className="mb-3">
                             <label htmlFor="inputQualification" className="form-label">Qualification</label>
-                            <input type="text" className="form-control" id='inputQualification' placeholder='Qualification' />
+                            <select className="form-control" id="inputQualification">
+                                <option>1 estrella</option>
+                                <option>2 estrellas</option>
+                                <option>3 estrellas</option>
+                                <option>4 estrellas</option>
+                                <option>5 estrellas</option>
+                            </select>
                         </div>
                         <div className="mb-3">
                             <div className="col-md- pe-5">

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import logo from '../../assets/logoHeader.png'
 import './CSS/style.css'
 import { Link } from 'react-router-dom'
-import logo from '.././assets/logoHeader.png'
 import { ModalReservation } from './Modal/ModalReservation'
 
 export const Navbar = () => {
