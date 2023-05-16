@@ -22,7 +22,7 @@ export const ModalHotel = ({ isOpen, onClose }) => {
                 description: document.getElementById('inputDescription').value,
                 address: document.getElementById('inputAddress').value,
                 qualification: document.getElementById('inputQualification').value,
-                rooms: document.getElementById('inputRoom').value
+                /* rooms: document.getElementById('inputRoom').value */
             }
             const { data } = await axios.post('http://localhost:3200/hotel/addHotelImg', hotel);
             alert(data.message)
@@ -30,7 +30,6 @@ export const ModalHotel = ({ isOpen, onClose }) => {
             console.log(e);
         }
     }
-    useEffect(() => getRoom, [])
 
     if (!isOpen) {
         return null

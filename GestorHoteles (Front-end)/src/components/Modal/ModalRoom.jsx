@@ -4,11 +4,21 @@ import { Modal } from 'react-bootstrap'
 
 export const ModalRoom = ({ isOpen, onClose }) => {
     const [typeRoom, setTypeRoom] = useState([{}])
+    const [hotel, setHotel] = useState([{}])
 
     const getTypeRoom = async () => {
         try {
             const { data } = await axios('http://localhost:3200/roomType/get')
             setTypeRoom(data.roomTypes)
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    const getHotel = async()=>{
+        try {
+            const { data } = await axios('http://localhost:3200/hotel/getHotel')
+            setHotel(data.hotel)
         } catch (e) {
             console.log(e);
         }
@@ -21,7 +31,8 @@ export const ModalRoom = ({ isOpen, onClose }) => {
                 noGuest: document.getElementById('inputGuest').value,
                 price: document.getElementById('inputPrice').value,
                 roomType: document.getElementById('inputRoomType').value,
-                availability: document.getElementById('inputAvailability').value
+                availability: document.getElementById('inputAvailability').value,
+                hotel: document.getElementById('inputHotel').value
             }
             const { data } = await axios.post('http://localhost:3200/room/add', room)
             alert(data.message)
@@ -31,6 +42,7 @@ export const ModalRoom = ({ isOpen, onClose }) => {
     }
 
     useEffect(() => getTypeRoom, [])
+    useEffect(() => getHotel, [])
 
     if (!isOpen) {
         return null;
@@ -70,10 +82,22 @@ export const ModalRoom = ({ isOpen, onClose }) => {
                                 </select>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="inputAvailability" className="form-label">TypeRoom</label>
+                                <label htmlFor="inputAvailability" className="form-label">Availability</label>
                                 <select id="inputAvailability" className="form-control" required>
                                     <option>Available</option>
                                     <option>Not Available</option>
+                                </select>
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="inputHotel" className="form-label">Hotel</label>
+                                <select name="" id="inputHotel" className="form-control" required>
+                                    {
+                                        hotel.map(({_id, name}, i) => {
+                                            return(
+                                                <option key={i} value={_id}>{name}</option>
+                                            )
+                                        })
+                                    }
                                 </select>
                             </div>
                             <div className="mb-3">

@@ -8,7 +8,7 @@ export const OptionHotels = ({ nameFilter, addressFilter, qualificationFilter })
 
     const getHotels = async () => {
         try {
-            const { data } = await axios.get('http://localhost:3200/hotel/getHotel')
+            const { data } = await axios('http://localhost:3200/hotel/getHotel')
             setHotels(data.hotel)
         } catch (e) {
             console.log(e);
@@ -37,8 +37,7 @@ export const OptionHotels = ({ nameFilter, addressFilter, qualificationFilter })
                                 description={description}
                                 address={address}
                                 qualification={qualification}
-                                rooms={rooms}
-                            ></Hotels>
+                            ></Hotels>                            
                         </div>
                     )
                 })

@@ -11,6 +11,7 @@ import { RecordPage } from './pages/RecordPage'
 import { ViewUsersPage } from './pages/ViewUsersPage'
 import { MainPage } from './pages/MainPage'
 import { AddHotelPage } from './pages/AddHotelPage'
+import { ViewReservation } from "./pages/ViewReservation";
 
 export const AutContext = createContext();
 
@@ -59,7 +60,11 @@ export const Index = () => {
                 },
                 {
                     path: '/addHotel',
-                    element: <AddHotelPage></AddHotelPage>
+                    element: <AddHotelPage />
+                },
+                {
+                    path: '/reservation',
+                    element: <ViewReservation />
                 }
             ]
         }
