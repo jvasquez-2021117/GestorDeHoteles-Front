@@ -6,13 +6,19 @@ import { ModalHotel } from '../components/Modal/ModalHotel';
 import room from '../assets/room.jpg';
 import typeRoom from '../assets/typeRoom.jpg';
 import hotel from '../assets/hotel.jpg';
+import typeEvent from '../assets/typeEvent.jpg'
+import event from '../assets/Event.jpg'
 import { ModalReservation } from '../components/Modal/ModalReservation';
+import { ModalTypeEvent } from '../components/Modal/ModalTypeEvent';
+import { ModalEvent } from '../components/Modal/ModalEvent';
 
 export const AddHotelPage = () => {
     const [showModalTypeRoom, setShowModalTypeRoom] = useState(false);
     const [showModalRoom, setShowModalRoom] = useState(false);
     const [showModalHotel, setShowModalHotel] = useState(false);
-    const [showModalReservation, setShowModalReservation] = useState(false)
+    const [showModalReservation, setShowModalReservation] = useState(false);
+    const [showModalTypeEvent, setShowModalTypeEvent] = useState(false);
+    const [showModalEvent, setShowModalEvent] = useState(false)
 
     const handleOpenModal = () => {
         setShowModalTypeRoom(true);
@@ -36,8 +42,21 @@ export const AddHotelPage = () => {
     };
     const handleCloseModal3 = () => {
         setShowModalHotel(false);
-    }
+    };
 
+    const handleOpenModal4 = () => {
+        setShowModalTypeEvent(true);
+    };
+    const handleCloseModal4 = () => {
+        setShowModalTypeEvent(false);
+    };
+
+    const handleOpenModal5 = () => {
+        setShowModalEvent(true);
+    };
+    const handleCloseModal5 = () => {
+        setShowModalEvent(false);
+    };
     
     return (
         <>
@@ -97,13 +116,42 @@ export const AddHotelPage = () => {
                                     <button onClick={handleOpenModal4} type="button" className="w-100 btn btn-lg btn-outline-success">Reservation</button>
                                 </div>
                             </div> */}
+                            <div className="card mb-4 rounded-3 shadow-sm">
+                                <div className="card-header py-3">
+                                    <h4 className="my-0 fw-normal">Type Event</h4>
+                                </div>
+                                <div className="card-body">
+                                    <ul className="list-unstyled mt-3 mb-4">
+                                        <img src={typeEvent} alt="Cellars Image" className='card-img' style={{ width: "95%", height: "95%" }} />
+                                    </ul>
+                                    <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal4}>Add</button>
+                                </div>
+                                
+                            </div>
                         </div>
+                        <div className="col">
+                            <div className="card mb-4 rounded-3 shadow-sm">
+                                <div className="card-header py-3">
+                                    <h4 className="my-0 fw-normal">Event</h4>
+                                </div>
+                                <div className="card-body">
+                                    <ul className="list-unstyled mt-3 mb-4">
+                                        <img src={event} alt="Cellars Image" className='card-img' style={{ width: "95%", height: "95%" }} />
+                                    </ul>
+                                    <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal5}>Add</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
                     </div>
                 </main>
             </div>
             <ModalTypeRoom isOpen={showModalTypeRoom} onClose={handleCloseModal}></ModalTypeRoom>
             <ModalRoom isOpen={showModalRoom} onClose={handleCloseModal2}></ModalRoom>
-            <ModalHotel isOpen={showModalHotel} onClose={handleCloseModal3}></ModalHotel>            
+            <ModalHotel isOpen={showModalHotel} onClose={handleCloseModal3}></ModalHotel>
+            <ModalTypeEvent isOpen={showModalTypeEvent} onClose={handleCloseModal4}></ModalTypeEvent>
+            <ModalEvent isOpen={showModalEvent} onClose={handleCloseModal5}></ModalEvent>       
         </>
     )
 }
