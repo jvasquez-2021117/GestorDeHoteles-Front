@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TableUsers = ({ name, surname, email, password, role }) => {
+export const TableUsers = ({ name, surname, email, role }) => {
     return (
         <>
             <td>{name}</td>

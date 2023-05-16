@@ -7,7 +7,7 @@ export const OptionHotels = () => {
 
     const getHotels = async () => {
         try {
-            const { data } = await axios.get('http://localhost:3200/hotel/getHotel')
+            const { data } = await axios('http://localhost:3200/hotel/getHotel')
             setHotels(data.hotel)
         } catch (e) {
             console.log(e);
@@ -18,7 +18,7 @@ export const OptionHotels = () => {
     return (
         <>
             {
-                hotels.map(({ _id, name, description, address, qualification, rooms }, index) => {
+                hotels.map(({ _id, name, description, address, qualification}, index) => {
                     return (
                         <div key={index}>
                             <Hotels
@@ -26,8 +26,7 @@ export const OptionHotels = () => {
                                 description={description}
                                 address={address}
                                 qualification={qualification}
-                                rooms={rooms}
-                            ></Hotels>
+                            ></Hotels>                            
                         </div>
                     )
                 })

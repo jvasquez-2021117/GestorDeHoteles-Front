@@ -1,3 +1,29 @@
+/* ---------- DROPDWON ----------  */
+.contenedor {
+    overflow-x: auto;
+    /* Habilita el desplazamiento horizontal */
+    width: 100%;
+    height: 100%;
+}
+
+.lista-horizontal {
+    display: flex;
+    list-style: none;    
+    width: fit-content;
+    /* Ajusta el tamaño del contenedor al contenido de la lista */
+    white-space: nowrap;
+    /* Evita que los elementos de la lista se envuelvan */
+}
+
+.lista-horizontal li {
+    flex: 0 0 auto;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 15px;
+    /* text-align: center; */
+}
+
+
 /* ---------- NAVBAR ----------  */
 .fb {
     background-color: #9dc19d;
@@ -192,9 +218,11 @@ thead {
     background-color: #709170;
     transform: scale(1.1);
 }
+
 .btnn:active {
     transform: scale(0.9);
-  }
+}
+
 .containerLog {
     justify-content: center;
     align-items: center;
