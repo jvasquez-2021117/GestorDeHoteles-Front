@@ -1,5 +1,5 @@
 import React from 'react'
-import event from '../../assets/event.jpg'
+import event from '../../assets/eventAdmin.jpg'
 
 export const GetEvent = ({name, description, eventType}) => {
     return (

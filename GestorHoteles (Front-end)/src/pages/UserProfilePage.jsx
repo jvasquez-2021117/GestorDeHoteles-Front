@@ -1,17 +1,29 @@
 import React, { useContext } from 'react'
 import '../components/CSS/style.css'
 import '../App.css'
-import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../Index'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { ModalUser } from '../components/Modal/ModalUser'
+import { useState } from 'react'
+import { AuthContext } from '../Index'
+import { useNavigate } from 'react-router-dom'
 
 export const UserProfilePage = () => {
 
     const navigate = useNavigate();
     const { dataUser } = useContext(AuthContext);
+
+    const [showModalUpdateUser, setShowModalUpdateUser] = useState(false)
+
+    const handleOpenModal = () => {
+        setShowModalUpdateUser(true)
+    }
+
+    const handleCloseModal = () => {
+        setShowModalUpdateUser(false)
+    }
+
 
     const logOut = () => {
         Swal.fire({
@@ -63,14 +75,6 @@ export const UserProfilePage = () => {
         }
     };
 
-    const update = async () => {
-        try {
-            document.getElementById('inputName').disabled = true
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
     return (
         <>
             <div className="container t">
@@ -79,7 +83,7 @@ export const UserProfilePage = () => {
                         <Link to={'/setting'} className='nav-link'>
                             <h4>Settings</h4>
                         </Link>
-                        <Link to={'/record'} className='nav-link'>
+                        <Link to={'/setting/record'} className='nav-link'>
                             <h4>Historial</h4>
                         </Link>
                         <button className='btn btn-danger' onClick={() => logOut()}>Log Out</button>
@@ -128,7 +132,7 @@ export const UserProfilePage = () => {
                                                         <br />
                                                         <div className="row">
                                                             <div className="col d-flex justify-content-end">
-                                                                <button className="btn btn-primary" onClick={() => update()} id='buttonActivate' type="submit">Update personal information</button>
+                                                                <button className="btn btn-primary" onClick={handleOpenModal} id='buttonActivate' type="button">Update personal information</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -142,6 +146,7 @@ export const UserProfilePage = () => {
                     </div>
                 </div>
             </div>
+            <ModalUser isOpen={showModalUpdateUser} onClose={handleCloseModal}></ModalUser>
         </>
     )
 }

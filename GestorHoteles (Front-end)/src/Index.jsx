@@ -12,6 +12,12 @@ import { ViewUsersPage } from './pages/ViewUsersPage'
 import { MainPage } from './pages/MainPage'
 import { AddHotelPage } from './pages/AddHotelPage'
 import { ViewReservation } from "./pages/ViewReservation";
+import { ViewTypeRoom } from './pages/ViewTypeRoom'
+import { ViewTypeEvents } from './pages/ViewTypeEvents'
+import { ViewEvent } from './pages/ViewEvent'
+import { UpdateTypeRoom } from './components/Update/UpdateTypeRoom'
+import { UpdateTypeEvent } from './components/Update/UpdateTypeEvent'
+import { UpdateEvent } from './components/Update/UpdateEvent'
 import { UpdateReservation } from './components/Update/UpdateReservation'
 import { ViewHotels } from './pages/ViewHotels'
 import { ViewRooms } from './pages/ViewRooms'
@@ -58,8 +64,8 @@ export const Index = () => {
                     element: <RegisterPage></RegisterPage>
                 },
                 {
-                    path: '/setting',
-                    element: <UserProfilePage></UserProfilePage>
+                    path: '/optionAdmin',
+                    element: <AddHotelPage></AddHotelPage>
                 },
                 {
                     path: '/record',
@@ -70,12 +76,36 @@ export const Index = () => {
                     element: <ViewUsersPage />
                 },
                 {
-                    path: '/addHotel',
-                    element: <AddHotelPage />
+                    path: '/profile',
+                    element: <UserProfilePage />
                 },
                 {
                     path: '/reservation',
                     element: <ViewReservation />
+                },
+                {
+                    path: '/viewTypeRoom',
+                    element: <ViewTypeRoom></ViewTypeRoom>
+                },
+                {
+                    path: '/viewEventType',
+                    element: <ViewTypeEvents></ViewTypeEvents>
+                },
+                {
+                    path: '/viewEvent',
+                    element: <ViewEvent></ViewEvent>
+                },
+                {
+                    path: '/updateTypeRoom/:id',
+                    element: <UpdateTypeRoom></UpdateTypeRoom>
+                },
+                {
+                    path: '/updateTypeEvent/:id',
+                    element: <UpdateTypeEvent></UpdateTypeEvent>
+                },
+                {
+                    path: '/updateEvent/:id',
+                    element: <UpdateEvent></UpdateEvent>
                 },
                 {
                     path: 'reservation/update/:id',
@@ -83,7 +113,7 @@ export const Index = () => {
                 },
                 {
                     path: 'viewHotels',
-                    element: <ViewHotels/>
+                    element: <ViewHotels />
                 },
                 {
                     path: 'viewRooms',
@@ -99,7 +129,7 @@ export const Index = () => {
                 }
 
             ]
-        }
+        },
     ])
 
     return (
