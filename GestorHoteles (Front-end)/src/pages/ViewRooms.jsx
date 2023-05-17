@@ -2,49 +2,71 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { TableRooms } from '../components/Tables/TableRooms'
 import { Link, useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const ViewRooms = () => {
-    const [tableRoom, setTableRoom] = useState([{}])    
+    const [tableRoom, setTableRoom] = useState([{}])
+    const [room, setRoom] = useState([{}])
+    const [search, setSearch] = useState("")
 
     const getTableRoom = async () => {
         try {
             const { data } = await axios('http://localhost:3200/room/get')
             setTableRoom(data.rooms)
+            setRoom(data.rooms)
         } catch (e) {
             console.log(e);
         }
     }
 
-    const deleteRoom = async(id) => {
+    const deleteRoom = async (id) => {
         try {
-            let confirmeDelete = confirm("Are you sure you want to delete this hold?")
-            if(confirmeDelete) {
-                const { data } = await axios.delete(`http://localhost:3200/room/delete/${id}`)
-                console.log(data);
-                getTableRoom()
-            }
+            Swal.fire({
+                title: 'Do you want to delete this record?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const { data } = await axios.delete(`http://localhost:3200/room/delete/${id}`)
+                    getTableRoom();
+                    Swal.fire(
+                        data.message,
+                        '',
+                        'success'
+                    );
+                }
+            });
         } catch (e) {
             console.log(e);
         }
     }
 
-    const roomsAvailable = async()=>{
-        try{
-            const { data } = await axios.get('http://localhost:3200/room/countRoomsAvailability');
-            alert(data.count);
-        }catch(e){
-            console.log(e);
-        }
+
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableRoom.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) return elemento
+        })
+        setRoom(resultSearch)
     }
 
     useEffect(() => getTableRoom, [])
+
     return (
         <>
             <br />
             <div className="container">
                 <div className="row d-flex justify-content-center ">
                     <div className="col-md-2 col-lg-8">
-                        <input type="search" id="form1" className="form-control" />
+                        <input type="search" id="form1" className="form-control" value={search} onChange={handleChangeSearch} />
                         <label className="form-label" htmlFor="form1" />
                     </div>
                     <div className="col-md-6 col-lg-2">
@@ -85,7 +107,7 @@ export const ViewRooms = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableRoom.map(({ _id, name, noGuest, price, roomType, availability, hotel }, index) => {
+                                                            room.map(({ _id, name, noGuest, price, roomType, availability, hotel }, index) => {
                                                                 return (
                                                                     <tr key={index}>
                                                                         <TableRooms
@@ -106,7 +128,7 @@ export const ViewRooms = () => {
                                                                                         </svg>
                                                                                     </button>
                                                                                 </Link>
-                                                                                <button onClick={() => deleteRoom(_id)}  className="btn btn-sm btn-danger btn-outline-secondary badge" type="button">
+                                                                                <button onClick={() => deleteRoom(_id)} className="btn btn-sm btn-danger btn-outline-secondary badge" type="button">
                                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash-fill" viewBox="0 0 16 16">
                                                                                         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                                                                     </svg>

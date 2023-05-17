@@ -14,6 +14,7 @@ export const UserProfilePage = () => {
 
     const navigate = useNavigate();
     const { dataUser } = useContext(AuthContext);
+    const { handleLogout } = useContext(AuthContext)
 
     const [showModalUpdateUser, setShowModalUpdateUser] = useState(false)
 
@@ -42,6 +43,7 @@ export const UserProfilePage = () => {
                     'success',
                 );
                 localStorage.clear();
+                handleLogout();
                 navigate('/');
             }
         });
