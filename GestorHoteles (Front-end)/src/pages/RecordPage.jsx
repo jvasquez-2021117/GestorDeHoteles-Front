@@ -31,10 +31,10 @@ export const RecordPage = () => {
             <div className="container t">
                 <div className="row flex-lg-nowrap">
                     <div className="col-12 col-lg-auto mb-3 w1">
-                        <Link to={'/setting'} className='nav-link'>
+                        <Link to={'/profile'} className='nav-link'>
                             <h4>Settings</h4>
                         </Link>
-                        <Link to={'/setting/record'} className='nav-link'>
+                        <Link to={'/record'} className='nav-link'>
                             <h4>Historial</h4>
                         </Link>
                         <button className='btn btn-danger' onClick={() => logOut()}>Log Out</button>
