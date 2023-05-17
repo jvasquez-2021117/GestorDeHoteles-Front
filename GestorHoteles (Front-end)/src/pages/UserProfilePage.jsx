@@ -8,6 +8,7 @@ import { ModalUser } from '../components/Modal/ModalUser'
 import { useState } from 'react'
 import { AuthContext } from '../Index'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const UserProfilePage = () => {
 
@@ -80,10 +81,10 @@ export const UserProfilePage = () => {
             <div className="container t">
                 <div className="row flex-lg-nowrap">
                     <div className="col-12 col-lg-auto mb-3 w1">
-                        <Link to={'/setting'} className='nav-link'>
+                        <Link to={'/profile'} className='nav-link'>
                             <h4>Settings</h4>
                         </Link>
-                        <Link to={'/setting/record'} className='nav-link'>
+                        <Link to={'/record'} className='nav-link'>
                             <h4>Historial</h4>
                         </Link>
                         <button className='btn btn-danger' onClick={() => logOut()}>Log Out</button>
