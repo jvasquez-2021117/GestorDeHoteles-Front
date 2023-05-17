@@ -89,7 +89,7 @@ export const LoginPage = () => {
                                         </div>
                                     </div>
                                     <div className="text-center">
-                                        <p>Not a member? <a href="#!">Register</a></p>
+                                        <p>Not a member? <Link to={'/register'}>Register</Link></p> 
                                     </div>
                                 </form>
                             </div>

@@ -12,6 +12,11 @@ import { ViewUsersPage } from './pages/ViewUsersPage'
 import { MainPage } from './pages/MainPage'
 import { AddHotelPage } from './pages/AddHotelPage'
 import { ViewReservation } from "./pages/ViewReservation";
+import { UpdateReservation } from './components/Update/UpdateReservation'
+import { ViewHotels } from './pages/ViewHotels'
+import { ViewRooms } from './pages/ViewRooms'
+import { UpdateHotel } from './components/Update/UpdateHotel'
+import { UpdateRoom } from './components/Update/UpdateRoom'
 
 export const AuthContext = createContext();
 
@@ -69,7 +74,28 @@ export const Index = () => {
                 {
                     path: '/reservation',
                     element: <ViewReservation />
+                },
+                {
+                    path: 'reservation/update/:id',
+                    element: <UpdateReservation />
+                },
+                {
+                    path: 'viewHotels',
+                    element: <ViewHotels/>
+                },
+                {
+                    path: 'viewRooms',
+                    element: <ViewRooms />
+                },
+                {
+                    path: 'viewHotels/updateHotel/:id',
+                    element: <UpdateHotel />
+                },
+                {
+                    path: 'viewRooms/updateRoom/:id',
+                    element: <UpdateRoom />
                 }
+
             ]
         }
     ])
