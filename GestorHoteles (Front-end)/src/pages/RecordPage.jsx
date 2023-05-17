@@ -2,10 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Record } from '../components/Record/Record';
+import { useNavigate } from 'react-router-dom';
 
 export const RecordPage = () => {
 
     const [bills, setBills] = useState([{}]);
+    const navigate = useNavigate();
 
     const getBills = async()=>{
         try{
@@ -19,18 +21,39 @@ export const RecordPage = () => {
 
     useEffect(()=> getBills, [])
 
+
+    const logOut = () => {
+        Swal.fire({
+            title: 'Do you want to log out?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Closed session',
+                    '',
+                    'success',
+                );
+                localStorage.clear();
+                navigate('/');
+            }
+        });
+    }
     return (
         <>
             <div className="container t">
                 <div className="row flex-lg-nowrap">
                     <div className="col-12 col-lg-auto mb-3 w1">
-                        <Link to={'/setting'} className='nav-link'>
+                        <Link to={'/profile'} className='nav-link'>
                             <h4>Settings</h4>
                         </Link>
                         <Link to={'/record'} className='nav-link'>
                             <h4>Historial</h4>
                         </Link>
-                        <h5 className='text-muted fst-italic'>LogOut</h5>
+                        <button className='btn btn-danger' onClick={() => logOut()}>Log Out</button>
                     </div>
                     <div className="col">
                         <div className="row">

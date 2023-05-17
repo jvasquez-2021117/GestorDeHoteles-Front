@@ -77,20 +77,6 @@ export const ViewUsersPage = () => {
                     </div>
                 </div>
             </section>
-            {/*             {
-                tableUsers.map(({_id, name, surname, email, role}, index) => {
-                    return(
-                        <div key={index}>
-                            <TableUsers
-                            name={name}
-                            surname={surname}
-                            email={email}
-                            role={role}
-                            ></TableUsers>
-                        </div>
-                    )
-                })
-            }  */}
             <br />
         </>
     )

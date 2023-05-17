@@ -32,7 +32,7 @@ export const DropEvent = ({id}) => {
                                             <GetEvent
                                                 name={name}
                                                 description={description}
-                                                eventType={eventType?.description}
+                                                eventType={eventType?.name}
                                             ></GetEvent>
                                         </div>
                                     )

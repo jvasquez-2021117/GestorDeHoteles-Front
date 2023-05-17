@@ -1,10 +1,6 @@
-import React, { useContext, useState } from 'react'
-import logo from '../../assets/logoHeader.png'
-import '../CSS/style.css'
-import { Link } from 'react-router-dom'
-import { AuthContext } from '../../Index'
+import React from 'react'
 
-export const Navbar = () => {
+export const NavBarAdmin = () => {
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
@@ -30,31 +26,31 @@ export const Navbar = () => {
                             </span>
                         </div>
                         <ul className="navbar-nav ms-auto ">
+                            {/*                             <li className="nav-item">
+                                <Link to={'/users'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Users
+                                </Link>
+                            </li> */}
                             <li className="nav-item">
                                 <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
                                     Home
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/profile'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                <Link to='/setting' id='aXD' className="nav-link mx-2 text-uppercase">
                                     Setting
                                 </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={'/users'} id='aXD' className="nav-link mx-2 text-uppercase">
-                                    Users
-                                </Link>
-                            </li>
+                            </li>{/* 
                             <li className="nav-item">
                                 <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
                                     Statistics
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/optionAdmin'} id='aXD' className="nav-link mx-2 text-uppercase">
-                                    Option
+                                <Link to={'/addHotel'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Add Hotel
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                         <ul className="navbar-nav ms-auto ">
                             <li className="nav-item">

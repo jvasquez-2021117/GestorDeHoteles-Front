@@ -1,12 +1,17 @@
-import axios from 'axios'
+/* import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
 
-export const ModalReservation = ({ isOpen, onClose }) => {
+export const ModalUpdateReservation = ({ isOpen, onClose }) => {
+    const [tableReservation, setTableReservation] = useState([{}])
+    const {id} = useParams();
+
+
     const [room, setRoom] = useState([{}])
     const [hotel, setHotel] = useState([{}])
     const [event, setEvent] = useState([{}])
-    const [user, setUser] = useState([{}])
+    const [user, setUser] =useState([{}])
 
     const getRoom = async () => {
         try {
@@ -16,8 +21,7 @@ export const ModalReservation = ({ isOpen, onClose }) => {
             console.log(e);
         }
     }
-
-    const getHotel = async () => {
+    const getHotel = async() =>{
         try {
             const { data } = await axios('http://localhost:3200/hotel/getHotel')
             setHotel(data.hotel)
@@ -25,8 +29,7 @@ export const ModalReservation = ({ isOpen, onClose }) => {
             console.log(e);
         }
     }
-
-    const getEvent = async () => {
+    const getEvent = async() =>{
         try {
             const { data } = await axios('http://localhost:3200/events/getEvent')
             setEvent(data.event)
@@ -34,8 +37,7 @@ export const ModalReservation = ({ isOpen, onClose }) => {
             console.log(e);
         }
     }
-
-    const getUser = async () => {
+    const getUser = async() =>{
         try {
             const { data } = await axios('http://localhost:3200/user/get')
             setUser(data.users)
@@ -43,45 +45,55 @@ export const ModalReservation = ({ isOpen, onClose }) => {
             console.log(e);
         }
     }
-
-    const createReservation = async () => {
+    const getTableReservation = async() => {
         try {
-            let reservation = {
-                user: document.getElementById('inputUser').value,
-                hotel: document.getElementById('inputHotel').value,
-                room: document.getElementById('inputRoom').value,
-                event: document.getElementById('inputEvent').value,
-                date: document.getElementById('inputDate').value
-            }
-            const { data } = await axios.post('http://localhost:3200/reservation/addReservation', reservation)
-            alert(data.message)
+            const { data } = await axios(`http://localhost:3200/reservation/getById/${id}`)
+            setTableReservation(data.reservation)
         } catch (e) {
             console.log(e);
         }
     }
 
-    useEffect(() => getRoom, [])
-    useEffect(() => getHotel, [])
-    useEffect(() => getEvent, [])
-    useEffect(() => getUser, [])
+    const updateReservation = async() =>{
+        try {
+            let updatedReservation = {
+                user: document.getElementById('').value,
+                hotel: document.getElementById('inputHotel').value,
+                room: document.getElementById('inputRoom').value,
+                event: document.getElementById('inputEvent').value,
+                date: document.getElementById('inputDate').value
+            }
+            const { data } = await axios.put(`http://localhost:3200/reservation/updateReservation/${id}`, updatedReservation)
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    
+    useEffect(() => {
+        getRoom(),
+        getHotel(),
+        getEvent(),
+        getUser(),
+        getTableReservation()
+    }, [])
     if (!isOpen) {
         return null
     }
     return (
         <>
-            <Modal show={isOpen}>
-                <Modal.Header>
+        <Modal show={isOpen}>
+            <Modal.Header>
                     <Modal.Title className='text-dark'>Reservation</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <div className="mb-3">
+                    <div className="mb-3">
                             <label htmlFor="inputUser" className="form-label">User</label>
                             <select name="" id="inputUser" className="form-control" required>
                                 {
                                     user.map(({ _id, name }, i) => {
                                         return (
-                                            <option key={i} value={_id}>{name}</option>
+                                            <option key={i} value={_id} defaultValue={tableReservation.user}>{name}</option>
                                         )
                                     })
                                 }
@@ -89,11 +101,11 @@ export const ModalReservation = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputHotel" className="form-label">Hotel</label>
-                            <select name="" id="inputHotel" className="form-control" required>
+                            <select name="" id="inputHotel" className="form-control" required>                                
                                 {
-                                    hotel.map(({ _id, name }, i) => {
-                                        return (
-                                            <option key={i} value={_id}>{name}</option>
+                                    hotel.map(({_id, name}, i)=> {
+                                        return(
+                                            <option key={i} value={_id} defaultValue={tableReservation.hotel}>{name}</option>                                            
                                         )
                                     })
                                 }
@@ -105,7 +117,7 @@ export const ModalReservation = ({ isOpen, onClose }) => {
                                 {
                                     room.map(({ _id, name }, i) => {
                                         return (
-                                            <option key={i} value={_id}>{name}</option>
+                                            <option key={i} value={_id} defaultValue={tableReservation.room}>{name}</option>
                                         )
                                     })
                                 }
@@ -113,12 +125,11 @@ export const ModalReservation = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputEvent" className="form-label">Event</label>
-                            <select name="" id="inputEvent" className="form-control" required>
-                                <option value="">Any</option>
+                            <select name="" id="inputEvent" className="form-control" required>                                
                                 {
-                                    event.map(({ _id, name }, i) => {
-                                        return (
-                                            <option key={i} value={_id}>{name}</option>
+                                    event.map(({_id, name}, i) =>{
+                                        return(
+                                            <option key={i} value={_id} defaultValue={tableReservation.event}>{name}</option>
                                         )
                                     })
                                 }
@@ -126,15 +137,16 @@ export const ModalReservation = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputDate">Date</label>
-                            <input type="date" className="form-control" id="inputDate" />
+                            <input type="date" className="form-control" id="inputDate" defaultValue={tableReservation.date} />
                         </div>
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button onClick={() => createReservation()} type="submit" className="btn btn-primary">Add</button>
+                    <button type="submit" className="btn btn-primary">Add</button>
                     <button className='btn btn-danger' onClick={onClose}>cerrar</button>
                 </Modal.Footer>
-            </Modal>
+        </Modal>
         </>
     )
 }
+ */
