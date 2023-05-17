@@ -4,11 +4,73 @@ import '../App.css'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Index'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const UserProfilePage = () => {
 
+    const navigate = useNavigate();
     const { dataUser } = useContext(AuthContext);
-    
+
+    const logOut = () => {
+        Swal.fire({
+            title: 'Do you want to log out?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Closed session',
+                    '',
+                    'success',
+                );
+                localStorage.clear();
+                navigate('/');
+            }
+        });
+    }
+
+    const deleteAccount = async () => {
+        try {
+            let id = dataUser.id
+            Swal.fire({
+                title: 'Are you sure you want to delete your account?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const { data } = await axios.delete(`http://localhost:3200/user/delete/${id}`);
+                    Swal.fire(
+                        data.message,
+                        '',
+                        'success'
+                    );
+                    if (data.message == 'User deleting succesfully') {
+                        navigate('/')
+                    }
+                }
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const update = async () => {
+        try {
+            document.getElementById('inputName').disabled = true
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     return (
         <>
             <div className="container t">
@@ -20,7 +82,7 @@ export const UserProfilePage = () => {
                         <Link to={'/record'} className='nav-link'>
                             <h4>Historial</h4>
                         </Link>
-                        <h5 className='text-muted fst-italic'>LogOut</h5>
+                        <button className='btn btn-danger' onClick={() => logOut()}>Log Out</button>
                     </div>
                     <div className="col">
                         <div className="row">
@@ -34,7 +96,9 @@ export const UserProfilePage = () => {
                                                         <h4 className="pt-sm-2 pb-1 mb-0 text-nowrap">Account settings</h4>
                                                     </div>
                                                     <div className="text-left">
-                                                        <span className="pt-sm-2 pb-1 mb-0 text-nowrap">Delete account</span>
+                                                        <button onClick={() => deleteAccount()} className='btn btn-danger'>
+                                                            <span className="pt-sm-2 pb-1 mb-0 text-nowrap">Delete account</span>
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 <div className="text-left">
@@ -49,13 +113,14 @@ export const UserProfilePage = () => {
                                                                 <div className="col">
                                                                     <div className="form-group">
                                                                         <label>Name</label>
-                                                                        <input className="form-control" type="text" name="name" defaultValue={dataUser.name}/>
+                                                                        <input className="form-control" type="text" id='nameInput' name="name" defaultValue={dataUser.name} readOnly />
                                                                     </div>
                                                                 </div>
+                                                                <hr />
                                                                 <div className="col">
                                                                     <div className="form-group">
                                                                         <label>Surname</label>
-                                                                        <input className="form-control" type="text" name="username"  defaultValue={dataUser.surname} />
+                                                                        <input className="form-control" type="text" id='surnameInput' name="username" defaultValue={dataUser.surname} readOnly />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -63,7 +128,7 @@ export const UserProfilePage = () => {
                                                         <br />
                                                         <div className="row">
                                                             <div className="col d-flex justify-content-end">
-                                                                <button className="btn btn-primary" type="submit">Update personal information</button>
+                                                                <button className="btn btn-primary" onClick={() => update()} id='buttonActivate' type="submit">Update personal information</button>
                                                             </div>
                                                         </div>
                                                     </form>

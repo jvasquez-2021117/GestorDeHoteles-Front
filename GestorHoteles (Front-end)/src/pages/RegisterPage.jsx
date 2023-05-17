@@ -4,6 +4,7 @@ import '../App.css'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const RegisterPage = () => {
     const navigate = useNavigate();
@@ -23,14 +24,20 @@ export const RegisterPage = () => {
 
     const register = async (e) => {
         try {
+            e.preventDefault()
             const { data } = await axios.post('http://localhost:3200/user/register', form)
-            if (data.message) {
-                alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
+            if (data.message == 'Account created succesfully') {
                 navigate('/login')
             }
         } catch (err) {
-            alert(err.response.data.message)
-            throw new Error('Error registering user')
+            Swal.fire({
+                icon: 'error',
+                title: err.response.data.message
+            })
         }
     }
 
