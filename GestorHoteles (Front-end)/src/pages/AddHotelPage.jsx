@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { ModalTypeEvent } from '../components/Modal/ModalTypeEvent';
 import { ModalEvent } from '../components/Modal/ModalEvent';
 import reservation from '../assets/reservations.jpg';
+/* import { ModalBill } from '../components/Modal/ModalBill' */
 
 export const AddHotelPage = () => {
 
@@ -22,7 +23,8 @@ export const AddHotelPage = () => {
     const [showModalRoom, setShowModalRoom] = useState(false);
     const [showModalHotel, setShowModalHotel] = useState(false);
     const [showModalTypeEvent, setShowModalTypeEvent] = useState(false);
-    const [showModalEvent, setShowModalEvent] = useState(false)
+    const [showModalEvent, setShowModalEvent] = useState(false);
+/*     const [showModalBill, setShowModalBill] =  useState(false); */
 
     const handleOpenModal = () => {
         setShowModalTypeRoom(true);
@@ -62,6 +64,13 @@ export const AddHotelPage = () => {
         setShowModalEvent(false);
     };
 
+/*     const handleOpenModal6 = () => {
+        setShowModalBill(true);
+    };
+    const handleCloseModal6 = () => {
+        setShowModalBill(false);
+    }; */
+    
     return (
         <>
             <div className="container py-3">
@@ -196,20 +205,16 @@ export const AddHotelPage = () => {
                                 <div className="card-body">
                                     <ul className="list-unstyled mt-3 mb-4">
                                         <img src={reservation} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
-                                    </ul>
+                                    </ul>                             
                                     <div className="row">
-                                        {/* <div className="col">
-                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal5}>Add</button>
-                                        </div> */}
                                         <div className="col">
                                             <button onClick={() => navigate('/reservation')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
                                         </div>
                                     </div>
                                 </div>
-
+                            </div>
                             </div>
                         </div>
-                    </div>
                 </main>
             </div>
             <ModalTypeRoom isOpen={showModalTypeRoom} onClose={handleCloseModal}></ModalTypeRoom>
@@ -217,6 +222,7 @@ export const AddHotelPage = () => {
             <ModalHotel isOpen={showModalHotel} onClose={handleCloseModal3}></ModalHotel>
             <ModalTypeEvent isOpen={showModalTypeEvent} onClose={handleCloseModal4}></ModalTypeEvent>
             <ModalEvent isOpen={showModalEvent} onClose={handleCloseModal5}></ModalEvent>
+            {/* <ModalBill isOpen={showModalBill} onClose={handleCloseModal6} id={`6463fb8b16a13716bab09ab6`}></ModalBill> */}       
         </>
     )
 }
