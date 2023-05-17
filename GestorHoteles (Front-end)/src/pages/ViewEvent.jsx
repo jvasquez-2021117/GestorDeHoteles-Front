@@ -9,11 +9,14 @@ export const ViewEvent = () => {
 
     const navigate = useNavigate()
     const [tableEvent, setTableEvent] = useState([{}])
+    const [event, setEvent] = useState([{}])
+    const [search, setSearch] = useState("")
 
     const getTableEvens = async () => {
         try {
             const { data } = await axios('http://localhost:3200/events/getEvent')
             setTableEvent(data.event);
+            setEvent(data.event)
         } catch (e) {
             console.log(e);
         }
@@ -45,6 +48,19 @@ export const ViewEvent = () => {
         }
     }
 
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableEvent.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) return elemento
+        })
+        setEvent(resultSearch)
+    }
+
+
     useEffect(() => getTableEvens, [])
 
     return (
@@ -53,7 +69,7 @@ export const ViewEvent = () => {
             <div className="container">
                 <div className="row d-flex justify-content-center ">
                     <div className="col-md-2 col-lg-8">
-                        <input type="search" id="form1" className="form-control" />
+                        <input type="search" id="form1" className="form-control" value={search} onChange={handleChangeSearch} />
                         <label className="form-label" htmlFor="form1" />
                     </div>
                     <div className="col-md-6 col-lg-2">
@@ -86,7 +102,7 @@ export const ViewEvent = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableEvent.map(({ _id, name, description, eventType, hotel }, index) => {
+                                                            event.map(({ _id, name, description, eventType, hotel }, index) => {
                                                                 return (
                                                                     <tr key={index}>
                                                                         <TableEvent

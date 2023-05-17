@@ -10,11 +10,14 @@ export const ViewTypeRoom = () => {
 
     const navigate = useNavigate();
     const [tableTypeRooms, setTableTypeRooms] = useState([{}])
+    const [typeRoom, setTypeRoom] = useState([{}])
+    const [search, setSearch] = useState("")
 
     const getTableTypeRooms = async () => {
         try {
             const { data } = await axios('http://localhost:3200/roomType/get')
             setTableTypeRooms(data.roomTypes)
+            setTypeRoom(data.roomTypes)
         } catch (e) {
             console.log(e);
         }
@@ -46,14 +49,27 @@ export const ViewTypeRoom = () => {
         }
     }
 
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableTypeRooms.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) return elemento
+        })
+        setTypeRoom(resultSearch)
+    }
+
     useEffect(() => getTableTypeRooms, [])
+
     return (
         <>
             <br />
             <div className="container">
                 <div className="row d-flex justify-content-center ">
                     <div className="col-md-2 col-lg-8">
-                        <input type="search" id="form1" className="form-control" />
+                        <input type="search" id="form1" className="form-control" value={search} onChange={handleChangeSearch} />
                         <label className="form-label" htmlFor="form1" />
                     </div>
                     <div className="col-md-6 col-lg-2">
@@ -83,7 +99,7 @@ export const ViewTypeRoom = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableTypeRooms.map(({ _id, name }, index) => {
+                                                            typeRoom.map(({ _id, name }, index) => {
                                                                 return (
                                                                     <tr key={index}>
                                                                         <TableTypeRoom
