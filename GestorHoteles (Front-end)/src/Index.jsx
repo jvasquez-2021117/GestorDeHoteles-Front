@@ -18,6 +18,11 @@ import { ViewEvent } from './pages/ViewEvent'
 import { UpdateTypeRoom } from './components/Update/UpdateTypeRoom'
 import { UpdateTypeEvent } from './components/Update/UpdateTypeEvent'
 import { UpdateEvent } from './components/Update/UpdateEvent'
+import { UpdateReservation } from './components/Update/UpdateReservation'
+import { ViewHotels } from './pages/ViewHotels'
+import { ViewRooms } from './pages/ViewRooms'
+import { UpdateHotel } from './components/Update/UpdateHotel'
+import { UpdateRoom } from './components/Update/UpdateRoom'
 
 export const AuthContext = createContext();
 
@@ -101,7 +106,28 @@ export const Index = () => {
                 {
                     path: '/updateEvent/:id',
                     element: <UpdateEvent></UpdateEvent>
+                },
+                {
+                    path: 'reservation/update/:id',
+                    element: <UpdateReservation />
+                },
+                {
+                    path: 'viewHotels',
+                    element: <ViewHotels />
+                },
+                {
+                    path: 'viewRooms',
+                    element: <ViewRooms />
+                },
+                {
+                    path: 'viewHotels/updateHotel/:id',
+                    element: <UpdateHotel />
+                },
+                {
+                    path: 'viewRooms/updateRoom/:id',
+                    element: <UpdateRoom />
                 }
+
             ]
         },
     ])
