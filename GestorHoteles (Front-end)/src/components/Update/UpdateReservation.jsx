@@ -89,7 +89,7 @@ export const UpdateReservation = () => {
                                         <div className="row">
                                             <div className=" col form-group">
                                                 <label htmlFor="inputHotel" className="form-label">Hotel</label>
-                                                <select id="inputHotel" className="form-control" required>
+                                                <select name='hotel' id="inputHotel" className="form-control" required>
                                                     {
                                                         hotel.map(({ _id, name }, i) => {
                                                             return (
@@ -101,7 +101,7 @@ export const UpdateReservation = () => {
                                             </div>
                                             <div className="col form-group">
                                                 <label htmlFor="inputRoom" className="form-label">Room</label>
-                                                <select name="" id="inputRoom" className="form-control" required>
+                                                <select name="room" id="inputRoom" className="form-control" required>
                                                     {
                                                         room.map(({ _id, name }, i) => {
                                                             return (
@@ -115,7 +115,7 @@ export const UpdateReservation = () => {
                                         <div className="row">
                                             <div className="col form-group">
                                                 <label htmlFor="inputEvent" className="form-label">Event</label>
-                                                <select name="" id="inputEvent" className="form-control" required>
+                                                <select name="event" id="inputEvent" className="form-control" required>
                                                     {
                                                         event.map(({ _id, name }, i) => {
                                                             return (
