@@ -7,12 +7,16 @@ import room from '../assets/room.jpg';
 import typeRoom from '../assets/typeRoom.jpg';
 import hotel from '../assets/hotel.jpg';
 import typeEvent from '../assets/typeEvent.jpg'
-import event from '../assets/Event.jpg'
+import event from '../assets/eventAdmin.jpg'
 import { ModalReservation } from '../components/Modal/ModalReservation';
 import { ModalTypeEvent } from '../components/Modal/ModalTypeEvent';
 import { ModalEvent } from '../components/Modal/ModalEvent';
+import { useNavigate } from 'react-router-dom';
 
 export const AddHotelPage = () => {
+
+    const navigate = useNavigate()
+
     const [showModalTypeRoom, setShowModalTypeRoom] = useState(false);
     const [showModalRoom, setShowModalRoom] = useState(false);
     const [showModalHotel, setShowModalHotel] = useState(false);
@@ -57,7 +61,7 @@ export const AddHotelPage = () => {
     const handleCloseModal5 = () => {
         setShowModalEvent(false);
     };
-    
+
     return (
         <>
             <div className="container py-3">
@@ -78,7 +82,14 @@ export const AddHotelPage = () => {
                                     <ul className="list-unstyled mt-3 mb-4">
                                         <img src={typeRoom} alt="Cellars Image" className='card-img' style={{ width: "95%", height: "95%" }} />
                                     </ul>
-                                    <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal}>Add</button>
+                                    <div className='row'>
+                                        <div className='col'>
+                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal}>Add</button>
+                                        </div>
+                                        <div className='col'>
+                                            <button onClick={() => navigate('/viewTypeRoom')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="card mb-4 rounded-3 shadow-sm">
@@ -89,7 +100,14 @@ export const AddHotelPage = () => {
                                     <ul className="list-unstyled mt-3 mb-4">
                                         <img src={room} alt="Accounts Image" className="card-img" style={{ width: "95%", height: "95%" }} />
                                     </ul>
-                                    <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal2}>Add</button>
+                                    <div className='row'>
+                                        <div className='col'>
+                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal2}>Add</button>
+                                        </div>
+                                        <div className='col'>
+                                            <button type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +120,14 @@ export const AddHotelPage = () => {
                                     <ul className="list-unstyled mt-3 mb-4">
                                         <img src={hotel} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
                                     </ul>
-                                    <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal3}>Add</button>
+                                    <div className='row'>
+                                        <div className='col'>
+                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal3}>Add</button>
+                                        </div>
+                                        <div className='col'>
+                                            <button type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             {/* <div className="card mb-4 rounded-3 shadow-sm">
@@ -124,9 +149,16 @@ export const AddHotelPage = () => {
                                     <ul className="list-unstyled mt-3 mb-4">
                                         <img src={typeEvent} alt="Cellars Image" className='card-img' style={{ width: "95%", height: "95%" }} />
                                     </ul>
-                                    <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal4}>Add</button>
+                                    <div className="row">
+                                        <div className="col">
+                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal4}>Add</button>
+                                        </div>
+                                        <div className="col">
+                                            <button onClick={() => navigate('/viewEventType')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div className="col">
@@ -138,12 +170,19 @@ export const AddHotelPage = () => {
                                     <ul className="list-unstyled mt-3 mb-4">
                                         <img src={event} alt="Cellars Image" className='card-img' style={{ width: "95%", height: "95%" }} />
                                     </ul>
-                                    <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal5}>Add</button>
+                                    <div className="row">
+                                        <div className="col">
+                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal5}>Add</button>
+                                        </div>
+                                        <div className="col">
+                                            <button onClick={() => navigate('/viewEvent')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                
+
                             </div>
                         </div>
-                        
+
                     </div>
                 </main>
             </div>
@@ -151,7 +190,7 @@ export const AddHotelPage = () => {
             <ModalRoom isOpen={showModalRoom} onClose={handleCloseModal2}></ModalRoom>
             <ModalHotel isOpen={showModalHotel} onClose={handleCloseModal3}></ModalHotel>
             <ModalTypeEvent isOpen={showModalTypeEvent} onClose={handleCloseModal4}></ModalTypeEvent>
-            <ModalEvent isOpen={showModalEvent} onClose={handleCloseModal5}></ModalEvent>       
+            <ModalEvent isOpen={showModalEvent} onClose={handleCloseModal5}></ModalEvent>
         </>
     )
 }
