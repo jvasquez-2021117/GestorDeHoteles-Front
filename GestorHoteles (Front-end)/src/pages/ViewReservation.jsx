@@ -2,15 +2,19 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { TableReservation } from '../components/Tables/TableReservation'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const ViewReservation = () => {
 
     const [tableReservation, setTableReservation] = useState([{}])
+    const [reservation, setReservation] = useState([{}])
+    const [search, setSearch] = useState("")
 
     const getTableReservation = async () => {
         try {
             const { data } = await axios('http://localhost:3200/reservation/getReservation')
             setTableReservation(data.reservation)
+            setReservation(data.reservation)
         } catch (e) {
             console.log(e);
         }
@@ -18,26 +22,52 @@ export const ViewReservation = () => {
 
     const deleteReservation = async (id) => {
         try {
-            let confirmDelete = confirm("Are you sure you want to delete this hold?");
-            if (confirmDelete) {
-                const { data } = await axios.delete(`http://localhost:3200/reservation/deleteReservation/${id}`);
-                console.log(data);
-                getTableReservation();
-            }
-            location.reload();
+            Swal.fire({
+                title: 'Do you want to delete this record?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const { data } = await axios.delete(`http://localhost:3200/reservation/deleteReservation/${id}`);
+                    getTableReservation();
+                    Swal.fire(
+                        data.message,
+                        '',
+                        'success'
+                    );
+                }
+            });
         } catch (e) {
             console.log(e);
         }
     }
 
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableReservation.filter((elemento) => {
+            if (elemento.user.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) 
+            return elemento
+        })
+        setReservation(resultSearch)
+    }
+
     useEffect(() => getTableReservation, [])
+
     return (
         <>
             <br />
             <div className="container">
                 <div className="row d-flex justify-content-center ">
                     <div className="col-md-2 col-lg-8">
-                        <input type="search" id="form1" className="form-control" />
+                        <input type="search" id="form1" className="form-control" value={search} onChange={handleChangeSearch} />
                         <label className="form-label" htmlFor="form1" />
                     </div>
                     <div className="col-md-6 col-lg-2">
@@ -71,7 +101,7 @@ export const ViewReservation = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableReservation.map(({ _id, user, hotel, room, event, date }, index) => {
+                                                            reservation.map(({ _id, user, hotel, room, event, date }, index) => {
                                                                 return (
                                                                     <tr key={index}>
                                                                         <TableReservation

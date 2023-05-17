@@ -38,7 +38,7 @@ export const LoginPage = () => {
                     icon: 'success',
                     title: data.message,
                 })
-                navigate('/optionAdmin/profile')
+                navigate('/profile')
             }
             if (data.message == 'Check that all fields are complete') {
                 Swal.fire({

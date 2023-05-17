@@ -41,6 +41,16 @@ export const Index = () => {
         if (token) setLoggedIn(true)
     }, [])
 
+    const handleLogout = () => {
+        setLoggedIn(false);
+        setDataUser({
+            id: '',
+            name: '',
+            surname: '',
+            role: ''
+        });
+    };
+
     const routes = createBrowserRouter([
         {
             path: '/',
@@ -133,7 +143,7 @@ export const Index = () => {
     ])
 
     return (
-        <AuthContext.Provider value={{ loggedIn, setLoggedIn, dataUser, setDataUser }} >
+        <AuthContext.Provider value={{ loggedIn, setLoggedIn, dataUser, setDataUser, handleLogout }} >
             <RouterProvider router={routes} />
         </AuthContext.Provider >
     )

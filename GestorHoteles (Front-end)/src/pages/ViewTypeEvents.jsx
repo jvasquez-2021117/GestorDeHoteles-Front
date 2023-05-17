@@ -9,11 +9,14 @@ export const ViewTypeEvents = () => {
 
     const navigate = useNavigate()
     const [tableEventType, setTableEventType] = useState([{}])
+    const [typeEvent, setTypeEvent] = useState([{}])
+    const [search, setSearch] = useState("")
 
     const getTableEventTpes = async () => {
         try {
             const { data } = await axios('http://localhost:3200/eventType/get')
             setTableEventType(data.eventTypes)
+            setTypeEvent(data.eventTypes)
         } catch (e) {
             console.log(e);
         }
@@ -45,6 +48,18 @@ export const ViewTypeEvents = () => {
         }
     }
 
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableEventType.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) return elemento
+        })
+        setTypeEvent(resultSearch)
+    }
+
     useEffect(() => getTableEventTpes, [])
 
     return (
@@ -53,7 +68,7 @@ export const ViewTypeEvents = () => {
             <div className="container">
                 <div className="row d-flex justify-content-center ">
                     <div className="col-md-2 col-lg-8">
-                        <input type="search" id="form1" className="form-control" />
+                        <input type="search" id="form1" className="form-control" value={search} onChange={handleChangeSearch} />
                         <label className="form-label" htmlFor="form1" />
                     </div>
                     <div className="col-md-6 col-lg-2">
@@ -83,7 +98,7 @@ export const ViewTypeEvents = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableEventType.map(({ _id, name }, index) => {
+                                                            typeEvent.map(({ _id, name }, index) => {
                                                                 return (
                                                                     <tr key={index}>
                                                                         <TableTypeEvent
