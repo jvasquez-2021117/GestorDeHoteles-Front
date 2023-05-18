@@ -86,15 +86,6 @@ export const ViewRooms = () => {
         }
     }
 
-    const roomsAvailable = async () => {
-        try {
-            const { data } = await axios('http://localhost:3200/room/countRoomsAvailability');
-            alert(data.count)
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
     useEffect(() => getTableRoom, [])
 
     return (
