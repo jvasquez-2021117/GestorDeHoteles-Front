@@ -4,7 +4,10 @@ import { TableReservation } from '../components/Tables/TableReservation'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
+
 export const ViewReservationCompleted = () => {
+
+    const navigate = useNavigate()
 
     const [tableReservation, setTableReservation] = useState([{}])
     const [reservation, setReservation] = useState([{}])
@@ -54,8 +57,8 @@ export const ViewReservationCompleted = () => {
 
     const filtrar = (searchTerm) => {
         var resultSearch = tableReservation.filter((elemento) => {
-            if (elemento.user.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) 
-            return elemento
+            if (elemento.user.name.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+                return elemento
         })
         setReservation(resultSearch)
     }
@@ -83,8 +86,8 @@ export const ViewReservationCompleted = () => {
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                             </svg>
                         </button>
-                        <button className='btn btn-dark'>
-                            Completed
+                        <button onClick={(() => navigate('/profile/reservation'))} className='btn btn-dark'>
+                            In progress
                         </button>
                     </div>
                 </div>
@@ -123,7 +126,7 @@ export const ViewReservationCompleted = () => {
                                                                             State={State}
                                                                         ></TableReservation>
                                                                     </tr>
-                                                                    
+
                                                                 )
                                                             })
                                                         }

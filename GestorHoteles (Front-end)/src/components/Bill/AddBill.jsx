@@ -1,16 +1,19 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export const AddBill = () => {
-    
+
+    const navigate = useNavigate()
     const [services, setServices] = useState([{}])
     const [consumption, setConsumption] = useState([{}])
     const [reservation, setReservation] = useState({})
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [disabledButtons2, setDisabledButtons2] = useState([]);
     const [arrayServices, setArrayServices] = useState([]);
+
     const [arrayConsumption, setArrayConsumption] = useState([]);
 
     const { id } = useParams();
@@ -25,7 +28,7 @@ export const AddBill = () => {
             console.log(e);
         }
     }
-    
+
     const getServices = async () => {
         try {
             const { data } = await axios('http://localhost:3200/services/getService');
@@ -97,7 +100,11 @@ export const AddBill = () => {
             console.log(reservation.hotel._id);
             const { data } = await axios.post('http://localhost:3200/bill/addBill', bill)
             await axios.put(`http://localhost:3200/reservation/updateState/${id}`);
-            alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
+            if (data.message == 'Bill added successfully') navigate('/profile/reservation')
         } catch (e) {
             console.log(e);
         }
@@ -129,15 +136,15 @@ export const AddBill = () => {
                                             <input defaultValue={reservation.user?.name} disabled name='name' type="text" className="form-control form-control-lg" id='inputUser' required />
                                         </div>
                                         <div className="col-md- pe-5">
-                                            <label htmlFor='inputNit' className="mb-0" >No Guest</label>
+                                            <label htmlFor='inputNit' className="mb-0" >NIT</label>
                                             <input name='noGuest' type="text" className="form-control form-control-lg" id='inputNit' required />
                                         </div>
                                         <div className="col-md- pe-5">
-                                            <label htmlFor='inputHotel' className="mb-0" >Price</label>
+                                            <label htmlFor='inputHotel' className="mb-0" >Hotel</label>
                                             <input defaultValue={reservation.hotel?.name} disabled name='price' type="text" className="form-control form-control-lg" id='inputHotel' required />
                                         </div>
                                         <div className="col-md- pe-5">
-                                            <label htmlFor='inputRoom' className="mb-0" >Price</label>
+                                            <label htmlFor='inputRoom' className="mb-0" >Room</label>
                                             <input defaultValue={reservation.room?.name} disabled name='price' type="text" className="form-control form-control-lg" id='inputRoom' required />
                                         </div>
                                     </div>
@@ -148,9 +155,9 @@ export const AddBill = () => {
                                         <table className="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th style={{color: "black"}}>Name</th>
-                                                    <th style={{color: "black"}}>Price</th>
-                                                    <th style={{color: "black"}}>Actions</th>
+                                                    <th style={{ color: "black" }}>Name</th>
+                                                    <th style={{ color: "black" }}>Price</th>
+                                                    <th style={{ color: "black" }}>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -180,9 +187,9 @@ export const AddBill = () => {
                                         <table className="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th style={{color: "black"}}>Name</th>
-                                                    <th style={{color: "black"}}>Price</th>
-                                                    <th style={{color: "black"}}>Actions</th>
+                                                    <th style={{ color: "black" }}>Name</th>
+                                                    <th style={{ color: "black" }}>Price</th>
+                                                    <th style={{ color: "black" }}>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -209,13 +216,11 @@ export const AddBill = () => {
                                         <div className="row">
                                             <div className="col-md-2">
                                                 <Link >
-                                                    <button onClick={()=>addBill()} type="submit" className="btn btn-primary btn-lg">Create bill</button>
+                                                    <button onClick={() => addBill()} type="submit" className="btn btn-primary btn-lg">Create bill</button>
                                                 </Link>
                                             </div>
                                             <div className="col-md-6">
-                                                <Link >
-                                                    <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
-                                                </Link>
+                                                <button onClick={() => navigate('/profile/reservation')} type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                             </div>
                                         </div>
                                     </div>

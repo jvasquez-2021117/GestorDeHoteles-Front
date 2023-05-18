@@ -109,7 +109,6 @@ export const ModalReservation = ({ isOpen, onClose }) => {
                         <div className="mb-3">
                             <label htmlFor="inputEvent" className="form-label">Event</label>
                             <select name="" id="inputEvent" className="form-control" required>
-                                <option value="">Any</option>
                                 {
                                     event.map(({ _id, name }, i) => {
                                         return (
