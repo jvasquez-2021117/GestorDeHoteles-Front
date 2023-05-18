@@ -25,6 +25,7 @@ import { UpdateHotel } from './components/Update/UpdateHotel'
 import { UpdateRoom } from './components/Update/UpdateRoom'
 import { ViewAdminHotel } from './pages/ViewAdminHotel'
 import { UpdateAdminHotel } from './components/Update/UpdateAdminHotel'
+import { Redirigir } from './pages/Redirigir copy'
 
 export const AuthContext = createContext();
 
@@ -64,16 +65,26 @@ export const Index = () => {
                     element: <MainPage />
                 },
                 {
-                    path: '/home',
-                    element: <HomePage />
-                },
-                {
                     path: '/login',
                     element: <LoginPage></LoginPage>
                 },
                 {
                     path: '/register',
                     element: <RegisterPage></RegisterPage>
+                },
+                {
+                    path: '/home',
+                    element: <HomePage></HomePage>
+                },
+                {
+                    path: '/profile',
+                    element: loggedIn ? <Redirigir /> : <LoginPage></LoginPage>,
+                    children: [
+                        {
+                            path: '',
+                            element: <UserProfilePage></UserProfilePage>
+                        }
+                    ]
                 },
                 {
                     path: '/optionAdmin',
@@ -86,10 +97,6 @@ export const Index = () => {
                 {
                     path: '/users',
                     element: <ViewUsersPage />
-                },
-                {
-                    path: '/profile',
-                    element: <UserProfilePage />
                 },
                 {
                     path: '/reservation',

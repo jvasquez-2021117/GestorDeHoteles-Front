@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import { Sidebar } from '../components/Sidebar/Sidebar'
 import { OptionHotels } from '../components/Options/OptionHotels'
 import { ModalReservation } from '../components/Modal/ModalReservation'
+import { useContext } from 'react'
+import { AuthContext } from '../Index'
 
 export const HomePage = () => {
 
+    const { dataUser, loggedIn } = useContext(AuthContext)
     const [showModalReservation, setShowModalReservation] = useState(false)
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -35,7 +38,11 @@ export const HomePage = () => {
                     <div className="col">
                         <div className="row">
                             <div className="col mb-3">
-                                <button onClick={handleOpenModal4} type="button" className="w-100 btn btn-lg btn-outline-success">Reservation</button>
+                                {
+                                    loggedIn == true ? (
+                                        <button onClick={handleOpenModal4} type="button" className="w-100 btn btn-lg btn-outline-success">Reservation</button>
+                                    ) : <></>
+                                }
                                 <OptionHotels nameFilter={name} addressFilter={address} qualificationFilter={qualification} />
                             </div>
                         </div>

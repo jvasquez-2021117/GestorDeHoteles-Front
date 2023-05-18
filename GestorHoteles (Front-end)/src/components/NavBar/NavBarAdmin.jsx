@@ -26,40 +26,32 @@ export const NavBarAdmin = () => {
                             </span>
                         </div>
                         <ul className="navbar-nav ms-auto ">
-                            {/*                             <li className="nav-item">
-                                <Link to={'/users'} id='aXD' className="nav-link mx-2 text-uppercase">
-                                    Users
-                                </Link>
-                            </li> */}
                             <li className="nav-item">
                                 <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
                                     Home
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to='/setting' id='aXD' className="nav-link mx-2 text-uppercase">
-                                    Setting
+                                <Link to={'/profile'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Account
                                 </Link>
-                            </li>{/* 
+                            </li>
+                            {/*                             
+                            <li className="nav-item">
+                                <Link to={'/users'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Users
+                                </Link>
+                            </li>
                             <li className="nav-item">
                                 <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
                                     Statistics
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/addHotel'} id='aXD' className="nav-link mx-2 text-uppercase">
-                                    Add Hotel
+                                <Link to={'/optionAdmin'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                    Option
                                 </Link>
                             </li> */}
-                        </ul>
-                        <ul className="navbar-nav ms-auto ">
-                            <li className="nav-item">
-                                <Link to={'/setting'} id='aXD' className="nav-link mx-2 text-uppercase">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-fill" viewBox="0 0 16 16">
-                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                                    </svg>
-                                </Link>
-                            </li>
                         </ul>
                     </div>
                 </div>
