@@ -153,7 +153,7 @@ export const AddHotelPage = () => {
                                             </div>
                                             <div className="card-body">
                                                 <ul className="list-unstyled mt-3 mb-4">
-                                                    <img src={event} alt="Cellars Image" className='card-img' style={{ width: "80%", height: "80%" }} />
+                                                    <img src={event} alt="Cellars Image" className='card-img' style={{ width: "95%", height: "95%" }} />
                                                 </ul>
                                                 <div className="row">
                                                     <div className="col">
