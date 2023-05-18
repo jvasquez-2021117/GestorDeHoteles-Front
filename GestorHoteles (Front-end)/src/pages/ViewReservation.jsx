@@ -98,12 +98,13 @@ export const ViewReservation = () => {
                                                             <th scope="col">Room</th>
                                                             <th scope="col">Event</th>
                                                             <th scope='col'>Date</th>
+                                                            <th scope='col'>State</th>
                                                             <th scope='col'>Actions</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            reservation.map(({ _id, user, hotel, room, event, date }, index) => {
+                                                            reservation.map(({ _id, user, hotel, room, event, date, State }, index) => {
                                                                 return (
                                                                     <tr key={index}>
                                                                         <TableReservation
@@ -112,6 +113,7 @@ export const ViewReservation = () => {
                                                                             room={room?.name}
                                                                             event={event?.name}
                                                                             date={date}
+                                                                            State={State}
                                                                         ></TableReservation>
                                                                         <td className="text-center align-middle">
                                                                             <div className="btn-group align-top">
