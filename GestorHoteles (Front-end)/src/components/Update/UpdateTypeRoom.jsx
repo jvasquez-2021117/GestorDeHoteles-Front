@@ -52,8 +52,8 @@ export const UpdateTypeRoom = () => {
                     </div>
                 </div>
             </nav>
-            <section className="vh-100" /* style="background-color: #2779e2;" */>
-                <div className="container h-100">
+            <section className="" /* style="background-color: #2779e2;" */>
+                <div className="container t h-100">
                     <div className="row d-flex justify-content-center align-items-center h-100">
                         <div className="col-xl-9">
                             <div className="card" /* style="border-radius: 15px;" */>
@@ -81,6 +81,7 @@ export const UpdateTypeRoom = () => {
                     </div>
                 </div>
             </section>
+            <br />
         </>
     )
 }

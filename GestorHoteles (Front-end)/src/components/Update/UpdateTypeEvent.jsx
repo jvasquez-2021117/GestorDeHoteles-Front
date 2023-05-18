@@ -50,7 +50,7 @@ export const UpdateTypeEvent = () => {
                     </div>
                 </div>
             </nav>
-            <section className="vh-100" /* style="background-color: #2779e2;" */>
+            <section className="t" /* style="background-color: #2779e2;" */>
                 <div className="container h-100">
                     <div className="row d-flex justify-content-center align-items-center h-100">
                         <div className="col-xl-9">
@@ -79,6 +79,7 @@ export const UpdateTypeEvent = () => {
                     </div>
                 </div>
             </section>
+            <br />
         </>
     )
 }
