@@ -47,7 +47,7 @@ export const Navbar = () => {
                                 loggedIn == true && dataUser.role == 'ADMIN-APP' ? (
                                     <>
                                         <li className="nav-item">
-                                            <Link to={'/home'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                            <Link to={'/profile/graph'} id='aXD' className="nav-link mx-2 text-uppercase">
                                                 Statistics
                                             </Link>
                                         </li>

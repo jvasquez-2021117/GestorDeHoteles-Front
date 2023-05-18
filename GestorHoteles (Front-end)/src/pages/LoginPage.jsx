@@ -8,7 +8,7 @@ export const LoginPage = () => {
 
     const navigate = useNavigate();
 
-    const { setLoggedIn, loggedIn, setDataUser, dataUser } = useContext(AuthContext);
+    const { setLoggedIn, setDataUser } = useContext(AuthContext);
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -76,7 +76,7 @@ export const LoginPage = () => {
                                     <p className="text-center">or:</p>
                                     <div className="form-outline mb-4">
                                         <label className="form-label" htmlFor="loginName">Email or username</label>
-                                        <input onChange={handleChange} id="loginName" name="email" className='form-control' type="email" />
+                                        <input onChange={handleChange} id="loginName" name="email" className='form-control' type="text" />
                                     </div>
                                     <div className="form-outline mb-4">
                                         <label className="form-label" htmlFor="loginPassword">Password</label>

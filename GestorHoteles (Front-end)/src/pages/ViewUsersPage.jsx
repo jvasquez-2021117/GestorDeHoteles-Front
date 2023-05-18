@@ -34,7 +34,14 @@ export const ViewUsersPage = () => {
     return (
         <>
             <br />
-            <div className="container">
+            <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#9dc19d" }}>
+                <div className="container-fluid ">
+                    <div className="collapse navbar-collapse justify-content-center" id="navbarCenteredExample" >
+                        <h1 className='text-white' style={{ fontSize: "2.5rem" }}>Table User</h1>
+                    </div>
+                </div>
+            </nav>
+            <div className="container t">
                 <div className="row d-flex justify-content-center ">
                     <div className="col-md-2 col-lg-8">
                         <input type="search" id="form1" className="form-control" value={search} onChange={handleChangeSearch} />
