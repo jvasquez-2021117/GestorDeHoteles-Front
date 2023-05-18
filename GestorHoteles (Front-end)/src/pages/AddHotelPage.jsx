@@ -8,12 +8,12 @@ import typeRoom from '../assets/typeRoom.jpg';
 import hotel from '../assets/hotel.jpg';
 import typeEvent from '../assets/typeEvent.jpg'
 import event from '../assets/eventAdmin.jpg'
-import { ModalReservation } from '../components/Modal/ModalReservation';
 import { useNavigate } from 'react-router-dom';
 import { ModalTypeEvent } from '../components/Modal/ModalTypeEvent';
 import { ModalEvent } from '../components/Modal/ModalEvent';
 import reservation from '../assets/reservations.jpg';
-/* import { ModalBill } from '../components/Modal/ModalBill' */
+import { ModalAdminHotel } from '../components/Modal/ModalAdminHotel';
+import adminHotel from '../assets/adminHotel.jpg'
 
 export const AddHotelPage = () => {
 
@@ -24,7 +24,7 @@ export const AddHotelPage = () => {
     const [showModalHotel, setShowModalHotel] = useState(false);
     const [showModalTypeEvent, setShowModalTypeEvent] = useState(false);
     const [showModalEvent, setShowModalEvent] = useState(false);
-    /*     const [showModalBill, setShowModalBill] =  useState(false); */
+    const [showModalAdminHotel, setShowModalAdminHotel] = useState(false);
 
     const handleOpenModal = () => {
         setShowModalTypeRoom(true);
@@ -65,10 +65,10 @@ export const AddHotelPage = () => {
     };
 
     const handleOpenModal6 = () => {
-        setShowModalBill(true);
+        setShowModalAdminHotel(true);
     };
     const handleCloseModal6 = () => {
-        setShowModalBill(false);
+        setShowModalAdminHotel(false);
     };
 
     return (
@@ -119,25 +119,6 @@ export const AddHotelPage = () => {
                                             </Link>
                                         </div>
                                     </div>
-
-                                    {/* <div className='row'>
-                                        <div className='col'>
-                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal2}>Hola</button>
-                                        </div>
-                                        <div className='col'>
-                                            <button type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
-                                            <div className="row">
-                                                <div className="col">
-                                                    <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal2}>Add</button>
-                                                </div>
-                                                <div className="col">
-                                                    <Link to={'/viewRooms'}>
-                                                        <button type="button" className="w-100 btn btn-lg btn-outline-success" >View</button>
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> */}
                                 </div>
                             </div>
                             <div className="card mb-4 rounded-3 shadow-sm">
@@ -164,7 +145,7 @@ export const AddHotelPage = () => {
                                 </div>
                                 <div className="card-body">
                                     <ul className="list-unstyled mt-3 mb-4">
-                                        <img alt="Accounts Image" className="card-img" style={{ width: "95%", height: "95%" }} />
+                                        <img alt="Accounts Image" src={adminHotel} className="card-img" style={{ width: "95%", height: "95%" }} />
                                     </ul>
                                     <div className="row">
                                         <div className="col">
@@ -240,7 +221,7 @@ export const AddHotelPage = () => {
             <ModalHotel isOpen={showModalHotel} onClose={handleCloseModal3}></ModalHotel>
             <ModalTypeEvent isOpen={showModalTypeEvent} onClose={handleCloseModal4}></ModalTypeEvent>
             <ModalEvent isOpen={showModalEvent} onClose={handleCloseModal5}></ModalEvent>
-            {/* <ModalBill isOpen={showModalBill} onClose={handleCloseModal6} id={`6463fb8b16a13716bab09ab6`}></ModalBill> */}
+            <ModalAdminHotel isOpen={showModalAdminHotel} onClose={handleCloseModal6}></ModalAdminHotel>
         </>
     )
 }

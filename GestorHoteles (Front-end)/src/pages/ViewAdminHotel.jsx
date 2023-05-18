@@ -2,20 +2,35 @@ import React from 'react'
 import { TableAdminHotel } from '../components/Tables/TableAdminHotel'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 export const ViewAdminHotel = () => {
     const navigate = useNavigate()
     const [tableAdminHotel, setTableAdminHotel] = useState([{}])
+    const [adminHotel, setadminHotel] = useState([{}])
+    const [search, setSearch] = useState("")
 
     const getTableAdminHotel = async () => {
         try {
             const { data } = await axios('http://localhost:3200/userHotel/getUserHotel')
             setTableAdminHotel(data.usersHotel)
+            setadminHotel(data.usersHotel)
         } catch (e) {
             console.log(e);
         }
+    }
+
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableAdminHotel.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+                return elemento
+        })
+        setadminHotel(resultSearch)
     }
 
     useEffect(() => getTableAdminHotel, []);
@@ -26,7 +41,7 @@ export const ViewAdminHotel = () => {
             <div className="container">
                 <div className="row d-flex justify-content-center ">
                     <div className="col-md-2 col-lg-8">
-                        <input type="search" id="form1" className="form-control" />
+                        <input type="search" id="form1" className="form-control" value={search} onChange={handleChangeSearch} />
                         <label className="form-label" htmlFor="form1" />
                     </div>
                     <div className="col-md-6 col-lg-2">
@@ -60,7 +75,7 @@ export const ViewAdminHotel = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableAdminHotel.map(({ _id, name, surname, email, role, hotel }, index) => {
+                                                            adminHotel.map(({ _id, name, surname, email, role, hotel }, index) => {
                                                                 return (
                                                                     <tr key={index}>
                                                                         <TableAdminHotel
