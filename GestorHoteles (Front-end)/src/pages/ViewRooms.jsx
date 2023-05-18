@@ -8,6 +8,8 @@ export const ViewRooms = () => {
     const [tableRoom, setTableRoom] = useState([{}])
     const [room, setRoom] = useState([{}])
     const [search, setSearch] = useState("")
+    const [search2, setSearch2] = useState("")
+    const [selectedOption, setSelectedOption] = useState("");
 
     const getTableRoom = async () => {
         try {
@@ -45,17 +47,35 @@ export const ViewRooms = () => {
         }
     }
 
-
     const handleChangeSearch = (e) => {
         setSearch(e.target.value)
         filtrar(e.target.value)
     }
 
+    const handleChangeSearch2 = (e) => {
+        setSearch2(e.target.value)
+        filtrar2(e.target.value)
+        setSelectedOption(e.target.value)
+    }
+
     const filtrar = (searchTerm) => {
         var resultSearch = tableRoom.filter((elemento) => {
-            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) return elemento
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+                return elemento
         })
         setRoom(resultSearch)
+    }
+
+    const filtrar2 = (searchTerm) => {
+        if (searchTerm == "Availability") {
+            setRoom(tableRoom)
+        } else {
+            const resultSearch = tableRoom.filter((elemento) => {
+                if (elemento.availability.toString().toLowerCase().includes(searchTerm.toLowerCase()))
+                    return elemento
+            })
+            setRoom(resultSearch)
+        }
     }
 
     useEffect(() => getTableRoom, [])
@@ -75,6 +95,13 @@ export const ViewRooms = () => {
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                             </svg>
                         </button>
+                    </div>
+                    <div>
+                        <select className="form-select" aria-label="Default select example" id="inputAvailability" value={selectedOption} onChange={handleChangeSearch2} >
+                            <option>Availability</option>
+                            <option>Disponible</option>
+                            <option>No Disponible</option>
+                        </select>
                     </div>
                 </div>
             </div >
