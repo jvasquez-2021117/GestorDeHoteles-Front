@@ -24,7 +24,7 @@ export const AddHotelPage = () => {
     const [showModalHotel, setShowModalHotel] = useState(false);
     const [showModalTypeEvent, setShowModalTypeEvent] = useState(false);
     const [showModalEvent, setShowModalEvent] = useState(false);
-/*     const [showModalBill, setShowModalBill] =  useState(false); */
+    /*     const [showModalBill, setShowModalBill] =  useState(false); */
 
     const handleOpenModal = () => {
         setShowModalTypeRoom(true);
@@ -64,13 +64,13 @@ export const AddHotelPage = () => {
         setShowModalEvent(false);
     };
 
-/*     const handleOpenModal6 = () => {
+    const handleOpenModal6 = () => {
         setShowModalBill(true);
     };
     const handleCloseModal6 = () => {
         setShowModalBill(false);
-    }; */
-    
+    };
+
     return (
         <>
             <div className="container py-3">
@@ -158,6 +158,24 @@ export const AddHotelPage = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div className="card mb-4 rounded-3 shadow-sm">
+                                <div className="card-header py-3">
+                                    <h4 className="my-0 fw-normal">Admin Hotel</h4>
+                                </div>
+                                <div className="card-body">
+                                    <ul className="list-unstyled mt-3 mb-4">
+                                        <img alt="Accounts Image" className="card-img" style={{ width: "95%", height: "95%" }} />
+                                    </ul>
+                                    <div className="row">
+                                        <div className="col">
+                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal6}>Add</button>
+                                        </div>
+                                        <div className="col">
+                                            <button type="button" onClick={() => navigate('/viewAdminHotel')} className="w-100 btn btn-lg btn-outline-success" >View</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className="col">
                             <div className="card mb-4 rounded-3 shadow-sm">
@@ -205,7 +223,7 @@ export const AddHotelPage = () => {
                                 <div className="card-body">
                                     <ul className="list-unstyled mt-3 mb-4">
                                         <img src={reservation} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
-                                    </ul>                             
+                                    </ul>
                                     <div className="row">
                                         <div className="col">
                                             <button onClick={() => navigate('/reservation')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
@@ -213,8 +231,8 @@ export const AddHotelPage = () => {
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
+                    </div>
                 </main>
             </div>
             <ModalTypeRoom isOpen={showModalTypeRoom} onClose={handleCloseModal}></ModalTypeRoom>
@@ -222,7 +240,7 @@ export const AddHotelPage = () => {
             <ModalHotel isOpen={showModalHotel} onClose={handleCloseModal3}></ModalHotel>
             <ModalTypeEvent isOpen={showModalTypeEvent} onClose={handleCloseModal4}></ModalTypeEvent>
             <ModalEvent isOpen={showModalEvent} onClose={handleCloseModal5}></ModalEvent>
-            {/* <ModalBill isOpen={showModalBill} onClose={handleCloseModal6} id={`6463fb8b16a13716bab09ab6`}></ModalBill> */}       
+            {/* <ModalBill isOpen={showModalBill} onClose={handleCloseModal6} id={`6463fb8b16a13716bab09ab6`}></ModalBill> */}
         </>
     )
 }
