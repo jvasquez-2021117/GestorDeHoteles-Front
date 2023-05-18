@@ -64,7 +64,7 @@ export const ViewReservationCompleted = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light mb-4" style={{ background: "#1abc9c" }}>
+            <nav className="navbar navbar-expand-lg navbar-light mb-4" style={{ background: "#9dc19d" }}>
                 <div className="container-fluid">
                     <div className="collapse navbar-collapse justify-content-center" id="navbarCenteredExample" >
                         <h1 className='text-white' style={{ fontSize: "2.5rem" }}>Reservation Completed</h1>
