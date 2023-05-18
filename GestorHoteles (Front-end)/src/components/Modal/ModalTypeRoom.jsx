@@ -19,6 +19,8 @@ export const ModalTypeRoom = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            if (data.message == 'room type already exists') navigate('/profile/optionAdmin')
+            if (data.message == 'room type create successfully') navigate('/profile/viewTypeRoom')
         } catch (e) {
             console.log(e);
         }

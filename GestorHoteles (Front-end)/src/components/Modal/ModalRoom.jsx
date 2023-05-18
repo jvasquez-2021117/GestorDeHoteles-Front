@@ -2,8 +2,12 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 export const ModalRoom = ({ isOpen, onClose }) => {
+
+    const navigate = useNavigate()
+
     const [typeRoom, setTypeRoom] = useState([{}])
     const [hotel, setHotel] = useState([{}])
 
@@ -16,7 +20,7 @@ export const ModalRoom = ({ isOpen, onClose }) => {
         }
     }
 
-    const getHotel = async()=>{
+    const getHotel = async () => {
         try {
             const { data } = await axios('http://localhost:3200/hotel/getHotel')
             setHotel(data.hotel)
@@ -39,6 +43,8 @@ export const ModalRoom = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            if (data.message == 'Room already exists') navigate('/profile/optionAdmin')
+            if (data.message == 'Room created successfully') navigate('/profile/viewRooms')
         } catch (e) {
             console.log(e);
         }
@@ -88,8 +94,8 @@ export const ModalRoom = ({ isOpen, onClose }) => {
                                 <label htmlFor="inputHotel" className="form-label">Hotel</label>
                                 <select name="" id="inputHotel" className="form-control" required>
                                     {
-                                        hotel.map(({_id, name}, i) => {
-                                            return(
+                                        hotel.map(({ _id, name }, i) => {
+                                            return (
                                                 <option key={i} value={_id}>{name}</option>
                                             )
                                         })
@@ -99,7 +105,7 @@ export const ModalRoom = ({ isOpen, onClose }) => {
                             <div className="mb-3">
                                 <div className="col-md- pe-5">
                                     <h6 className="mb-0">Photo</h6>
-                                    <input className="form-control " id="formFileLg" type="file" />                                    
+                                    <input className="form-control " id="formFileLg" type="file" />
                                 </div>
                             </div>
                         </form>
