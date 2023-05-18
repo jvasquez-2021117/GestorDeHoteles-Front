@@ -31,6 +31,8 @@ import { ViewConsumption } from './pages/ViewConsumption'
 import { UpdateServices } from './components/Update/UpdateServices'
 import { UpdateConsumption } from './components/Update/UpdateConsumption'
 import { Redirigir } from './pages/Redirigir copy'
+import { StatisticsPage } from './pages/StatisticsPage'
+import { UpdateUserInfo } from './components/Update/UpdateUserInfo'
 import { ViewReservationCompleted } from './pages/ViewReservationCompleted'
 
 export const AuthContext = createContext();
@@ -38,6 +40,7 @@ export const AuthContext = createContext();
 export const Index = () => {
 
     const [loggedIn, setLoggedIn] = useState(false);
+    
     const [dataUser, setDataUser] = useState({
         id: '',
         name: '',
@@ -181,6 +184,14 @@ export const Index = () => {
                         {
                             path: 'updateConsumption/:id',
                             element: <UpdateConsumption />
+                        },
+                        {
+                            path: 'graph',
+                            element: <StatisticsPage></StatisticsPage>
+                        },
+                        {
+                            path: 'updateUserAccount/:id',
+                            element: <UpdateUserInfo></UpdateUserInfo>
                         }
                     ]
                 },

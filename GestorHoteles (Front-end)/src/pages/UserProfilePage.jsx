@@ -9,23 +9,16 @@ import { useState } from 'react'
 import { AuthContext } from '../Index'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import queryString from 'query-string';
 
 export const UserProfilePage = () => {
 
     const navigate = useNavigate();
     const { dataUser } = useContext(AuthContext);
     const { handleLogout } = useContext(AuthContext)
-
-    const [showModalUpdateUser, setShowModalUpdateUser] = useState(false)
-
-    const handleOpenModal = () => {
-        setShowModalUpdateUser(true)
-    }
-
-    const handleCloseModal = () => {
-        setShowModalUpdateUser(false)
-    }
-
+    const location = useLocation();
+    const queryParams = queryString.parse(location.search);
 
     const logOut = () => {
         Swal.fire({
@@ -120,14 +113,14 @@ export const UserProfilePage = () => {
                                                                 <div className="col">
                                                                     <div className="form-group">
                                                                         <label>Name</label>
-                                                                        <input className="form-control" type="text" id='nameInput' name="name" defaultValue={dataUser.name} readOnly />
+                                                                        <input className="form-control" type="text" id='nameInput' name="name" defaultValue={queryParams.name || dataUser.name} readOnly />
                                                                     </div>
                                                                 </div>
                                                                 <hr />
                                                                 <div className="col">
                                                                     <div className="form-group">
                                                                         <label>Surname</label>
-                                                                        <input className="form-control" type="text" id='surnameInput' name="username" defaultValue={dataUser.surname} readOnly />
+                                                                        <input className="form-control" type="text" id='surnameInput' name="username" defaultValue={queryParams.surname || dataUser.surname} readOnly />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -135,7 +128,7 @@ export const UserProfilePage = () => {
                                                         <br />
                                                         <div className="row">
                                                             <div className="col d-flex justify-content-end">
-                                                                <button className="btn btn-primary" onClick={handleOpenModal} id='buttonActivate' type="button">Update personal information</button>
+                                                                <button onClick={() => navigate(`/profile/updateUserAccount/${dataUser.id}`)} className="btn btn-primary" id='buttonActivate' type="button">Update personal information</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -149,7 +142,6 @@ export const UserProfilePage = () => {
                     </div>
                 </div>
             </div>
-            <ModalUser isOpen={showModalUpdateUser} onClose={handleCloseModal}></ModalUser>
         </>
     )
 }

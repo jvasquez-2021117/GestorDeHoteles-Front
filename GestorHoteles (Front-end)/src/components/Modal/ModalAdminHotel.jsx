@@ -39,6 +39,7 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
     if (!isOpen) {
         return null
     }
+
     return (
         <>
             <Modal show={isOpen}>
@@ -73,7 +74,7 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputPassword" className="form-label">Password</label>
-                            <input type="password" name="" id="inputPassword" className='form-control' placeholder='Password' />
+                            <input type="text" name="password" id="inputPassword" className='form-control' placeholder='Password' />
                         </div>
                     </form>
                 </Modal.Body>
