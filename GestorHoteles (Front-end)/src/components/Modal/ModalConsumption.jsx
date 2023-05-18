@@ -1,16 +1,26 @@
 import axios from 'axios'
 import React from 'react'
 import { Modal } from 'react-bootstrap'
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+
 
 export const ModalConsumption = ({ isOpen, onClose }) => {
-    const addConsumption = async() => {
+    const navigate = useNavigate()
+
+    const addConsumption = async () => {
         try {
             let consumption = {
                 product: document.getElementById('inputProduct').value,
                 price: document.getElementById('inputPrice').value,
             }
             const { data } = await axios.post('http://localhost:3200/consumption/addConsumption', consumption)
-            alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
+            if (data.message == 'Consumption already exists') navigate('/profile/optionAdmin')
+            if (data.message == 'Consumption added successfully') navigate('/profile/viewConsumption')
         } catch (e) {
             console.log(e);
         }

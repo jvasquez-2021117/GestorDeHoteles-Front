@@ -4,7 +4,6 @@ import '../App.css'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import { ModalUser } from '../components/Modal/ModalUser'
 import { useState } from 'react'
 import { AuthContext } from '../Index'
 import { useNavigate } from 'react-router-dom'
@@ -95,11 +94,16 @@ export const UserProfilePage = () => {
                                                     <div className="text-center text-sm-left mb-2 mb-sm-0">
                                                         <h4 className="pt-sm-2 pb-1 mb-0 text-nowrap">Account settings</h4>
                                                     </div>
-                                                    <div className="text-left">
-                                                        <button onClick={() => deleteAccount()} className='btn btn-danger'>
-                                                            <span className="pt-sm-2 pb-1 mb-0 text-nowrap">Delete account</span>
-                                                        </button>
-                                                    </div>
+                                                    {
+                                                        dataUser.role == 'CLIENT' ? (
+                                                            <div className="text-left">
+                                                                <button onClick={() => deleteAccount()} className='btn btn-danger'>
+                                                                    <span className="pt-sm-2 pb-1 mb-0 text-nowrap">Delete account</span>
+                                                                </button>
+                                                            </div>
+                                                        ) : <></>
+                                                    }
+
                                                 </div>
                                                 <div className="text-left">
                                                     <span className="fw-light">Info personal</span>
@@ -126,11 +130,15 @@ export const UserProfilePage = () => {
                                                             </div>
                                                         </div>
                                                         <br />
-                                                        <div className="row">
-                                                            <div className="col d-flex justify-content-end">
-                                                                <button onClick={() => navigate(`/profile/updateUserAccount/${dataUser.id}`)} className="btn btn-primary" id='buttonActivate' type="button">Update personal information</button>
-                                                            </div>
-                                                        </div>
+                                                        {
+                                                            dataUser.role == 'CLIENT' ? (
+                                                                <div className="row">
+                                                                    <div className="col d-flex justify-content-end">
+                                                                        <button onClick={() => navigate(`/profile/updateUserAccount/${dataUser.id}`)} className="btn btn-primary" id='buttonActivate' type="button">Update personal information</button>
+                                                                    </div>
+                                                                </div>
+                                                            ) : <></>
+                                                        }
                                                     </form>
                                                 </div>
                                             </div>

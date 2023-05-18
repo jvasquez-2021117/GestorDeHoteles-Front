@@ -4,8 +4,11 @@ import { Modal } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import Swal from 'sweetalert2'
 
+import { useNavigate } from 'react-router-dom';
+
 export const ModalEvent = ({ isOpen, onClose }) => {
 
+    const navigate = useNavigate()
     const [event, setEvent] = useState([{}])
     const [hotel, setHotel] = useState([{}])
 
@@ -40,6 +43,8 @@ export const ModalEvent = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            if (data.message == 'Event already exists') navigate('/profile/optionAdmin')
+            if (data.message == 'Event added successfully') navigate('/profile/viewEvent')
         } catch (e) {
             console.log(e);
         }

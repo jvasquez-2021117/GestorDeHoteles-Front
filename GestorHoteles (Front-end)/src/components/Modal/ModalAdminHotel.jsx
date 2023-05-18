@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 export const ModalAdminHotel = ({ isOpen, onClose }) => {
+
+    const navigate = useNavigate()
     const [hotel, setHotel] = useState([{}])
 
     const getHotel = async () => {
@@ -29,6 +32,8 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            if (data.message == 'This email already exists') navigate('/profile/optionAdmin')
+            if (data.message == 'Account created succesfully') navigate('/profile/viewAdminHotel')
         } catch (e) {
             console.log(e);
         }
@@ -58,7 +63,7 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputEmail" className="form-label">Email</label>
-                            <input type="email" id="inputEmail" className='form-control' placeholder='name@gmail.com' />
+                            <input type="email" id="inputEmail" className='form-control' placeholder='name@gmail.com' required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputHotel" className="form-label">Hotel</label>
@@ -74,7 +79,7 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputPassword" className="form-label">Password</label>
-                            <input type="text" name="password" id="inputPassword" className='form-control' placeholder='Password' />
+                            <input type="password" name="password" id="inputPassword" className='form-control' placeholder='Password' />
                         </div>
                     </form>
                 </Modal.Body>

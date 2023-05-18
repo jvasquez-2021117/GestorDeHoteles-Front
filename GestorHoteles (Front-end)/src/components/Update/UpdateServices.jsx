@@ -2,8 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 export const UpdateServices = () => {
+    const navigate = useNavigate()
     const [tableServices, setTableServices] = useState([{}])
     const { id } = useParams();
 
@@ -20,13 +23,19 @@ export const UpdateServices = () => {
         try {
             let updatedServices = {
                 name: document.getElementById('inputName').value,
-                /* description: document.getElementById('inputDescription').value, */
                 price: document.getElementById('inputPrice').value,
             }
             const { data } = await axios.put(`http://localhost:3200/services/updateService/${id}`, updatedServices);
-            getTableServices();
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
+            navigate('/profile/viewServices')
         } catch (e) {
-            console.log(e);
+            Swal.fire({
+                icon: 'error',
+                title: e.response.data.message
+            })
         }
     }
 

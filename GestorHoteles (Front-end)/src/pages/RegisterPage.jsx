@@ -90,11 +90,11 @@ export const RegisterPage = () => {
                                     <hr />
                                     <div className="row justify-content-center">
                                         <div className="col-md-3">
-                                            <button onClick={() => register()} type="submit" className="btn btn-primary btn-block">SignUp</button>
+                                            <button onClick={() => register()} type="button" className="btn btn-primary btn-block">SignUp</button>
                                         </div>
                                         <div className="col-md-2">
                                             <Link to={'/'}>
-                                                <button type="submit" className="btn btn-danger btn-block ">Cancel</button>
+                                                <button type="button" className="btn btn-danger btn-block ">Cancel</button>
                                             </Link>
                                         </div>
                                     </div>
@@ -104,7 +104,7 @@ export const RegisterPage = () => {
                     </div>
                 </div>
             </div>
-                                <br />
+            <br />
         </>
     )
 }

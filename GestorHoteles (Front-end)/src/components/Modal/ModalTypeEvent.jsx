@@ -2,9 +2,12 @@ import axios from 'axios'
 import React from 'react'
 import { Modal } from 'react-bootstrap';
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 export const ModalTypeEvent = ({ isOpen, onClose }) => {
-    
+
+    const navigate = useNavigate()
+
     const addTypeEvent = async () => {
         try {
             let typeEvent = {
@@ -15,6 +18,8 @@ export const ModalTypeEvent = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            if (data.message == 'Type event already exists') navigate('/profile/optionAdmin')
+            if (data.message == 'Type event adding succesfully') navigate('/profile/viewEventType')
         } catch (e) {
             console.log(e);
         }

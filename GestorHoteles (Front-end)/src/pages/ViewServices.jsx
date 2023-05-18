@@ -2,27 +2,61 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TableServices } from '../components/Tables/TableServices';
+import Swal from 'sweetalert2';
 
 export const ViewServices = () => {
     const navigate = useNavigate();
     const [tableServices, setTableServices] = useState([{}]);
+    const [services, setServices] = useState([{}])
+    const [search, setSearch] = useState("")
+    
 
-    const getTableServices = async() => {
+    const getTableServices = async () => {
         try {
             const { data } = await axios('http://localhost:3200/services/getService');
             setTableServices(data.service)
+            setServices(data.service)
         } catch (e) {
             console.log(e);
         }
     }
 
-    const deleteServices = async(id) => {
+    const deleteServices = async (id) => {
         try {
-            const { data } = await axios.delete(`http://localhost:3200/services/delete/${id}`);
-            getTableServices();
+            Swal.fire({
+                title: 'Do you want to delete this record?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const { data } = await axios.delete(`http://localhost:3200/services/delete/${id}`);
+                    getTableServices();
+                    Swal.fire(
+                        data.message,
+                        '',
+                        'success'
+                    );
+                }
+            });
         } catch (e) {
             console.log(e);
         }
+    }
+
+    const handleChangeSearch = (e) => {
+        setSearch(e.target.value)
+        filtrar(e.target.value)
+    }
+
+    const filtrar = (searchTerm) => {
+        var resultSearch = tableServices.filter((elemento) => {
+            if (elemento.name.toString().toLowerCase().includes(searchTerm.toLowerCase())) return elemento
+        })
+        setServices(resultSearch)
     }
 
     useEffect(() => getTableServices, [])
@@ -30,10 +64,17 @@ export const ViewServices = () => {
     return (
         <>
             <br />
-            <div className="container">
+            <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#9dc19d" }}>
+                <div className="container-fluid">
+                    <div className="collapse navbar-collapse justify-content-center" id="navbarCenteredExample" >
+                        <h1 className='text-white' style={{ fontSize: "2.5rem" }}>VIEW SERVICES</h1>
+                    </div>
+                </div>
+            </nav>
+            <div className="container t">
                 <div className="row d-flex justify-content-center ">
                     <div className="col-md-2 col-lg-8">
-                        <input type="search" id="form1" className="form-control" />
+                        <input type="search" id="form1" className="form-control" value={search} onChange={handleChangeSearch} />
                         <label className="form-label" htmlFor="form1" />
                     </div>
                     <div className="col-md-6 col-lg-2">
@@ -42,6 +83,7 @@ export const ViewServices = () => {
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                             </svg>
                         </button>
+                        <button onClick={(() => navigate('/profile/optionAdmin'))} className='btn btn-danger'>Exit</button>
                     </div>
                 </div>
             </div >
@@ -64,12 +106,12 @@ export const ViewServices = () => {
                                                     </thead>
                                                     <tbody>
                                                         {
-                                                            tableServices.map(({_id, name, description, price}, index) => {
-                                                                return(
+                                                            services.map(({ _id, name, description, price }, index) => {
+                                                                return (
                                                                     <tr key={index}>
                                                                         <TableServices
-                                                                        name={name}
-                                                                        price={price}
+                                                                            name={name}
+                                                                            price={price}
                                                                         ></TableServices>
                                                                         <td className="text-center align-middle">
                                                                             <div className="btn-group align-top">

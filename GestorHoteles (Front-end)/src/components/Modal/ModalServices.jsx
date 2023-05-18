@@ -1,16 +1,25 @@
 import axios from 'axios'
 import React from 'react'
 import { Modal } from 'react-bootstrap'
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 export const ModalServices = ({ isOpen, onClose }) => {
-    const addServices = async() => {
+
+    const navigate = useNavigate()
+    const addServices = async () => {
         try {
             let services = {
                 name: document.getElementById('inputName').value,
                 price: document.getElementById('inputPrice').value,
             }
             const { data } = await axios.post('http://localhost:3200/services/addServices', services)
-            alert(data.message);
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
+            if (data.message == 'Additional service already exists') navigate('/profile/optionAdmin')
+            if (data.message == 'Additional service added successfully') navigate('/profile/viewServices')
         } catch (e) {
             console.log(e);
         }

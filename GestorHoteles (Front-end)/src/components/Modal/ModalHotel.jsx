@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom';
 
 export const ModalHotel = ({ isOpen, onClose }) => {
 
+    const navigate = useNavigate()
     const addHotel = async () => {
         try {
             let hotel = {
@@ -18,6 +20,8 @@ export const ModalHotel = ({ isOpen, onClose }) => {
                 icon: 'success',
                 title: data.message
             })
+            if (data.message == 'Hotel already exists') navigate('/profile/optionAdmin')
+            if (data.message == 'Hotel added successfully') navigate('/profile/viewHotels')
         } catch (e) {
             console.log(e);
         }
