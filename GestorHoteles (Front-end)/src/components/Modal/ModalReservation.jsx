@@ -1,12 +1,14 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Modal } from 'react-bootstrap'
+import { AuthContext } from '../../Index'
 
 export const ModalReservation = ({ isOpen, onClose }) => {
     const [room, setRoom] = useState([{}])
     const [hotel, setHotel] = useState([{}])
     const [event, setEvent] = useState([{}])
     const [user, setUser] = useState([{}])
+    const { dataUser } = useContext(AuthContext);
 
     const getRoom = async () => {
         try {
@@ -47,7 +49,7 @@ export const ModalReservation = ({ isOpen, onClose }) => {
     const createReservation = async () => {
         try {
             let reservation = {
-                user: document.getElementById('inputUser').value,
+                user: dataUser.id,
                 hotel: document.getElementById('inputHotel').value,
                 room: document.getElementById('inputRoom').value,
                 event: document.getElementById('inputEvent').value,
@@ -75,18 +77,6 @@ export const ModalReservation = ({ isOpen, onClose }) => {
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <div className="mb-3">
-                            <label htmlFor="inputUser" className="form-label">User</label>
-                            <select name="" id="inputUser" className="form-control" required>
-                                {
-                                    user.map(({ _id, name }, i) => {
-                                        return (
-                                            <option key={i} value={_id}>{name}</option>
-                                        )
-                                    })
-                                }
-                            </select>
-                        </div>
                         <div className="mb-3">
                             <label htmlFor="inputHotel" className="form-label">Hotel</label>
                             <select name="" id="inputHotel" className="form-control" required>

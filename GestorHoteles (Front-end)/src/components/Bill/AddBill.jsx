@@ -92,8 +92,7 @@ export const AddBill = () => {
                 hotel: reservation.hotel._id,
                 room: reservation.room._id,
                 services: arrayServices,
-                consumption: arrayConsumption,
-                description: 'hola'
+                consumption: arrayConsumption
             }
             console.log(reservation.hotel._id);
             const { data } = await axios.post('http://localhost:3200/bill/addBill', bill)
