@@ -39,7 +39,7 @@ export const HomePage = () => {
                         <div className="row">
                             <div className="col mb-3">
                                 {
-                                    loggedIn == true ? (
+                                    dataUser.dataUser == 'CLIENT' ? (
                                         <button onClick={handleOpenModal4} type="button" className="w-100 btn btn-lg btn-outline-success">Reservation</button>
                                     ) : <></>
                                 }
