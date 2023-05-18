@@ -66,6 +66,15 @@ export const ViewRooms = () => {
         setRoom(resultSearch)
     }
 
+    const roomsAvailable = async()=>{
+        try{
+            const { data } = await axios('http://localhost:3200/room/countRoomsAvailability');
+            alert(data.count)
+        }catch(e){
+            console.log(e);
+        }
+    }
+    
     const filtrar2 = (searchTerm) => {
         if (searchTerm == "Availability") {
             setRoom(tableRoom)
