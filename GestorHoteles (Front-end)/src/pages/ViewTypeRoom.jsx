@@ -66,6 +66,14 @@ export const ViewTypeRoom = () => {
     return (
         <>
             <br />
+            <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#9dc19d" }}>
+                <div className="container-fluid">
+                    <div className="collapse navbar-collapse justify-content-center" id="navbarCenteredExample" >
+                        <h1 className='text-white' style={{ fontSize: "2.5rem" }}>VIEW TYPE_ROOMS</h1>
+                    </div>
+                </div>
+            </nav>
+            <br />
             <div className="container">
                 <div className="row d-flex justify-content-center ">
                     <div className="col-md-2 col-lg-8">
@@ -78,6 +86,7 @@ export const ViewTypeRoom = () => {
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                             </svg>
                         </button>
+                        <button onClick={(() => navigate('/profile/optionAdmin'))} className='btn btn-danger'>Exist</button>
                     </div>
                 </div>
             </div >

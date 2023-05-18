@@ -56,7 +56,6 @@ export const LoginPage = () => {
             <div className="container t">
                 <div className="card col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-5" style={{ padding: '20px', margin: 'auto auto', marginBottom: '30px' }}>
                     <div className="card-body">
-
                         <div className="tab-content">
                             <div className="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
                                 <form>

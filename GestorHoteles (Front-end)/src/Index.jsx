@@ -33,6 +33,7 @@ import { UpdateConsumption } from './components/Update/UpdateConsumption'
 import { Redirigir } from './pages/Redirigir copy'
 import { StatisticsPage } from './pages/StatisticsPage'
 import { UpdateUserInfo } from './components/Update/UpdateUserInfo'
+import { ViewReservationCompleted } from './pages/ViewReservationCompleted'
 
 export const AuthContext = createContext();
 
@@ -107,6 +108,10 @@ export const Index = () => {
                         {
                             path: 'reservation',
                             element: <ViewReservation />
+                        },
+                        {
+                            path: 'reservationCompleted',
+                            element: <ViewReservationCompleted></ViewReservationCompleted>
                         },
                         {
                             path: 'viewTypeRoom',
