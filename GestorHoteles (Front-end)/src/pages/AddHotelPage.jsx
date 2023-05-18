@@ -20,6 +20,7 @@ import services from '../assets/services.jpg'
 import { ModalServices } from '../components/Modal/ModalServices';
 import { AuthContext } from '../Index';
 import { useContext } from 'react';
+import bill from '../assets/bill.jpg'
 
 export const AddHotelPage = () => {
 
@@ -277,6 +278,21 @@ export const AddHotelPage = () => {
                                                     </div>
                                                     <div className="col">
                                                         <button onClick={() => navigate('/profile/viewConsumption')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="card mb-4 rounded-3 shadow-sm">
+                                            <div className="card-header py-3">
+                                                <h4 className="my-0 fw-normal">Bill</h4>
+                                            </div>
+                                            <div className="card-body">
+                                                <ul className="list-unstyled mt-3 mb-4">
+                                                    <img src={bill} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
+                                                </ul>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <button onClick={() => navigate('/profile/viewBill')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
                                                     </div>
                                                 </div>
                                             </div>
