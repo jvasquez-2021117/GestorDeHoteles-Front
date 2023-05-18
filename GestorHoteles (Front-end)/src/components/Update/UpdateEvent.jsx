@@ -131,7 +131,7 @@ export const UpdateEvent = () => {
                                                 <button onClick={() => updateEvent()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                             </div>
                                             <div className="col">
-                                                <button onClick={() => navigate('/profile/viewEventType')} type="submit" className="btn btn-danger btn-lg">Cancel</button>
+                                                <button onClick={() => navigate('/profile/viewEvent')} type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                             </div>
                                         </div>
                                     </div>
