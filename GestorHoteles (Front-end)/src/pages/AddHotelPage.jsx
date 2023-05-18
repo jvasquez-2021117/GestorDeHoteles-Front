@@ -14,6 +14,10 @@ import { ModalEvent } from '../components/Modal/ModalEvent';
 import reservation from '../assets/reservations.jpg';
 import { ModalAdminHotel } from '../components/Modal/ModalAdminHotel';
 import adminHotel from '../assets/adminHotel.jpg'
+import { ModalConsumption } from '../components/Modal/ModalConsumption';
+import consumption from '../assets/consumption.jpg'
+import services from '../assets/services.jpg'
+import { ModalServices } from '../components/Modal/ModalServices';
 
 export const AddHotelPage = () => {
 
@@ -25,6 +29,8 @@ export const AddHotelPage = () => {
     const [showModalTypeEvent, setShowModalTypeEvent] = useState(false);
     const [showModalEvent, setShowModalEvent] = useState(false);
     const [showModalAdminHotel, setShowModalAdminHotel] = useState(false);
+    const [showModalConsumption, setShowModalConsumption] = useState(false);
+    const [showModalServices, setShowModalServices] = useState(false)
 
     const handleOpenModal = () => {
         setShowModalTypeRoom(true);
@@ -70,6 +76,21 @@ export const AddHotelPage = () => {
     const handleCloseModal6 = () => {
         setShowModalAdminHotel(false);
     };
+
+    const handleOpenModal7 = () => {
+        setShowModalConsumption(true);
+    };
+    const handleCloseModal7 = () => {
+        setShowModalConsumption(false);
+    };
+
+    const handleOpenModal8 = () => {
+        setShowModalServices(true);
+    };
+    const handleCloseModal8 = () => {
+        setShowModalServices(false);
+    };
+
 
     return (
         <>
@@ -157,6 +178,24 @@ export const AddHotelPage = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div className="card mb-4 rounded-3 shadow-sm">
+                                <div className="card-header py-3">
+                                    <h4 className="my-0 fw-normal">Services</h4>
+                                </div>
+                                <div className="card-body">
+                                    <ul className="list-unstyled mt-3 mb-4">
+                                        <img alt="Accounts Image" src={services} className="card-img" style={{ width: "95%", height: "95%" }} />
+                                    </ul>
+                                    <div className="row">
+                                        <div className="col">
+                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal8}>Add</button>
+                                        </div>
+                                        <div className="col">
+                                            <button type="button" onClick={() => navigate('/viewServices')} className="w-100 btn btn-lg btn-outline-success" >View</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className="col">
                             <div className="card mb-4 rounded-3 shadow-sm">
@@ -212,6 +251,24 @@ export const AddHotelPage = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div className="card mb-4 rounded-3 shadow-sm">
+                                <div className="card-header py-3">
+                                    <h4 className="my-0 fw-normal">Consumption</h4>
+                                </div>
+                                <div className="card-body">
+                                    <ul className="list-unstyled mt-3 mb-4">
+                                        <img src={consumption} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
+                                    </ul>
+                                    <div className="row">
+                                        <div className="col">
+                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal7}>Add</button>
+                                        </div>
+                                        <div className="col">
+                                            <button onClick={() => navigate('/viewConsumption')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>
@@ -222,6 +279,8 @@ export const AddHotelPage = () => {
             <ModalTypeEvent isOpen={showModalTypeEvent} onClose={handleCloseModal4}></ModalTypeEvent>
             <ModalEvent isOpen={showModalEvent} onClose={handleCloseModal5}></ModalEvent>
             <ModalAdminHotel isOpen={showModalAdminHotel} onClose={handleCloseModal6}></ModalAdminHotel>
+            <ModalConsumption isOpen={showModalConsumption} onClose={handleCloseModal7}></ModalConsumption>
+            <ModalServices isOpen={showModalServices} onClose={handleCloseModal8} ></ModalServices>
         </>
     )
 }
