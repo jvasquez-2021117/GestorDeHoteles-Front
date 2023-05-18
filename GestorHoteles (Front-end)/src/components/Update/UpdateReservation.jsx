@@ -128,10 +128,10 @@ export const UpdateReservation = () => {
                                         </div>
                                         <br />
                                         <center>
-                                            <Link to={'/reservation'}>
+                                            <Link to={'/profile/reservation'}>
                                                 <button onClick={() => updateReservation()} type="submit" className="btn btn-success btn-lg">Lease</button>
                                             </Link>
-                                            <Link to={'/reservation'}>
+                                            <Link to={'/profile/reservation'}>
                                                 <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                             </Link>
                                         </center>

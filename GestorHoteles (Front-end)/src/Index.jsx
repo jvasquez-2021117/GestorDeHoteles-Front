@@ -26,6 +26,10 @@ import { UpdateRoom } from './components/Update/UpdateRoom'
 import { AddBill } from './components/Bill/AddBill'
 import { ViewAdminHotel } from './pages/ViewAdminHotel'
 import { UpdateAdminHotel } from './components/Update/UpdateAdminHotel'
+import { ViewServices } from './pages/ViewServices'
+import { ViewConsumption } from './pages/ViewConsumption'
+import { UpdateServices } from './components/Update/UpdateServices'
+import { UpdateConsumption } from './components/Update/UpdateConsumption'
 import { Redirigir } from './pages/Redirigir copy'
 
 export const AuthContext = createContext();
@@ -84,81 +88,97 @@ export const Index = () => {
                         {
                             path: '',
                             element: <UserProfilePage></UserProfilePage>
+                        },
+                        {
+                            path: 'optionAdmin',
+                            element: <AddHotelPage></AddHotelPage>
+                        },
+                        {
+                            path: 'record',
+                            element: <RecordPage />
+                        },
+                        {
+                            path: 'users',
+                            element: <ViewUsersPage />
+                        },
+                        {
+                            path: 'reservation',
+                            element: <ViewReservation />
+                        },
+                        {
+                            path: 'viewTypeRoom',
+                            element: <ViewTypeRoom></ViewTypeRoom>
+                        },
+                        {
+                            path: 'viewEventType',
+                            element: <ViewTypeEvents></ViewTypeEvents>
+                        },
+                        {
+                            path: 'viewEvent',
+                            element: <ViewEvent></ViewEvent>
+                        },
+                        {
+                            path: 'updateTypeRoom/:id',
+                            element: <UpdateTypeRoom></UpdateTypeRoom>
+                        },
+                        {
+                            path: 'updateTypeEvent/:id',
+                            element: <UpdateTypeEvent></UpdateTypeEvent>
+                        },
+                        {
+                            path: 'updateEvent/:id',
+                            element: <UpdateEvent></UpdateEvent>
+                        },
+                        {
+                            path: 'addBill/:id',
+                            element: <AddBill></AddBill>
+                        },
+                        {
+                            path: 'updateReservation/:id',
+                            element: <UpdateReservation />
+                        },
+                        {
+                            path: 'viewHotels',
+                            element: <ViewHotels />
+                        },
+                        {
+                            path: 'viewRooms',
+                            element: <ViewRooms />
+                        },
+                        {
+                            path: 'updateHotel/:id',
+                            element: <UpdateHotel />
+                        },
+                        {
+                            path: 'updateRoom/:id',
+                            element: <UpdateRoom />
+                        },
+                        {
+                            path: 'viewAdminHotel',
+                            element: <ViewAdminHotel></ViewAdminHotel>
+                        },
+                        {
+                            path: 'updateAD/:id',
+                            element: <UpdateAdminHotel></UpdateAdminHotel>
+                        },
+                        {
+                            path: 'viewServices',
+                            element: <ViewServices />
+                        },
+                        {
+                            path: 'updateService/:id',
+                            element: <UpdateServices />
+                        },
+                        {
+                            path: 'viewConsumption',
+                            element: <ViewConsumption />
+                        },
+                        {
+                            path: 'updateConsumption/:id',
+                            element: <UpdateConsumption />
                         }
                     ]
                 },
-                {
-                    path: '/optionAdmin',
-                    element: <AddHotelPage></AddHotelPage>
-                },
-                {
-                    path: '/record',
-                    element: <RecordPage />
-                },
-                {
-                    path: '/users',
-                    element: <ViewUsersPage />
-                },
-                {
-                    path: '/reservation',
-                    element: <ViewReservation />
-                },
-                {
-                    path: '/viewTypeRoom',
-                    element: <ViewTypeRoom></ViewTypeRoom>
-                },
-                {
-                    path: '/viewEventType',
-                    element: <ViewTypeEvents></ViewTypeEvents>
-                },
-                {
-                    path: '/viewEvent',
-                    element: <ViewEvent></ViewEvent>
-                },
-                {
-                    path: '/updateTypeRoom/:id',
-                    element: <UpdateTypeRoom></UpdateTypeRoom>
-                },
-                {
-                    path: '/updateTypeEvent/:id',
-                    element: <UpdateTypeEvent></UpdateTypeEvent>
-                },
-                {
-                    path: '/updateEvent/:id',
-                    element: <UpdateEvent></UpdateEvent>
-                },
-                {
-                    path: '/addBill/:id',
-                    element: <AddBill></AddBill>
-                },
-                {
-                    path: 'reservation/update/:id',
-                    element: <UpdateReservation />
-                },
-                {
-                    path: '/viewHotels',
-                    element: <ViewHotels />
-                },
-                {
-                    path: '/viewRooms',
-                    element: <ViewRooms />
-                },
-                {
-                    path: '/updateHotel/:id',
-                    element: <UpdateHotel />
-                },
-                {
-                    path: '/updateRoom/:id',
-                    element: <UpdateRoom />
-                },
-                {
-                    path: '/viewAdminHotel',
-                    element: <ViewAdminHotel></ViewAdminHotel>
-                },
-                {
-                    path: '/updateAD/:id',
-                    element: <UpdateAdminHotel></UpdateAdminHotel>
-                }
             ]
         },
     ])

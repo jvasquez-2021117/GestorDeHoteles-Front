@@ -126,12 +126,12 @@ export const UpdateRoom = () => {
                                     <div className="px-5 py-4">
                                         <div className="row">
                                             <div className="col-md-2">
-                                                <Link to={'/viewRooms'}>
+                                                <Link to={'/profile/viewRooms'}>
                                                     <button onClick={() => updateRoom()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                                 </Link>
                                             </div>
                                             <div className="col-md-6">
-                                                <Link to={'/viewRooms'}>
+                                                <Link to={'/profile/viewRooms'}>
                                                     <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                                 </Link>
                                             </div>

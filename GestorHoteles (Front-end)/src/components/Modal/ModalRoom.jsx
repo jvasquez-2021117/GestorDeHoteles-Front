@@ -32,7 +32,6 @@ export const ModalRoom = ({ isOpen, onClose }) => {
                 noGuest: document.getElementById('inputGuest').value,
                 price: document.getElementById('inputPrice').value,
                 roomType: document.getElementById('inputRoomType').value,
-                availability: document.getElementById('inputAvailability').value,
                 hotel: document.getElementById('inputHotel').value
             }
             const { data } = await axios.post('http://localhost:3200/room/add', room)
@@ -83,13 +82,6 @@ export const ModalRoom = ({ isOpen, onClose }) => {
                                             )
                                         })
                                     }
-                                </select>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="inputAvailability" className="form-label">Availability</label>
-                                <select id="inputAvailability" className="form-control" required>
-                                    <option>Available</option>
-                                    <option>Not Available</option>
                                 </select>
                             </div>
                             <div className="mb-3">

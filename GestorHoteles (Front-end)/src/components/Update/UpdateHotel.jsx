@@ -86,12 +86,12 @@ export const UpdateHotel = () => {
                                     <div className="px-5 py-4">
                                         <div className="row">
                                             <div className="col">
-                                                <Link to={'/viewHotels'}>
+                                                <Link to={'/profile/viewHotels'}>
                                                     <button onClick={() => updateHotel()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                                 </Link>
                                             </div>
                                             <div className="col">
-                                                <Link to={'/viewHotels'}>
+                                                <Link to={'/profile/viewHotels'}>
                                                     <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                                 </Link>
                                             </div>

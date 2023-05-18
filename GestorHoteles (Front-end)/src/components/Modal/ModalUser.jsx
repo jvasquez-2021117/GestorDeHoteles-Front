@@ -9,36 +9,6 @@ export const ModalUser = ({ isOpen, onClose }) => {
 
     const [tableUser, setTableUser] = useState({})
 
-    const { id } = useParams();
-
-    const getTableUser = async () => {
-        try {
-            const { data } = await axios(`http://localhost:3200/user/getById/${id}`)
-            setTableUser(data.user)
-            console.log(data.user);
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    const updateUser = async () => {
-        try {
-            let updatedUser = {
-                name: document.getElementById('inputName').value,
-                surname: document.getElementById('inputSurname').value
-            }
-            const { data } = await axios.put(`http://localhost:3200/account/updateAccount/${id}`, updatedUser)
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    useEffect(() => getTableUser, [])
-
-    if (!isOpen) {
-        return null;
-    }
-
     return (
         <>
             <>

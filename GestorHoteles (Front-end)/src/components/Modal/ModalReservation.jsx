@@ -1,8 +1,7 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Modal } from 'react-bootstrap'
 import Swal from 'sweetalert2'
-import { useContext } from 'react'
 import { AuthContext } from '../../Index'
 
 export const ModalReservation = ({ isOpen, onClose }) => {
