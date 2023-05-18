@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { TableReservation } from '../components/Tables/TableReservation'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { ModalBill } from '../components/Modal/ModalBill'
 
 export const ViewReservation = () => {
 
