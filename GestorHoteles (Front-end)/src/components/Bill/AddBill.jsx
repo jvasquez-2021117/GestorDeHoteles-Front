@@ -1,10 +1,10 @@
-import axios from 'axios'
-import React from 'react'
-import { Modal } from 'react-bootstrap';
-import { useState, useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-export const ModalBill = ({ isOpen, onClose, id }) => {
-
+export const AddBill = () => {
+    
     const [services, setServices] = useState([{}])
     const [consumption, setConsumption] = useState([{}])
     const [reservation, setReservation] = useState({})
@@ -13,9 +13,12 @@ export const ModalBill = ({ isOpen, onClose, id }) => {
     const [arrayServices, setArrayServices] = useState([]);
     const [arrayConsumption, setArrayConsumption] = useState([]);
 
+    const { id } = useParams();
+
 
     const getReservation = async () => {
         try {
+            console.log(id);
             const { data } = await axios.get(`http://localhost:3200/reservation/getById/${id}`);
             setReservation(data.reservation)
         } catch (e) {
@@ -94,53 +97,55 @@ export const ModalBill = ({ isOpen, onClose, id }) => {
             }
             console.log(reservation.hotel._id);
             const { data } = await axios.post('http://localhost:3200/bill/addBill', bill)
+            await axios.put(`http://localhost:3200/reservation/updateState/${id}`);
             alert(data.message)
         } catch (e) {
             console.log(e);
         }
     }
 
-    
-
     useEffect(() => getReservation, [])
     useEffect(() => getServices, [])
     useEffect(() => getConsumption, [])
 
 
-    if (!isOpen) {
-        return null;
-    }
-
     return (
         <>
-            <>
-                <Modal show={isOpen}>
-                    <Modal.Header>
-                        <Modal.Title className="text-dark">ADD Event</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <form>
-                            <div className="mb-3">
-                                <label htmlFor="inputUser" className="form-label">Name</label>
-                                <input defaultValue={reservation.user.name} type="text" className="form-control" id="inputUser" aria-describedby="nameHelp" placeholder='User' />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="inputNit" className="form-label">Nit</label>
-                                <input type="text" className="form-control" id="inputNit" aria-describedby="nameHelp" placeholder='Nit' />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="inputHotel" className="form-label">Hotel</label>
-                                <input defaultValue={reservation.hotel.name} type="text" className="form-control" id="inputHotel" aria-describedby="nameHelp" placeholder='Hotel' />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="inputRoom" className="form-label">Room</label>
-                                <input defaultValue={reservation.room.name} type="text" className="form-control" id="inputRoom" aria-describedby="nameHelp" placeholder='Room' />
-                            </div>
-                        </form>
-                        <div className="table-responsive table-lg mt-3">
-                                <div className="card-header py-3">
-                                    <h4 className="my-0 fw-normal">Services</h4>
-                                </div>
+            <nav className="navbar navbar-expand-lg navbar-light" style={{ background: "#1abc9c" }}>
+                <div className="container-fluid">
+                    <div className="collapse navbar-collapse justify-content-center" id="navbarCenteredExample" >
+                        <h1 className='text-white' style={{ fontSize: "2.5rem" }}>Bill</h1>
+                    </div>
+                </div>
+            </nav>
+            <section className="vh-auto mb-5 t" /* style="background-color: #2779e2;" */>
+                <div className="container h-100">
+                    <div className="row d-flex justify-content-center align-items-center h-100">
+                        <div className="col-xl-9">
+                            <div className="card" /* style="border-radius: 15px;" */>
+                                <div className="card-body">
+                                    <div className="row align-items-center pt-4 pb-3">
+                                        <div className="col-md- pe-5">
+                                            <label htmlFor='inputUser' className="mb-0" >Name</label>
+                                            <input defaultValue={reservation.user?.name} disabled name='name' type="text" className="form-control form-control-lg" id='inputUser' required />
+                                        </div>
+                                        <div className="col-md- pe-5">
+                                            <label htmlFor='inputNit' className="mb-0" >No Guest</label>
+                                            <input name='noGuest' type="text" className="form-control form-control-lg" id='inputNit' required />
+                                        </div>
+                                        <div className="col-md- pe-5">
+                                            <label htmlFor='inputHotel' className="mb-0" >Price</label>
+                                            <input defaultValue={reservation.hotel?.name} disabled name='price' type="text" className="form-control form-control-lg" id='inputHotel' required />
+                                        </div>
+                                        <div className="col-md- pe-5">
+                                            <label htmlFor='inputRoom' className="mb-0" >Price</label>
+                                            <input defaultValue={reservation.room?.name} disabled name='price' type="text" className="form-control form-control-lg" id='inputRoom' required />
+                                        </div>
+                                    </div>
+                                    <div className="table-responsive table-lg mt-3">
+                                        <div className="card-header py-3">
+                                            <h4 className="my-0 fw-normal">Services</h4>
+                                        </div>
                                         <table className="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -170,9 +175,9 @@ export const ModalBill = ({ isOpen, onClose, id }) => {
                                         </table>
                                     </div>
                                     <div className="table-responsive table-lg mt-3">
-                                <div className="card-header py-3">
-                                    <h4 className="my-0 fw-normal">Consumption</h4>
-                                </div>
+                                        <div className="card-header py-3">
+                                            <h4 className="my-0 fw-normal">Consumption</h4>
+                                        </div>
                                         <table className="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -201,13 +206,26 @@ export const ModalBill = ({ isOpen, onClose, id }) => {
                                             </tbody>
                                         </table>
                                     </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <button onClick={() => addBill()} type="submit" className="btn btn-primary">Crear</button>
-                        <button className='btn btn-danger' onClick={onClose}>cerrar</button>
-                    </Modal.Footer>
-                </Modal>
-            </>
+                                    <div className="px-5 py-4">
+                                        <div className="row">
+                                            <div className="col-md-2">
+                                                <Link >
+                                                    <button onClick={()=>addBill()} type="submit" className="btn btn-primary btn-lg">Create bill</button>
+                                                </Link>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <Link >
+                                                    <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }
