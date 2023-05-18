@@ -65,27 +65,6 @@ export const ViewRooms = () => {
         setRoom(resultSearch)
     }
 
-    const roomsAvailable = async()=>{
-        try{
-            const { data } = await axios('http://localhost:3200/room/countRoomsAvailability');
-            alert(data.count)
-        }catch(e){
-            console.log(e);
-        }
-    }
-    
-    const filtrar2 = (searchTerm) => {
-        if (searchTerm == "Availability") {
-            setRoom(tableRoom)
-        } else {
-            const resultSearch = tableRoom.filter((elemento) => {
-                if (elemento.availability.toString().toLowerCase().includes(searchTerm.toLowerCase()))
-                    return elemento
-            })
-            setRoom(resultSearch)
-        }
-    }
-
     const roomsAvailable = async () => {
         try {
             const { data } = await axios('http://localhost:3200/room/countRoomsAvailability');
@@ -95,6 +74,21 @@ export const ViewRooms = () => {
         }
     }
 
+    const filtrar2 = (searchTerm) => {
+        if (searchTerm === "Disponible") {
+            const resultSearch = tableRoom.filter((elemento) => {
+                return elemento.availability === "Disponible";
+            });
+            setRoom(resultSearch);
+        } else if (searchTerm === "No disponible") {
+            const resultSearch = tableRoom.filter((elemento) => {
+                return elemento.availability === "No disponible";
+            });
+            setRoom(resultSearch);
+        } else {
+            setRoom(tableRoom);
+        }
+    };
     useEffect(() => getTableRoom, [])
 
     return (
@@ -123,7 +117,7 @@ export const ViewRooms = () => {
                         <select className="form-select" aria-label="Default select example" id="inputAvailability" value={selectedOption} onChange={handleChangeSearch2} >
                             <option>Availability</option>
                             <option>Disponible</option>
-                            <option>No Disponible</option>
+                            <option>No disponible</option>
                         </select>
                     </div>
                 </div>

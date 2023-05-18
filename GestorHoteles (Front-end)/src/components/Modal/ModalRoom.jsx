@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
+import Swal from 'sweetalert2'
 
 export const ModalRoom = ({ isOpen, onClose }) => {
     const [typeRoom, setTypeRoom] = useState([{}])
@@ -35,7 +36,10 @@ export const ModalRoom = ({ isOpen, onClose }) => {
                 hotel: document.getElementById('inputHotel').value
             }
             const { data } = await axios.post('http://localhost:3200/room/add', room)
-            alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
             console.log(e);
         }

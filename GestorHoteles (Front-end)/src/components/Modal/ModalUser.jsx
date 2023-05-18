@@ -2,12 +2,13 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react';
+import Swal from 'sweetalert2'
 import { Modal } from 'react-bootstrap';
 
 export const ModalUser = ({ isOpen, onClose }) => {
 
     const [tableUser, setTableUser] = useState({})
-    /*
+
     const { id } = useParams();
 
     const getTableUser = async () => {
@@ -32,7 +33,7 @@ export const ModalUser = ({ isOpen, onClose }) => {
         }
     }
 
-    useEffect(() => getTableUser, []) */
+    useEffect(() => getTableUser, [])
 
     if (!isOpen) {
         return null;

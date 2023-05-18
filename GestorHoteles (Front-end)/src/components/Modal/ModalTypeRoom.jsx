@@ -1,15 +1,24 @@
 import axios from 'axios'
 import React from 'react'
 import { Modal } from 'react-bootstrap';
+import { Navigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 export const ModalTypeRoom = ({ isOpen, onClose }) => {
+
+    const navigate = useNavigate();
+
     const addTypeRoom = async () => {
         try {
             let typeRoom = {
                 name: document.getElementById('inputName').value
             }
             const { data } = await axios.post('http://localhost:3200/roomType/add', typeRoom)
-            alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
             console.log(e);
         }

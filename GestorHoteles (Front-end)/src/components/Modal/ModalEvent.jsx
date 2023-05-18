@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { Modal } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
+import Swal from 'sweetalert2'
 
 export const ModalEvent = ({ isOpen, onClose }) => {
 
@@ -17,7 +18,7 @@ export const ModalEvent = ({ isOpen, onClose }) => {
         }
     }
 
-    const getHotel = async()=>{
+    const getHotel = async () => {
         try {
             const { data } = await axios('http://localhost:3200/hotel/getHotel')
             setHotel(data.hotel)
@@ -25,7 +26,7 @@ export const ModalEvent = ({ isOpen, onClose }) => {
             console.log(e);
         }
     }
-    
+
     const addEvent = async () => {
         try {
             let Event = {
@@ -35,15 +36,18 @@ export const ModalEvent = ({ isOpen, onClose }) => {
                 hotel: document.getElementById('inputHotel').value
             }
             const { data } = await axios.post('http://localhost:3200/events/addEvents', Event)
-            alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
             console.log(e);
         }
     }
 
-    
+
     useEffect(() => getEventType, [])
-    useEffect(()=> getHotel, [])
+    useEffect(() => getHotel, [])
 
     if (!isOpen) {
         return null;
@@ -82,8 +86,8 @@ export const ModalEvent = ({ isOpen, onClose }) => {
                                 <label htmlFor="inputHotel" className="form-label">Hotel</label>
                                 <select name="" id="inputHotel" className="form-control" required>
                                     {
-                                        hotel.map(({_id, name}, i) => {
-                                            return(
+                                        hotel.map(({ _id, name }, i) => {
+                                            return (
                                                 <option key={i} value={_id}>{name}</option>
                                             )
                                         })

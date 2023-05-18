@@ -3,6 +3,7 @@ import { TableAdminHotel } from '../components/Tables/TableAdminHotel'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const ViewAdminHotel = () => {
     const navigate = useNavigate()
@@ -15,6 +16,32 @@ export const ViewAdminHotel = () => {
             const { data } = await axios('http://localhost:3200/userHotel/getUserHotel')
             setTableAdminHotel(data.usersHotel)
             setadminHotel(data.usersHotel)
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    const deleteAdminHotel = async (id) => {
+        try {
+            Swal.fire({
+                title: 'Do you want to delete this record?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const { data } = await axios.delete(`http://localhost:3200/userHotel/delete/${id}`);
+                    getTableAdminHotel();
+                    Swal.fire(
+                        data.message,
+                        '',
+                        'success'
+                    );
+                }
+            });
         } catch (e) {
             console.log(e);
         }

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export const UpdateRoom = () => {
     const [tableRoom, setTableRoom] = useState([{}])
@@ -45,8 +46,15 @@ export const UpdateRoom = () => {
                 hotel: document.getElementById('inputHotel').value
             }
             const { data } = await axios.put(`http://localhost:3200/room/update/${id}`, updatedRoom)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
-            console.log(e);
+            Swal.fire({
+                icon: 'error',
+                title: e.response.data.message
+            })
         }
     }
 
