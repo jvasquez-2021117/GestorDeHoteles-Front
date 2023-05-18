@@ -54,11 +54,8 @@ export const MainPage = () => {
               <Link to={'/register'} id='btnn' className='btn'>Register</Link>
             </div>
           </div>
-
         </Modal>
-
-        <div style={{ backgroundImage: `url(${backgrHead})`, backgroundSize: "cover", backgroundPosition: "center", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}
-        >
+        <div style={{ backgroundImage: `url(${backgrHead})`, backgroundSize: "cover", backgroundPosition: "center", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
           <h1 id='aXD' style={{ color: "#fff", fontSize: "5rem", marginBottom: "1rem" }}>
             Rest Comfort <img id='aXD' src={logo} height='80em'></img>
           </h1>
@@ -103,10 +100,8 @@ export const MainPage = () => {
               </div>
             </div>
           </div>
-
         </div>
       </section>
-
     </>
   )
 }

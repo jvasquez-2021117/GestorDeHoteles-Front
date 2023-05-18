@@ -23,12 +23,14 @@ import { ViewHotels } from './pages/ViewHotels'
 import { ViewRooms } from './pages/ViewRooms'
 import { UpdateHotel } from './components/Update/UpdateHotel'
 import { UpdateRoom } from './components/Update/UpdateRoom'
+import { AddBill } from './components/Bill/AddBill'
 import { ViewAdminHotel } from './pages/ViewAdminHotel'
 import { UpdateAdminHotel } from './components/Update/UpdateAdminHotel'
 import { ViewServices } from './pages/ViewServices'
 import { ViewConsumption } from './pages/ViewConsumption'
 import { UpdateServices } from './components/Update/UpdateServices'
 import { UpdateConsumption } from './components/Update/UpdateConsumption'
+import { Redirigir } from './pages/Redirigir copy'
 
 export const AuthContext = createContext();
 
@@ -68,16 +70,26 @@ export const Index = () => {
                     element: <MainPage />
                 },
                 {
-                    path: '/home',
-                    element: <HomePage />
-                },
-                {
                     path: '/login',
                     element: <LoginPage></LoginPage>
                 },
                 {
                     path: '/register',
                     element: <RegisterPage></RegisterPage>
+                },
+                {
+                    path: '/home',
+                    element: <HomePage></HomePage>
+                },
+                {
+                    path: '/profile',
+                    element: loggedIn ? <Redirigir /> : <LoginPage></LoginPage>,
+                    children: [
+                        {
+                            path: '',
+                            element: <UserProfilePage></UserProfilePage>
+                        }
+                    ]
                 },
                 {
                     path: '/optionAdmin',
@@ -90,10 +102,6 @@ export const Index = () => {
                 {
                     path: '/users',
                     element: <ViewUsersPage />
-                },
-                {
-                    path: '/profile',
-                    element: <UserProfilePage />
                 },
                 {
                     path: '/reservation',
@@ -122,6 +130,10 @@ export const Index = () => {
                 {
                     path: '/updateEvent/:id',
                     element: <UpdateEvent></UpdateEvent>
+                },
+                {
+                    path: '/addBill/:id',
+                    element: <AddBill></AddBill>
                 },
                 {
                     path: 'reservation/update/:id',

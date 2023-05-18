@@ -25,7 +25,9 @@ export const Record = ({nit, hotel, room, description, roomPrice, consumption}) 
             </div> */}
             <li className='list-group' style={{margin: '5%'}}>
                 <div className="card">
-                    <img src={record} className="card-img-top" style={{width: "45%", height: "45%"}} alt="..." />
+                    <div className='justify-content-center'>
+                        <img src={record} className="card-img-top" alt="..." />
+                    </div>
                     <div className="card-body">
                         <h5 className="card-title">{hotel}</h5>                        
                         <p className="card-text">{room} | Q: {roomPrice}</p>

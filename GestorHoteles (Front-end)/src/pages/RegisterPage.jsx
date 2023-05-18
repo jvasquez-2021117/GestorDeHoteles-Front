@@ -24,7 +24,6 @@ export const RegisterPage = () => {
 
     const register = async (e) => {
         try {
-            e.preventDefault()
             const { data } = await axios.post('http://localhost:3200/user/register', form)
             Swal.fire({
                 icon: 'success',

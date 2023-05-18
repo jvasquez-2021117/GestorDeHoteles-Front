@@ -82,13 +82,6 @@ export const ModalRoom = ({ isOpen, onClose }) => {
                                 </select>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="inputAvailability" className="form-label">Availability</label>
-                                <select id="inputAvailability" className="form-control" required>
-                                    <option>Available</option>
-                                    <option>Not Available</option>
-                                </select>
-                            </div>
-                            <div className="mb-3">
                                 <label htmlFor="inputHotel" className="form-label">Hotel</label>
                                 <select name="" id="inputHotel" className="form-control" required>
                                     {
