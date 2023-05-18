@@ -32,7 +32,7 @@ export const UpdateTypeRoom = () => {
                 icon: 'success',
                 title: data.message
             })
-            navigate('/viewTypeRoom')
+            navigate('/profile/viewTypeRoom')
         } catch (e) {
             Swal.fire({
                 icon: 'error',
@@ -71,7 +71,7 @@ export const UpdateTypeRoom = () => {
                                                 <button onClick={() => updateTypeRoom()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                             </div>
                                             <div className="col">
-                                                <button onClick={() => navigate('/viewTypeRoom')} type="submit" className="btn btn-danger btn-lg">Cancel</button>
+                                                <button onClick={() => navigate('/profile/viewTypeRoom')} type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                             </div>
                                         </div>
                                     </div>

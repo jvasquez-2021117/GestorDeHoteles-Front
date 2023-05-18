@@ -124,7 +124,7 @@ export const AddHotelPage = () => {
                                                         <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal}>Add</button>
                                                     </div>
                                                     <div className='col'>
-                                                        <button onClick={() => navigate('/viewTypeRoom')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                                        <button onClick={() => navigate('/profile/viewTypeRoom')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -142,9 +142,7 @@ export const AddHotelPage = () => {
                                                         <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal2}>Add</button>
                                                     </div>
                                                     <div className="col">
-                                                        <Link to={'/viewRooms'}>
-                                                            <button type="button" className="w-100 btn btn-lg btn-outline-success" >View</button>
-                                                        </Link>
+                                                        <button onClick={() => navigate('/profile/viewRooms')} type="button" className="w-100 btn btn-lg btn-outline-success" >View</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,25 +160,7 @@ export const AddHotelPage = () => {
                                                         <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal5}>Add</button>
                                                     </div>
                                                     <div className="col">
-                                                        <button onClick={() => navigate('/viewEvent')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="card mb-4 rounded-3 shadow-sm">
-                                            <div className="card-header py-3">
-                                                <h4 className="my-0 fw-normal">Admin Hotel</h4>
-                                            </div>
-                                            <div className="card-body">
-                                                <ul className="list-unstyled mt-3 mb-4">
-                                                    <img alt="Accounts Image" src={adminHotel} className="card-img" style={{ width: "95%", height: "95%" }} />
-                                                </ul>
-                                                <div className="row">
-                                                    <div className="col">
-                                                        <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal6}>Add</button>
-                                                    </div>
-                                                    <div className="col">
-                                                        <button type="button" onClick={() => navigate('/viewAdminHotel')} className="w-100 btn btn-lg btn-outline-success" >View</button>
+                                                        <button onClick={() => navigate('/profile/viewEvent')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,9 +180,7 @@ export const AddHotelPage = () => {
                                                         <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal3}>Add</button>
                                                     </div>
                                                     <div className="col">
-                                                        <Link to={'/viewHotels'}>
-                                                            <button type="button" className="w-100 btn btn-lg btn-outline-success" >View</button>
-                                                        </Link>
+                                                        <button onClick={() => navigate('/profile/viewHotels')} type="button" className="w-100 btn btn-lg btn-outline-success" >View</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -220,7 +198,25 @@ export const AddHotelPage = () => {
                                                         <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal4}>Add</button>
                                                     </div>
                                                     <div className="col">
-                                                        <button onClick={() => navigate('/viewEventType')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                                        <button onClick={() => navigate('/profile/viewEventType')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="card mb-4 rounded-3 shadow-sm">
+                                            <div className="card-header py-3">
+                                                <h4 className="my-0 fw-normal">Admin Hotel</h4>
+                                            </div>
+                                            <div className="card-body">
+                                                <ul className="list-unstyled mt-3 mb-4">
+                                                    <img alt="Accounts Image" src={adminHotel} className="card-img" style={{ width: "95%", height: "95%" }} />
+                                                </ul>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal6}>Add</button>
+                                                    </div>
+                                                    <div className="col">
+                                                        <button type="button" onClick={() => navigate('/profile/viewAdminHotel')} className="w-100 btn btn-lg btn-outline-success" >View</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -230,153 +226,63 @@ export const AddHotelPage = () => {
                             </>
                         ) :
                             <>
-                            <div className="col">
-                            <div>
-                                <div className="card mb-4 rounded-3 shadow-sm">
-                                    <div className="card-header py-3">
-                                        <h4 className="my-0 fw-normal">Reservation</h4>
+                                <div className="row row-cols-1 row-cols-md-2 mb-2 text-center">
+                                    <div className="col">
+                                        <div className="card mb-4 rounded-3 shadow-sm">
+                                            <div className="card-header py-3">
+                                                <h4 className="my-0 fw-normal">Reservation</h4>
+                                            </div>
+                                            <div className="card-body">
+                                                <ul className="list-unstyled mt-3 mb-4">
+                                                    <img src={reservation} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
+                                                </ul>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <button onClick={() => navigate('/profile/reservation')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="card mb-4 rounded-3 shadow-sm">
+                                            <div className="card-header py-3">
+                                                <h4 className="my-0 fw-normal">Services</h4>
+                                            </div>
+                                            <div className="card-body">
+                                                <ul className="list-unstyled mt-3 mb-4">
+                                                    <img alt="Accounts Image" src={services} className="card-img" style={{ width: "95%", height: "95%" }} />
+                                                </ul>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal8}>Add</button>
+                                                    </div>
+                                                    <div className="col">
+                                                        <button type="button" onClick={() => navigate('/profile/viewServices')} className="w-100 btn btn-lg btn-outline-success" >View</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="card-body">
-                                        <ul className="list-unstyled mt-3 mb-4">
-                                            <img src={reservation} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
-                                        </ul>
-                                        <div className="row">
-                                            <div className="col">
-                                                <button onClick={() => navigate('/reservation')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                    <div>
+                                        <div className="card mb-4 rounded-3 shadow-sm">
+                                            <div className="card-header py-3">
+                                                <h4 className="my-0 fw-normal">Consumption</h4>
+                                            </div>
+                                            <div className="card-body">
+                                                <ul className="list-unstyled mt-3 mb-4">
+                                                    <img src={consumption} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
+                                                </ul>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal7}>Add</button>
+                                                    </div>
+                                                    <div className="col">
+                                                        <button onClick={() => navigate('/profile/viewConsumption')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="card mb-4 rounded-3 shadow-sm">
-                                <div className="card-header py-3">
-                                    <h4 className="my-0 fw-normal">Event</h4>
-                                </div>
-                                <div className="card-body">
-                                    <ul className="list-unstyled mt-3 mb-4">
-                                        <img src={event} alt="Cellars Image" className='card-img' style={{ width: "80%", height: "80%" }} />
-                                    </ul>
-                                    <div className="row">
-                                        <div className="col">
-                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal5}>Add</button>
-                                        </div>
-                                        <div className="col">
-                                            <button onClick={() => navigate('/viewEvent')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card mb-4 rounded-3 shadow-sm">
-                                <div className="card-header py-3">
-                                    <h4 className="my-0 fw-normal">Admin Hotel</h4>
-                                </div>
-                                <div className="card-body">
-                                    <ul className="list-unstyled mt-3 mb-4">
-                                        <img alt="Accounts Image" src={adminHotel} className="card-img" style={{ width: "95%", height: "95%" }} />
-                                    </ul>
-                                    <div className="row">
-                                        <div className="col">
-                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal6}>Add</button>
-                                        </div>
-                                        <div className="col">
-                                            <button type="button" onClick={() => navigate('/viewAdminHotel')} className="w-100 btn btn-lg btn-outline-success" >View</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card mb-4 rounded-3 shadow-sm">
-                                <div className="card-header py-3">
-                                    <h4 className="my-0 fw-normal">Services</h4>
-                                </div>
-                                <div className="card-body">
-                                    <ul className="list-unstyled mt-3 mb-4">
-                                        <img alt="Accounts Image" src={services} className="card-img" style={{ width: "95%", height: "95%" }} />
-                                    </ul>
-                                    <div className="row">
-                                        <div className="col">
-                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal8}>Add</button>
-                                        </div>
-                                        <div className="col">
-                                            <button type="button" onClick={() => navigate('/viewServices')} className="w-100 btn btn-lg btn-outline-success" >View</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card mb-4 rounded-3 shadow-sm">
-                                <div className="card-header py-3">
-                                    <h4 className="my-0 fw-normal">Hotel</h4>
-                                </div>
-                                <div className="card-body">
-                                    <ul className="list-unstyled mt-3 mb-4">
-                                        <img src={hotel} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
-                                    </ul>
-                                    <div className="row">
-                                        <div className="col">
-                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal3}>Add</button>
-                                        </div>
-                                        <div className="col">
-                                            <Link to={'/viewHotels'}>
-                                                <button type="button" className="w-100 btn btn-lg btn-outline-success" >View</button>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card mb-4 rounded-3 shadow-sm">
-                                <div className="card-header py-3">
-                                    <h4 className="my-0 fw-normal">Type Event</h4>
-                                </div>
-                                <div className="card-body">
-                                    <ul className="list-unstyled mt-3 mb-4">
-                                        <img src={typeEvent} alt="Cellars Image" className='card-img' style={{ width: "95%", height: "95%" }} />
-                                    </ul>
-                                    <div className="row">
-                                        <div className="col">
-                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal4}>Add</button>
-                                        </div>
-                                        <div className="col">
-                                            <button onClick={() => navigate('/viewEventType')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card mb-4 rounded-3 shadow-sm">
-                                <div className="card-header py-3">
-                                    <h4 className="my-0 fw-normal">Reservation</h4>
-                                </div>
-                                <div className="card-body">
-                                    <ul className="list-unstyled mt-3 mb-4">
-                                        <img src={reservation} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
-                                    </ul>
-                                    <div className="row">
-                                        <div className="col">
-                                            <button onClick={() => navigate('/reservation')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card mb-4 rounded-3 shadow-sm">
-                                <div className="card-header py-3">
-                                    <h4 className="my-0 fw-normal">Consumption</h4>
-                                </div>
-                                <div className="card-body">
-                                    <ul className="list-unstyled mt-3 mb-4">
-                                        <img src={consumption} alt="Clients Image" className="card-img" style={{ width: "95%", height: "95%" }} />
-                                    </ul>
-                                    <div className="row">
-                                        <div className="col">
-                                            <button type="button" className="w-100 btn btn-lg btn-outline-primary" onClick={handleOpenModal7}>Add</button>
-                                        </div>
-                                        <div className="col">
-                                            <button onClick={() => navigate('/viewConsumption')} type='button' className='w-100 btn btn-lg btn-outline-success'>View</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    
                             </>
                     }
                 </main>

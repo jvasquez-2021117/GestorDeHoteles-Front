@@ -86,7 +86,7 @@ export const UserProfilePage = () => {
                         <Link to={'/profile'} className='nav-link'>
                             <h4>Settings</h4>
                         </Link>
-                        <Link to={'/record'} className='nav-link'>
+                        <Link to={'/profile/record'} className='nav-link'>
                             <h4>Historial</h4>
                         </Link>
                         <button className='btn btn-danger' onClick={() => logOut()}>Log Out</button>

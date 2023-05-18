@@ -60,12 +60,12 @@ export const UpdateConsumption = () => {
                                     <div className="px-5 py-4">
                                         <div className="row">
                                             <div className="col">
-                                                <Link to={'/viewConsumption'}>
+                                                <Link to={'/profile/viewConsumption'}>
                                                     <button onClick={() => updateConsumption()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                                 </Link>
                                             </div>
                                             <div className="col">
-                                                <Link to={'/viewConsumption'}>
+                                                <Link to={'/profile/viewConsumption'}>
                                                     <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                                 </Link>
                                             </div>

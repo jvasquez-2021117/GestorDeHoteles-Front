@@ -2,16 +2,15 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 export const UpdateReservation = () => {
     const [tableReservation, setTableReservation] = useState([{}])
     const { id } = useParams();
 
-
     const [room, setRoom] = useState([{}])
     const [hotel, setHotel] = useState([{}])
     const [event, setEvent] = useState([{}])
-    /* const [user, setUser] = useState([{}]) */
 
     const getRoom = async () => {
         try {
@@ -37,14 +36,7 @@ export const UpdateReservation = () => {
             console.log(e);
         }
     }
-    /*     const getUser = async () => {
-            try {
-                const { data } = await axios('http://localhost:3200/user/get')
-                setUser(data.users)
-            } catch (e) {
-                console.log(e);
-            }
-        } */
+
     const getTableReservation = async () => {
         try {
             const { data } = await axios(`http://localhost:3200/reservation/getById/${id}`)
@@ -57,15 +49,20 @@ export const UpdateReservation = () => {
     const updateReservation = async () => {
         try {
             let updatedReservation = {
-                /* user: document.getElementById('').value, */
                 hotel: document.getElementById('inputHotel').value,
                 room: document.getElementById('inputRoom').value,
                 event: document.getElementById('inputEvent').value,
-                /* date: document.getElementById('inputDate').value */
             }
             const { data } = await axios.put(`http://localhost:3200/reservation/updateReservation/${id}`, updatedReservation)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
-            console.log(e);
+            Swal.fire({
+                icon: 'error',
+                title: e.response.data.message
+            })
         }
     }
 
@@ -73,7 +70,6 @@ export const UpdateReservation = () => {
         getRoom(),
             getHotel(),
             getEvent(),
-            /* getUser(), */
             getTableReservation()
     }, [])
 
@@ -132,10 +128,10 @@ export const UpdateReservation = () => {
                                         </div>
                                         <br />
                                         <center>
-                                            <Link to={'/reservation'}>
+                                            <Link to={'/profile/reservation'}>
                                                 <button onClick={() => updateReservation()} type="submit" className="btn btn-success btn-lg">Lease</button>
                                             </Link>
-                                            <Link to={'/reservation'}>
+                                            <Link to={'/profile/reservation'}>
                                                 <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                             </Link>
                                         </center>

@@ -30,7 +30,7 @@ export const UpdateTypeEvent = () => {
                 icon: 'success',
                 title: data.message
             })
-            navigate('/viewEventType')
+            navigate('/profile/viewEventType')
         } catch (e) {
             Swal.fire({
                 icon: 'error',
@@ -69,7 +69,7 @@ export const UpdateTypeEvent = () => {
                                                 <button onClick={() => updateEventType()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                             </div>
                                             <div className="col">
-                                                <button onClick={() => navigate('/viewEventType')} type="submit" className="btn btn-danger btn-lg">Cancel</button>
+                                                <button onClick={() => navigate('/profile/viewEventType')} type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                             </div>
                                         </div>
                                     </div>

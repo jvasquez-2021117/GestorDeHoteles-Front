@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export const UpdateHotel = () => {
     const [tableHotel, setTableHotel] = useState([{}])
@@ -25,16 +26,15 @@ export const UpdateHotel = () => {
                 qualification: document.getElementById('inputQualification').value,
             }
             const { data } = await axios.put(`http://localhost:3200/hotel/updateHotel/${id}`, updatedHotel)
-            /* Swal.fire({
+            Swal.fire({
                 icon: 'success',
                 title: data.message
-            }) */
+            })
         } catch (e) {
-            console.log(e);
-            /* Swal.fire({
+            Swal.fire({
                 icon: 'error',
                 title: e.response.data.message
-            }) */
+            })
         }
     }
 
@@ -86,12 +86,12 @@ export const UpdateHotel = () => {
                                     <div className="px-5 py-4">
                                         <div className="row">
                                             <div className="col">
-                                                <Link to={'/viewHotels'}>
+                                                <Link to={'/profile/viewHotels'}>
                                                     <button onClick={() => updateHotel()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                                 </Link>
                                             </div>
                                             <div className="col">
-                                                <Link to={'/viewHotels'}>
+                                                <Link to={'/profile/viewHotels'}>
                                                     <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                                 </Link>
                                             </div>

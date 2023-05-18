@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export const UpdateRoom = () => {
     const [tableRoom, setTableRoom] = useState([{}])
@@ -45,8 +46,15 @@ export const UpdateRoom = () => {
                 hotel: document.getElementById('inputHotel').value
             }
             const { data } = await axios.put(`http://localhost:3200/room/update/${id}`, updatedRoom)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
-            console.log(e);
+            Swal.fire({
+                icon: 'error',
+                title: e.response.data.message
+            })
         }
     }
 
@@ -118,12 +126,12 @@ export const UpdateRoom = () => {
                                     <div className="px-5 py-4">
                                         <div className="row">
                                             <div className="col-md-2">
-                                                <Link to={'/viewRooms'}>
+                                                <Link to={'/profile/viewRooms'}>
                                                     <button onClick={() => updateRoom()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                                 </Link>
                                             </div>
                                             <div className="col-md-6">
-                                                <Link to={'/viewRooms'}>
+                                                <Link to={'/profile/viewRooms'}>
                                                     <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                                 </Link>
                                             </div>

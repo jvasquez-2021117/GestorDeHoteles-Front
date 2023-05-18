@@ -61,12 +61,12 @@ export const UpdateServices = () => {
                                     <div className="px-5 py-4">
                                         <div className="row">
                                             <div className="col">
-                                                <Link to={'/viewServices'}>
+                                                <Link to={'/profile/viewServices'}>
                                                     <button onClick={() => updateService()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                                 </Link>
                                             </div>
                                             <div className="col">
-                                                <Link to={'/viewServices'}>
+                                                <Link to={'/profile/viewServices'}>
                                                     <button type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                                 </Link>
                                             </div>

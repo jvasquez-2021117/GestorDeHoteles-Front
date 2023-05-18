@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export const ModalAdminHotel = ({ isOpen, onClose }) => {
     const [hotel, setHotel] = useState([{}])
@@ -14,7 +15,7 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
         }
     }
 
-    const addAdminHotel = async() => {
+    const addAdminHotel = async () => {
         try {
             let admminHotel = {
                 name: document.getElementById('inputName').value,
@@ -24,7 +25,10 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
                 hotel: document.getElementById('inputHotel').value
             }
             const { data } = await axios.post('http://localhost:3200/userHotel/add', admminHotel)
-            alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
             console.log(e);
         }
@@ -69,7 +73,7 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputPassword" className="form-label">Password</label>
-                            <input type="password" name="" id="inputPassword" className='form-control' placeholder='Password'/>
+                            <input type="password" name="" id="inputPassword" className='form-control' placeholder='Password' />
                         </div>
                     </form>
                 </Modal.Body>

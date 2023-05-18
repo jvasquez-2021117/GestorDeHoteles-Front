@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect, useContext } from 'react'
 import { Modal } from 'react-bootstrap'
+import Swal from 'sweetalert2'
 import { AuthContext } from '../../Index'
 
 export const ModalReservation = ({ isOpen, onClose }) => {
@@ -8,6 +9,7 @@ export const ModalReservation = ({ isOpen, onClose }) => {
     const [hotel, setHotel] = useState([{}])
     const [event, setEvent] = useState([{}])
     const [user, setUser] = useState([{}])
+
     const { dataUser } = useContext(AuthContext);
 
     const getRoom = async () => {
@@ -56,7 +58,10 @@ export const ModalReservation = ({ isOpen, onClose }) => {
                 date: document.getElementById('inputDate').value
             }
             const { data } = await axios.post('http://localhost:3200/reservation/addReservation', reservation)
-            alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
             console.log(e);
         }

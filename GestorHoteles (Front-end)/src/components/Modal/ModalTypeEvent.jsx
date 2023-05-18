@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { Modal } from 'react-bootstrap';
+import Swal from 'sweetalert2'
 
 export const ModalTypeEvent = ({ isOpen, onClose }) => {
     
@@ -10,7 +11,10 @@ export const ModalTypeEvent = ({ isOpen, onClose }) => {
                 name: document.getElementById('inputName').value
             }
             const { data } = await axios.post('http://localhost:3200/eventType/add', typeEvent)
-            alert(data.message)
+            Swal.fire({
+                icon: 'success',
+                title: data.message
+            })
         } catch (e) {
             console.log(e);
         }

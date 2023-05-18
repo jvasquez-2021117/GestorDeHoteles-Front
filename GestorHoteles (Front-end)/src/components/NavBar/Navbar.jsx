@@ -52,19 +52,19 @@ export const Navbar = () => {
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link to={'/optionAdmin'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                            <Link to={'/profile/optionAdmin'} id='aXD' className="nav-link mx-2 text-uppercase">
                                                 Option
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link to={'/users'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                            <Link to={'/profile/users'} id='aXD' className="nav-link mx-2 text-uppercase">
                                                 Users
                                             </Link>
                                         </li>
                                     </>
                                 ) : loggedIn == true && dataUser.role == 'ADMIN-HOTEL' ? (
                                     <li className="nav-item">
-                                        <Link to={'/optionAdmin'} id='aXD' className="nav-link mx-2 text-uppercase">
+                                        <Link to={'/profile/optionAdmin'} id='aXD' className="nav-link mx-2 text-uppercase">
                                             Option
                                         </Link>
                                     </li>

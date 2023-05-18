@@ -44,7 +44,7 @@ export const UpdateAdminHotel = () => {
                 icon: 'success',
                 title: data.message
             })
-            navigate('/viewAdminHotel')
+            navigate('/profile/viewAdminHotel')
         } catch (e) {
             Swal.fire({
                 icon: 'error',
@@ -107,7 +107,7 @@ export const UpdateAdminHotel = () => {
                                                 <button onClick={() => updateAdminHotel()} type="submit" className="btn btn-primary btn-lg">Update</button>
                                             </div>
                                             <div className="col-md-6">
-                                                <button onClick={() => navigate('/viewAdminHotel')} type="submit" className="btn btn-danger btn-lg">Cancel</button>
+                                                <button onClick={() => navigate('/profile/viewAdminHotel')} type="submit" className="btn btn-danger btn-lg">Cancel</button>
                                             </div>
                                         </div>
                                     </div>
