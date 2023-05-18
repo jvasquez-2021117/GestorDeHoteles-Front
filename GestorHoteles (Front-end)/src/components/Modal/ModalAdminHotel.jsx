@@ -17,14 +17,14 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
 
     const addAdminHotel = async () => {
         try {
-            let admminHotel = {
+            let adminHotel = {
                 name: document.getElementById('inputName').value,
                 surname: document.getElementById('inputSurname').value,
                 email: document.getElementById('inputEmail').value,
                 password: document.getElementById('inputPassword').value,
                 hotel: document.getElementById('inputHotel').value
             }
-            const { data } = await axios.post('http://localhost:3200/userHotel/add', admminHotel)
+            const { data } = await axios.post('http://localhost:3200/userHotel/add', adminHotel)
             Swal.fire({
                 icon: 'success',
                 title: data.message
@@ -53,11 +53,11 @@ export const ModalAdminHotel = ({ isOpen, onClose }) => {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputSurname" className="form-label">Surname</label>
-                            <input type="text" className="form-control" id='inputSurname' placeholder='Surame' />
+                            <input type="text" className="form-control" id='inputSurname' placeholder='Surname' />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputEmail" className="form-label">Email</label>
-                            <input type="email" name="" id="inputEmail" className='form-control' placeholder='name@gmail.com' />
+                            <input type="email" id="inputEmail" className='form-control' placeholder='name@gmail.com' />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="inputHotel" className="form-label">Hotel</label>
